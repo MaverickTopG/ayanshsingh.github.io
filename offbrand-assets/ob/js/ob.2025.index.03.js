@@ -13006,32 +13006,27 @@
       }
     }
     const currentState = Flip.getState(".ser-grid-item");
-    const slot1 = document.querySelector('[ser-slot="1"]');
-    const slot2 = document.querySelector('[ser-slot="2"]');
-    const slot3 = document.querySelector('[ser-slot="3"]');
-    const slot4 = document.querySelector('[ser-slot="4"]');
+    const slotOrder = [1, 5, 6, 4, 3, 2];
+    const slots = slotOrder.map((slotNum) => document.querySelector(`[ser-slot="${slotNum}"]`)).filter(Boolean);
+    const slot1 = slots[0];
+    if (!slot1) {
+      return;
+    }
     const currSlot1Item = slot1.querySelector(".ser-grid-item");
-    const currSlot2Item = slot2.querySelector(".ser-grid-item");
-    const currSlot3Item = slot3.querySelector(".ser-grid-item");
-    const currSlot4Item = slot4.querySelector(".ser-grid-item");
     if (clickedItem === currSlot1Item) {
       return;
     }
+    const otherSlots = slots.slice(1);
+    const currentItems = slots.map((slot) => slot.querySelector(".ser-grid-item")).filter(Boolean);
+    const nextItems = currentItems.filter((item) => item !== clickedItem);
     slot1.appendChild(clickedItem);
     clickedItem.classList.add("is--active");
-    if (currSlot1Item) {
-      slot4.appendChild(currSlot1Item);
-    }
-    if (currSlot4Item && clickedItem !== currSlot4Item) {
-      slot3.appendChild(currSlot4Item);
-    } else if (currSlot3Item && clickedItem !== currSlot3Item) {
-      slot3.appendChild(currSlot3Item);
-    }
-    if (currSlot3Item && clickedItem !== currSlot3Item && clickedItem !== currSlot4Item) {
-      slot2.appendChild(currSlot3Item);
-    } else if (currSlot2Item && clickedItem !== currSlot2Item) {
-      slot2.appendChild(currSlot2Item);
-    }
+    otherSlots.forEach((slot, index) => {
+      const item = nextItems[index];
+      if (item) {
+        slot.appendChild(item);
+      }
+    });
     Flip.from(currentState, {
       duration: 0.6,
       ease: "power1.inOut"
