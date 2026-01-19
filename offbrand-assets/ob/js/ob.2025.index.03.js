@@ -59,7 +59,7 @@
   var _isFuncOrString = function _isFuncOrString2(value) {
     return _isFunction(value) || _isString(value);
   };
-  var _isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView || function() {
+  var _isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView || function () {
   };
   var _isArray = Array.isArray;
   var _strictNumExp = /(?:-?\.?\d|\.)+/gi;
@@ -149,7 +149,7 @@
   };
   var _arrayContainsAny = function _arrayContainsAny2(toSearch, toFind) {
     var l = toFind.length, i = 0;
-    for (; toSearch.indexOf(toFind[i]) < 0 && ++i < l; ) {
+    for (; toSearch.indexOf(toFind[i]) < 0 && ++i < l;) {
     }
     return i < l;
   };
@@ -184,7 +184,7 @@
     return obj;
   };
   var _setKeyframeDefaults = function _setKeyframeDefaults2(excludeDuration) {
-    return function(obj, defaults4) {
+    return function (obj, defaults4) {
       for (var p in defaults4) {
         p in obj || p === "duration" && excludeDuration || p === "ease" || (obj[p] = defaults4[p]);
       }
@@ -504,7 +504,7 @@
     return !_isString(value) || !(v = _unitExp.exec(value)) ? "" : v[1];
   };
   var clamp = function clamp2(min, max, value) {
-    return _conditionalReturn(value, function(v) {
+    return _conditionalReturn(value, function (v) {
       return _clamp(min, max, v);
     });
   };
@@ -516,7 +516,7 @@
     if (accumulator === void 0) {
       accumulator = [];
     }
-    return ar.forEach(function(value) {
+    return ar.forEach(function (value) {
       var _accumulator;
       return _isString(value) && !leaveStrings || _isArrayLike(value, 1) ? (_accumulator = accumulator).push.apply(_accumulator, toArray(value)) : accumulator.push(value);
     }) || accumulator;
@@ -526,13 +526,13 @@
   };
   var selector = function selector2(value) {
     value = toArray(value)[0] || _warn("Invalid scope") || {};
-    return function(v) {
+    return function (v) {
       var el = value.current || value.nativeElement || value;
       return toArray(v, el.querySelectorAll ? el : el === value ? _warn("Invalid scope") || _doc.createElement("div") : value);
     };
   };
   var shuffle = function shuffle2(a) {
-    return a.sort(function() {
+    return a.sort(function () {
       return 0.5 - Math.random();
     });
   };
@@ -553,7 +553,7 @@
       ratioX = from[0];
       ratioY = from[1];
     }
-    return function(i, target, a) {
+    return function (i, target, a) {
       var l = (a || vars).length, distances = cache2[l], originX, originY, x, y, d, j, max, min, wrapAt;
       if (!distances) {
         wrapAt = vars.grid === "auto" ? 0 : (vars.grid || [1, _bigNum])[1];
@@ -589,7 +589,7 @@
   };
   var _roundModifier = function _roundModifier2(v) {
     var p = Math.pow(10, ((v + "").split(".")[1] || "").length);
-    return function(raw) {
+    return function (raw) {
       var n = _roundPrecise(Math.round(parseFloat(raw) / v) * v * p);
       return (n - n % 1) / p + (_isNumber(raw) ? 0 : getUnit(raw));
     };
@@ -607,10 +607,10 @@
         snapTo = _roundModifier(snapTo.increment);
       }
     }
-    return _conditionalReturn(value, !isArray2 ? _roundModifier(snapTo) : _isFunction(snapTo) ? function(raw) {
+    return _conditionalReturn(value, !isArray2 ? _roundModifier(snapTo) : _isFunction(snapTo) ? function (raw) {
       is2D = snapTo(raw);
       return Math.abs(is2D - raw) <= radius ? is2D : raw;
-    } : function(raw) {
+    } : function (raw) {
       var x = parseFloat(is2D ? raw.x : raw), y = parseFloat(is2D ? raw.y : 0), min = _bigNum, closest = 0, i = snapTo.length, dx, dy;
       while (i--) {
         if (is2D) {
@@ -630,7 +630,7 @@
     });
   };
   var random = function random2(min, max, roundingIncrement, returnFunction) {
-    return _conditionalReturn(_isArray(min) ? !max : roundingIncrement === true ? !!(roundingIncrement = 0) : !returnFunction, function() {
+    return _conditionalReturn(_isArray(min) ? !max : roundingIncrement === true ? !!(roundingIncrement = 0) : !returnFunction, function () {
       return _isArray(min) ? min[~~(Math.random() * min.length)] : (roundingIncrement = roundingIncrement || 1e-5) && (returnFunction = roundingIncrement < 1 ? Math.pow(10, (roundingIncrement + "").length - 2) : 1) && Math.floor(Math.round((min - roundingIncrement / 2 + Math.random() * (max - min + roundingIncrement * 0.99)) / roundingIncrement) * roundingIncrement * returnFunction) / returnFunction;
     });
   };
@@ -638,14 +638,14 @@
     for (var _len = arguments.length, functions = new Array(_len), _key = 0; _key < _len; _key++) {
       functions[_key] = arguments[_key];
     }
-    return function(value) {
-      return functions.reduce(function(v, f) {
+    return function (value) {
+      return functions.reduce(function (v, f) {
         return f(v);
       }, value);
     };
   };
   var unitize = function unitize2(func, unit) {
-    return function(value) {
+    return function (value) {
       return func(parseFloat(value)) + (unit || getUnit(value));
     };
   };
@@ -653,19 +653,19 @@
     return mapRange(min, max, 0, 1, value);
   };
   var _wrapArray = function _wrapArray2(a, wrapper, value) {
-    return _conditionalReturn(value, function(index) {
+    return _conditionalReturn(value, function (index) {
       return a[~~wrapper(index)];
     });
   };
   var wrap = function wrap2(min, max, value) {
     var range = max - min;
-    return _isArray(min) ? _wrapArray(min, wrap2(0, min.length), max) : _conditionalReturn(value, function(value2) {
+    return _isArray(min) ? _wrapArray(min, wrap2(0, min.length), max) : _conditionalReturn(value, function (value2) {
       return (range + (value2 - min) % range) % range + min;
     });
   };
   var wrapYoyo = function wrapYoyo2(min, max, value) {
     var range = max - min, total = range * 2;
-    return _isArray(min) ? _wrapArray(min, wrapYoyo2(0, min.length - 1), max) : _conditionalReturn(value, function(value2) {
+    return _isArray(min) ? _wrapArray(min, wrapYoyo2(0, min.length - 1), max) : _conditionalReturn(value, function (value2) {
       value2 = (total + (value2 - min) % total) % total || 0;
       return min + (value2 > range ? total - value2 : value2);
     });
@@ -683,12 +683,12 @@
   };
   var mapRange = function mapRange2(inMin, inMax, outMin, outMax, value) {
     var inRange = inMax - inMin, outRange = outMax - outMin;
-    return _conditionalReturn(value, function(value2) {
+    return _conditionalReturn(value, function (value2) {
       return outMin + ((value2 - inMin) / inRange * outRange || 0);
     });
   };
   var interpolate = function interpolate2(start, end, progress, mutate) {
-    var func = isNaN(start + end) ? 0 : function(p2) {
+    var func = isNaN(start + end) ? 0 : function (p2) {
       return (1 - p2) * start + p2 * end;
     };
     if (!func) {
@@ -766,7 +766,7 @@
       return;
     config3 = !config3.name && config3["default"] || config3;
     if (_windowExists() || config3.headless) {
-      var name = config3.name, isFunc = _isFunction(config3), Plugin = name && !isFunc && config3.init ? function() {
+      var name = config3.name, isFunc = _isFunction(config3), Plugin = name && !isFunc && config3.init ? function () {
         this._props = [];
       } : config3, instanceDefaults = {
         init: _emptyFunc,
@@ -895,7 +895,7 @@
   };
   var _colorOrderData = function _colorOrderData2(v) {
     var values = [], c = [], i = -1;
-    v.split(_colorExp).forEach(function(v2) {
+    v.split(_colorExp).forEach(function (v2) {
       var a = v2.match(_numWithUnitExp) || [];
       values.push.apply(values, a);
       c.push(i += a.length + 1);
@@ -908,7 +908,7 @@
     if (!colors) {
       return s;
     }
-    colors = colors.map(function(color) {
+    colors = colors.map(function (color) {
       return (color = splitColor(color, toHSL, 1)) && type + (toHSL ? color[0] + "," + color[1] + "%," + color[2] + "%," + color[3] : color.join(",")) + ")";
     });
     if (orderMatchData) {
@@ -931,7 +931,7 @@
     }
     return result + shell[l];
   };
-  var _colorExp = function() {
+  var _colorExp = function () {
     var s = "(?:\\b(?:(?:rgb|rgba|hsl|hsla)\\(.+?\\))|\\B#(?:[0-9a-f]{3,4}){1,2}\\b", p;
     for (p in _colorLookup) {
       s += "|" + p + "\\b";
@@ -950,7 +950,7 @@
     }
   };
   var _tickerActive;
-  var _ticker = function() {
+  var _ticker = function () {
     var _getTime3 = Date.now, _lagThreshold = 500, _adjustedLag = 33, _startTime = _getTime3(), _lastUpdate = _startTime, _gap = 1e3 / 240, _nextTime = _gap, _listeners3 = [], _id2, _req, _raf, _self, _delta, _i2, _tick = function _tick2(v) {
       var elapsed = _getTime3() - _lastUpdate, manual = v === true, overlap, dispatch, time, frame;
       (elapsed > _lagThreshold || elapsed < 0) && (_startTime += elapsed - _adjustedLag);
@@ -992,7 +992,7 @@
           }
           _raf = typeof requestAnimationFrame !== "undefined" && requestAnimationFrame;
           _id2 && _self.sleep();
-          _req = _raf || function(f) {
+          _req = _raf || function (f) {
             return setTimeout(f, _nextTime - _self.time * 1e3 + 1 | 0);
           };
           _tickerActive = 1;
@@ -1013,7 +1013,7 @@
         _nextTime = _self.time * 1e3 + _gap;
       },
       add: function add(callback, once, prioritize) {
-        var func = once ? function(t, d, f, v) {
+        var func = once ? function (t, d, f, v) {
           callback(t, d, f, v);
           _self.remove(func);
         } : callback;
@@ -1055,7 +1055,7 @@
     return ease && split2.length > 1 && ease.config ? ease.config.apply(null, ~name.indexOf("{") ? [_parseObjectInString(split2[1])] : _valueInParentheses(name).split(",").map(_numericIfPossible)) : _easeMap._CE && _customEaseExp.test(name) ? _easeMap._CE("", name) : ease;
   };
   var _invertEase = function _invertEase2(ease) {
-    return function(p) {
+    return function (p) {
       return 1 - ease(1 - p);
     };
   };
@@ -1096,7 +1096,7 @@
       easeOut,
       easeInOut
     }, lowercaseName;
-    _forEachName(names, function(name) {
+    _forEachName(names, function (name) {
       _easeMap[name] = _globals[name] = ease;
       _easeMap[lowercaseName = name.toLowerCase()] = easeOut;
       for (var p in ease) {
@@ -1106,18 +1106,18 @@
     return ease;
   };
   var _easeInOutFromOut = function _easeInOutFromOut2(easeOut) {
-    return function(p) {
+    return function (p) {
       return p < 0.5 ? (1 - easeOut(1 - p * 2)) / 2 : 0.5 + easeOut((p - 0.5) * 2) / 2;
     };
   };
   var _configElastic = function _configElastic2(type, amplitude, period) {
     var p1 = amplitude >= 1 ? amplitude : 1, p2 = (period || (type ? 0.3 : 0.45)) / (amplitude < 1 ? amplitude : 1), p3 = p2 / _2PI * (Math.asin(1 / p1) || 0), easeOut = function easeOut2(p) {
       return p === 1 ? 1 : p1 * Math.pow(2, -10 * p) * _sin((p - p3) * p2) + 1;
-    }, ease = type === "out" ? easeOut : type === "in" ? function(p) {
+    }, ease = type === "out" ? easeOut : type === "in" ? function (p) {
       return 1 - easeOut(1 - p);
     } : _easeInOutFromOut(easeOut);
     p2 = _2PI / p2;
-    ease.config = function(amplitude2, period2) {
+    ease.config = function (amplitude2, period2) {
       return _configElastic2(type, amplitude2, period2);
     };
     return ease;
@@ -1128,43 +1128,43 @@
     }
     var easeOut = function easeOut2(p) {
       return p ? --p * p * ((overshoot + 1) * p + overshoot) + 1 : 0;
-    }, ease = type === "out" ? easeOut : type === "in" ? function(p) {
+    }, ease = type === "out" ? easeOut : type === "in" ? function (p) {
       return 1 - easeOut(1 - p);
     } : _easeInOutFromOut(easeOut);
-    ease.config = function(overshoot2) {
+    ease.config = function (overshoot2) {
       return _configBack2(type, overshoot2);
     };
     return ease;
   };
-  _forEachName("Linear,Quad,Cubic,Quart,Quint,Strong", function(name, i) {
+  _forEachName("Linear,Quad,Cubic,Quart,Quint,Strong", function (name, i) {
     var power = i < 5 ? i + 1 : i;
-    _insertEase(name + ",Power" + (power - 1), i ? function(p) {
+    _insertEase(name + ",Power" + (power - 1), i ? function (p) {
       return Math.pow(p, power);
-    } : function(p) {
+    } : function (p) {
       return p;
-    }, function(p) {
+    }, function (p) {
       return 1 - Math.pow(1 - p, power);
-    }, function(p) {
+    }, function (p) {
       return p < 0.5 ? Math.pow(p * 2, power) / 2 : 1 - Math.pow((1 - p) * 2, power) / 2;
     });
   });
   _easeMap.Linear.easeNone = _easeMap.none = _easeMap.Linear.easeIn;
   _insertEase("Elastic", _configElastic("in"), _configElastic("out"), _configElastic());
-  (function(n, c) {
+  (function (n, c) {
     var n1 = 1 / c, n2 = 2 * n1, n3 = 2.5 * n1, easeOut = function easeOut2(p) {
       return p < n1 ? n * p * p : p < n2 ? n * Math.pow(p - 1.5 / c, 2) + 0.75 : p < n3 ? n * (p -= 2.25 / c) * p + 0.9375 : n * Math.pow(p - 2.625 / c, 2) + 0.984375;
     };
-    _insertEase("Bounce", function(p) {
+    _insertEase("Bounce", function (p) {
       return 1 - easeOut(1 - p);
     }, easeOut);
   })(7.5625, 2.75);
-  _insertEase("Expo", function(p) {
+  _insertEase("Expo", function (p) {
     return Math.pow(2, 10 * (p - 1)) * p + p * p * p * p * p * p * (1 - p);
   });
-  _insertEase("Circ", function(p) {
+  _insertEase("Circ", function (p) {
     return -(_sqrt(1 - p * p) - 1);
   });
-  _insertEase("Sine", function(p) {
+  _insertEase("Sine", function (p) {
     return p === 1 ? 1 : -_cos(p * _HALF_PI) + 1;
   });
   _insertEase("Back", _configBack("in"), _configBack("out"), _configBack());
@@ -1174,13 +1174,13 @@
         steps = 1;
       }
       var p1 = 1 / steps, p2 = steps + (immediateStart ? 0 : 1), p3 = immediateStart ? 1 : 0, max = 1 - _tinyNum;
-      return function(p) {
+      return function (p) {
         return ((p2 * _clamp(0, max, p) | 0) + p3) * p1;
       };
     }
   };
   _defaults.ease = _easeMap["quad.out"];
-  _forEachName("onComplete,onUpdate,onStart,onRepeat,onReverseComplete,onInterrupt", function(name) {
+  _forEachName("onComplete,onUpdate,onStart,onRepeat,onReverseComplete,onInterrupt", function (name) {
     return _callbackNames += name + "," + name + "Params,";
   });
   var GSCache = function GSCache2(target, harness) {
@@ -1191,7 +1191,7 @@
     this.get = harness ? harness.get : _getProperty;
     this.set = harness ? harness.getSetter : _getSetter;
   };
-  var Animation = /* @__PURE__ */ function() {
+  var Animation = /* @__PURE__ */ function () {
     function Animation2(vars) {
       this.vars = vars;
       this._delay = +vars.delay || 0;
@@ -1412,7 +1412,7 @@
     };
     _proto.then = function then(onFulfilled) {
       var self = this;
-      return new Promise(function(resolve) {
+      return new Promise(function (resolve) {
         var f = _isFunction(onFulfilled) ? onFulfilled : _passThrough, _resolve = function _resolve2() {
           var _then = self.then;
           self.then = null;
@@ -1452,7 +1452,7 @@
     _ps: false,
     _rts: 1
   });
-  var Timeline = /* @__PURE__ */ function(_Animation) {
+  var Timeline = /* @__PURE__ */ function (_Animation) {
     _inheritsLoose(Timeline2, _Animation);
     function Timeline2(vars, position) {
       var _this;
@@ -1667,7 +1667,7 @@
       _isNumber(position) || (position = _parsePosition(this, position, child));
       if (!(child instanceof Animation)) {
         if (_isArray(child)) {
-          child.forEach(function(obj) {
+          child.forEach(function (obj) {
             return _this2.add(obj, position);
           });
           return this;
@@ -2063,7 +2063,7 @@
           lazy: !prevStartAt && _isNotFalse(lazy),
           startAt: null,
           delay: 0,
-          onUpdate: onUpdate && function() {
+          onUpdate: onUpdate && function () {
             return _callback(tween, "onUpdate");
           },
           stagger: 0
@@ -2111,7 +2111,7 @@
         index = fullTargets === targets ? i : fullTargets.indexOf(target);
         if (harness && (plugin = new harness()).init(target, harnessVars || cleanVars, tween, index, fullTargets) !== false) {
           tween._pt = pt = new PropTween(tween._pt, target, plugin.name, 0, 1, plugin.render, plugin, 0, plugin.priority);
-          plugin._props.forEach(function(name) {
+          plugin._props.forEach(function (name) {
             ptLookup[name] = pt;
           });
           plugin.priority && (hasPriority = 1);
@@ -2196,7 +2196,7 @@
     var ease = obj.ease || easeEach || "power1.inOut", p, a;
     if (_isArray(obj)) {
       a = allProps[prop] || (allProps[prop] = []);
-      obj.forEach(function(value, i) {
+      obj.forEach(function (value, i) {
         return a.push({
           t: i / (obj.length - 1) * 100,
           v: value,
@@ -2219,10 +2219,10 @@
   };
   var _staggerTweenProps = _callbackNames + "repeat,repeatDelay,yoyo,repeatRefresh,yoyoEase,autoRevert";
   var _staggerPropsToSkip = {};
-  _forEachName(_staggerTweenProps + ",id,stagger,delay,duration,paused,scrollTrigger", function(name) {
+  _forEachName(_staggerTweenProps + ",id,stagger,delay,duration,paused,scrollTrigger", function (name) {
     return _staggerPropsToSkip[name] = 1;
   });
-  var Tween = /* @__PURE__ */ function(_Animation2) {
+  var Tween = /* @__PURE__ */ function (_Animation2) {
     _inheritsLoose(Tween2, _Animation2);
     function Tween2(targets, vars, position, skipInherit) {
       var _this3;
@@ -2281,7 +2281,7 @@
           tl3._ease = _parseEase(keyframes.ease || vars.ease || "none");
           var time = 0, a, kf, v;
           if (_isArray(keyframes)) {
-            keyframes.forEach(function(frame) {
+            keyframes.forEach(function (frame) {
               return tl3.to(parsedTargets, frame, ">");
             });
             tl3.duration();
@@ -2291,7 +2291,7 @@
               p === "ease" || p === "easeEach" || _parseKeyframe(p, keyframes[p], copy, keyframes.easeEach);
             }
             for (p in copy) {
-              a = copy[p].sort(function(a2, b) {
+              a = copy[p].sort(function (a2, b) {
                 return a2.t - b.t;
               });
               time = 0;
@@ -2472,7 +2472,7 @@
       if (vars !== "all") {
         if (_isString(vars)) {
           p = {};
-          _forEachName(vars, function(name) {
+          _forEachName(vars, function (name) {
             return p[name] = 1;
           });
           vars = p;
@@ -2547,8 +2547,8 @@
     _op: 0,
     _onInit: 0
   });
-  _forEachName("staggerTo,staggerFrom,staggerFromTo", function(name) {
-    Tween[name] = function() {
+  _forEachName("staggerTo,staggerFrom,staggerFromTo", function (name) {
+    Tween[name] = function () {
       var tl3 = new Timeline(), params2 = _slice.call(arguments, 0);
       params2.splice(name === "staggerFromTo" ? 5 : 4, 0, 0);
       return tl3[name].apply(tl3, params2);
@@ -2643,7 +2643,7 @@
     }
     parent._pt = first;
   };
-  var PropTween = /* @__PURE__ */ function() {
+  var PropTween = /* @__PURE__ */ function () {
     function PropTween2(next, target, prop, start, change, renderer, data, setter, priority) {
       this.t = target;
       this.s = start;
@@ -2668,7 +2668,7 @@
     };
     return PropTween2;
   }();
-  _forEachName(_callbackNames + "parent,duration,ease,delay,overwrite,runBackwards,startAt,yoyo,immediateRender,repeat,repeatDelay,data,paused,reversed,lazy,callbackScope,stringFilter,id,yoyoEase,stagger,inherit,repeatRefresh,keyframes,autoRevert,scrollTrigger", function(name) {
+  _forEachName(_callbackNames + "parent,duration,ease,delay,overwrite,runBackwards,startAt,yoyo,immediateRender,repeat,repeatDelay,data,paused,reversed,lazy,callbackScope,stringFilter,id,yoyoEase,stagger,inherit,repeatRefresh,keyframes,autoRevert,scrollTrigger", function (name) {
     return _reservedProps[name] = 1;
   });
   _globals.TweenMax = _globals.TweenLite = Tween;
@@ -2687,7 +2687,7 @@
   var _lastMediaTime = 0;
   var _contextID = 0;
   var _dispatch = function _dispatch2(type) {
-    return (_listeners[type] || _emptyArray).map(function(f) {
+    return (_listeners[type] || _emptyArray).map(function (f) {
       return f();
     });
   };
@@ -2695,7 +2695,7 @@
     var time = Date.now(), matches2 = [];
     if (time - _lastMediaTime > 2) {
       _dispatch("matchMediaInit");
-      _media.forEach(function(c) {
+      _media.forEach(function (c) {
         var queries = c.queries, conditions = c.conditions, match, p, anyMatch, toggled;
         for (p in queries) {
           match = _win.matchMedia(queries[p]).matches;
@@ -2711,8 +2711,8 @@
         }
       });
       _dispatch("matchMediaRevert");
-      matches2.forEach(function(c) {
-        return c.onMatch(c, function(func) {
+      matches2.forEach(function (c) {
+        return c.onMatch(c, function (func) {
           return c.add(null, func);
         });
       });
@@ -2720,7 +2720,7 @@
       _dispatch("matchMedia");
     }
   };
-  var Context = /* @__PURE__ */ function() {
+  var Context = /* @__PURE__ */ function () {
     function Context2(func, scope) {
       this.selector = scope && selector(scope);
       this.data = [];
@@ -2749,7 +2749,7 @@
         return result;
       };
       self.last = f;
-      return name === _isFunction ? f(self, function(func2) {
+      return name === _isFunction ? f(self, function (func2) {
         return self.add(null, func2);
       }) : name ? self[name] = f : f;
     };
@@ -2761,7 +2761,7 @@
     };
     _proto5.getTweens = function getTweens() {
       var a = [];
-      this.data.forEach(function(e) {
+      this.data.forEach(function (e) {
         return e instanceof Context2 ? a.push.apply(a, e.getTweens()) : e instanceof Tween && !(e.parent && e.parent.data === "nested") && a.push(e);
       });
       return a;
@@ -2772,25 +2772,25 @@
     _proto5.kill = function kill2(revert, matchMedia2) {
       var _this4 = this;
       if (revert) {
-        (function() {
+        (function () {
           var tweens = _this4.getTweens(), i2 = _this4.data.length, t;
           while (i2--) {
             t = _this4.data[i2];
             if (t.data === "isFlip") {
               t.revert();
-              t.getChildren(true, true, false).forEach(function(tween) {
+              t.getChildren(true, true, false).forEach(function (tween) {
                 return tweens.splice(tweens.indexOf(tween), 1);
               });
             }
           }
-          tweens.map(function(t2) {
+          tweens.map(function (t2) {
             return {
               g: t2._dur || t2._delay || t2._sat && !t2._sat.vars.immediateRender ? t2.globalTime(0) : -Infinity,
               t: t2
             };
-          }).sort(function(a, b) {
+          }).sort(function (a, b) {
             return b.g - a.g || -Infinity;
-          }).forEach(function(o) {
+          }).forEach(function (o) {
             return o.t.revert(revert);
           });
           i2 = _this4.data.length;
@@ -2805,13 +2805,13 @@
               !(t instanceof Tween) && t.revert && t.revert(revert);
             }
           }
-          _this4._r.forEach(function(f) {
+          _this4._r.forEach(function (f) {
             return f(revert, _this4);
           });
           _this4.isReverted = true;
         })();
       } else {
-        this.data.forEach(function(e) {
+        this.data.forEach(function (e) {
           return e.kill && e.kill();
         });
       }
@@ -2828,7 +2828,7 @@
     };
     return Context2;
   }();
-  var MatchMedia = /* @__PURE__ */ function() {
+  var MatchMedia = /* @__PURE__ */ function () {
     function MatchMedia2(scope) {
       this.contexts = [];
       this.scope = scope;
@@ -2856,7 +2856,7 @@
           }
         }
       }
-      active && func(context3, function(f) {
+      active && func(context3, function (f) {
         return context3.add(null, f);
       });
       return this;
@@ -2865,7 +2865,7 @@
       this.kill(config3 || {});
     };
     _proto6.kill = function kill2(revert) {
-      this.contexts.forEach(function(c) {
+      this.contexts.forEach(function (c) {
         return c.kill(revert, true);
       });
     };
@@ -2876,7 +2876,7 @@
       for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
         args[_key2] = arguments[_key2];
       }
-      args.forEach(function(config3) {
+      args.forEach(function (config3) {
         return _createPlugin(config3);
       });
     },
@@ -2890,17 +2890,17 @@
       _isString(target) && (target = toArray(target)[0]);
       var getter = _getCache(target || {}).get, format = unit ? _passThrough : _numericIfPossible;
       unit === "native" && (unit = "");
-      return !target ? target : !property ? function(property2, unit2, uncache2) {
+      return !target ? target : !property ? function (property2, unit2, uncache2) {
         return format((_plugins[property2] && _plugins[property2].get || getter)(target, property2, unit2, uncache2));
       } : format((_plugins[property] && _plugins[property].get || getter)(target, property, unit, uncache));
     },
     quickSetter: function quickSetter(target, property, unit) {
       target = toArray(target);
       if (target.length > 1) {
-        var setters = target.map(function(t) {
+        var setters = target.map(function (t) {
           return gsap.quickSetter(t, property, unit);
         }), l = setters.length;
-        return function(value) {
+        return function (value) {
           var i = l;
           while (i--) {
             setters[i](value);
@@ -2908,14 +2908,14 @@
         };
       }
       target = target[0] || {};
-      var Plugin = _plugins[property], cache2 = _getCache(target), p = cache2.harness && (cache2.harness.aliases || {})[property] || property, setter = Plugin ? function(value) {
+      var Plugin = _plugins[property], cache2 = _getCache(target), p = cache2.harness && (cache2.harness.aliases || {})[property] || property, setter = Plugin ? function (value) {
         var p2 = new Plugin();
         _quickTween._pt = 0;
         p2.init(target, unit ? value + unit : value, _quickTween, 0, [target]);
         p2.render(1, p2);
         _quickTween._pt && _renderPropTweens(1, _quickTween);
       } : cache2.set(target, p);
-      return Plugin ? setter : function(value) {
+      return Plugin ? setter : function (value) {
         return setter(target, p, unit ? value + unit : value, cache2, 1);
       };
     },
@@ -2939,14 +2939,14 @@
     },
     registerEffect: function registerEffect(_ref3) {
       var name = _ref3.name, effect = _ref3.effect, plugins = _ref3.plugins, defaults4 = _ref3.defaults, extendTimeline = _ref3.extendTimeline;
-      (plugins || "").split(",").forEach(function(pluginName) {
+      (plugins || "").split(",").forEach(function (pluginName) {
         return pluginName && !_plugins[pluginName] && !_globals[pluginName] && _warn(name + " effect requires " + pluginName + " plugin.");
       });
-      _effects[name] = function(targets, vars, tl3) {
+      _effects[name] = function (targets, vars, tl3) {
         return effect(toArray(targets), _setDefaults(vars || {}, defaults4), tl3);
       };
       if (extendTimeline) {
-        Timeline.prototype[name] = function(targets, vars, position) {
+        Timeline.prototype[name] = function (targets, vars, position) {
           return this.add(_effects[name](targets, _isObject(vars) ? vars : (position = vars) && {}, this), position);
         };
       }
@@ -2987,7 +2987,7 @@
       return new MatchMedia(scope);
     },
     matchMediaRefresh: function matchMediaRefresh() {
-      return _media.forEach(function(c) {
+      return _media.forEach(function (c) {
         var cond = c.conditions, found, p;
         for (p in cond) {
           if (cond[p]) {
@@ -3053,7 +3053,7 @@
       }
     }
   };
-  _forEachName("to,from,fromTo,delayedCall,set,killTweensOf", function(name) {
+  _forEachName("to,from,fromTo,delayedCall,set,killTweensOf", function (name) {
     return _gsap[name] = Tween[name];
   });
   _ticker.add(Timeline.updateRoot);
@@ -3088,11 +3088,11 @@
       headless: 1,
       rawVars: 1,
       init: function init6(target, vars, tween) {
-        tween._onInit = function(tween2) {
+        tween._onInit = function (tween2) {
           var temp, p;
           if (_isString(vars)) {
             temp = {};
-            _forEachName(vars, function(name2) {
+            _forEachName(vars, function (name2) {
               return temp[name2] = 1;
             });
             vars = temp;
@@ -3236,12 +3236,12 @@
       this.tfm = this.tfm || {};
       if (property !== "transform") {
         property = _propertyAliases[property] || property;
-        ~property.indexOf(",") ? property.split(",").forEach(function(a) {
+        ~property.indexOf(",") ? property.split(",").forEach(function (a) {
           return _this.tfm[a] = _get(target, a);
         }) : this.tfm[property] = cache2.x ? cache2[property] : _get(target, property);
         property === _transformOriginProp && (this.tfm.zOrigin = cache2.zOrigin);
       } else {
-        return _propertyAliases.transform.split(",").forEach(function(p) {
+        return _propertyAliases.transform.split(",").forEach(function (p) {
           return _saveStyle2.call(_this, p, isNotCSS);
         });
       }
@@ -3302,7 +3302,7 @@
       save: _saveStyle
     };
     target._gsap || gsap.core.getCache(target);
-    properties && target.style && target.nodeType && properties.split(",").forEach(function(p) {
+    properties && target.style && target.nodeType && properties.split(",").forEach(function (p) {
       return saver.save(p);
     });
     return saver;
@@ -3990,14 +3990,14 @@
     }
     _assign(endCache, startCache);
   };
-  _forEachName("padding,margin,Width,Radius", function(name, index) {
-    var t = "Top", r = "Right", b = "Bottom", l = "Left", props = (index < 3 ? [t, r, b, l] : [t + l, t + r, b + r, b + l]).map(function(side) {
+  _forEachName("padding,margin,Width,Radius", function (name, index) {
+    var t = "Top", r = "Right", b = "Bottom", l = "Left", props = (index < 3 ? [t, r, b, l] : [t + l, t + r, b + r, b + l]).map(function (side) {
       return index < 2 ? name + side : "border" + side + name;
     });
-    _specialProps[index > 1 ? "border" + name : name] = function(plugin, target, property, endValue, tween) {
+    _specialProps[index > 1 ? "border" + name : name] = function (plugin, target, property, endValue, tween) {
       var a, vars;
       if (arguments.length < 4) {
-        a = props.map(function(prop) {
+        a = props.map(function (prop) {
           return _get(plugin, prop, property);
         });
         vars = a.join(" ");
@@ -4005,7 +4005,7 @@
       }
       a = (endValue + "").split(" ");
       vars = {};
-      props.forEach(function(prop, i) {
+      props.forEach(function (prop, i) {
         return vars[prop] = a[i] = a[i] || a[(i - 1) / 2 | 0];
       });
       plugin.init(target, vars, tween);
@@ -4181,21 +4181,21 @@
   };
   gsap.utils.checkPrefix = _checkPropPrefix;
   gsap.core.getStyleSaver = _getStyleSaver;
-  (function(positionAndScale, rotation, others, aliases) {
-    var all = _forEachName(positionAndScale + "," + rotation + "," + others, function(name) {
+  (function (positionAndScale, rotation, others, aliases) {
+    var all = _forEachName(positionAndScale + "," + rotation + "," + others, function (name) {
       _transformProps[name] = 1;
     });
-    _forEachName(rotation, function(name) {
+    _forEachName(rotation, function (name) {
       _config.units[name] = "deg";
       _rotationalProperties[name] = 1;
     });
     _propertyAliases[all[13]] = positionAndScale + "," + rotation;
-    _forEachName(aliases, function(name) {
+    _forEachName(aliases, function (name) {
       var split2 = name.split(":");
       _propertyAliases[split2[1]] = all[split2[0]];
     });
   })("x,y,z,scale,scaleX,scaleY,xPercent,yPercent", "rotation,rotationX,rotationY,skewX,skewY", "transform,transformOrigin,svgOrigin,force3D,smoothOrigin,transformPerspective", "0:translateX,1:translateY,2:translateZ,8:rotate,8:rotationZ,8:rotateZ,9:rotateX,10:rotateY");
-  _forEachName("x,y,z,top,right,bottom,left,width,height,fontSize,padding,margin,perspective", function(name) {
+  _forEachName("x,y,z,top,right,bottom,left,width,height,fontSize,padding,margin,perspective", function (name) {
     _config.units[name] = "px";
   });
   gsap.registerPlugin(CSSPlugin);
@@ -4218,10 +4218,10 @@
   }
   var docElem = window.document.documentElement;
   var matches = docElem.matches || docElem.webkitMatchesSelector || docElem.mozMatchesSelector || docElem.oMatchesSelector || docElem.msMatchesSelector;
-  SelectorSet.prototype.matchesSelector = function(el, selector3) {
+  SelectorSet.prototype.matchesSelector = function (el, selector3) {
     return matches.call(el, selector3);
   };
-  SelectorSet.prototype.querySelectorAll = function(selectors, context3) {
+  SelectorSet.prototype.querySelectorAll = function (selectors, context3) {
     return context3.querySelectorAll(selectors);
   };
   SelectorSet.prototype.indexes = [];
@@ -4275,10 +4275,10 @@
   });
   SelectorSet.prototype.indexes["default"] = {
     name: "UNIVERSAL",
-    selector: function() {
+    selector: function () {
       return true;
     },
-    element: function() {
+    element: function () {
       return [true];
     }
   };
@@ -4286,14 +4286,14 @@
   if (typeof window.Map === "function") {
     Map2 = window.Map;
   } else {
-    Map2 = function() {
+    Map2 = function () {
       function Map3() {
         this.map = {};
       }
-      Map3.prototype.get = function(key) {
+      Map3.prototype.get = function (key) {
         return this.map[key + " "];
       };
-      Map3.prototype.set = function(key, value) {
+      Map3.prototype.set = function (key, value) {
         this.map[key + " "] = value;
       };
       return Map3;
@@ -4339,9 +4339,9 @@
       }
     }
   }
-  SelectorSet.prototype.logDefaultIndexUsed = function() {
+  SelectorSet.prototype.logDefaultIndexUsed = function () {
   };
-  SelectorSet.prototype.add = function(selector3, data) {
+  SelectorSet.prototype.add = function (selector3, data) {
     var obj, i, indexProto, key, index, objs, selectorIndexes, selectorIndex, indexes = this.activeIndexes, selectors = this.selectors, selectorObjects = this.selectorObjects;
     if (typeof selector3 !== "string") {
       return;
@@ -4376,7 +4376,7 @@
     this.size++;
     selectors.push(selector3);
   };
-  SelectorSet.prototype.remove = function(selector3, data) {
+  SelectorSet.prototype.remove = function (selector3, data) {
     if (typeof selector3 !== "string") {
       return;
     }
@@ -4414,7 +4414,7 @@
   function sortById(a, b) {
     return a.id - b.id;
   }
-  SelectorSet.prototype.queryAll = function(context3) {
+  SelectorSet.prototype.queryAll = function (context3) {
     if (!this.selectors.length) {
       return [];
     }
@@ -4443,7 +4443,7 @@
     }
     return results.sort(sortById);
   };
-  SelectorSet.prototype.matches = function(el) {
+  SelectorSet.prototype.matches = function (el) {
     if (!el) {
       return [];
     }
@@ -5198,7 +5198,7 @@
     d: "width",
     d2: "Width",
     a: "x",
-    sc: _scrollCacheFunc(function(value) {
+    sc: _scrollCacheFunc(function (value) {
       return arguments.length ? _win3.scrollTo(value, _vertical.sc()) : _win3.pageXOffset || _doc3[_scrollLeft] || _docEl[_scrollLeft] || _body[_scrollLeft] || 0;
     })
   };
@@ -5212,7 +5212,7 @@
     d2: "Height",
     a: "y",
     op: _horizontal,
-    sc: _scrollCacheFunc(function(value) {
+    sc: _scrollCacheFunc(function (value) {
       return arguments.length ? _win3.scrollTo(_horizontal.sc(), value) : _win3.pageYOffset || _doc3[_scrollTop] || _docEl[_scrollTop] || _body[_scrollTop] || 0;
     })
   };
@@ -5234,7 +5234,7 @@
     var i = _scrollers.indexOf(element), offset = sc === _vertical.sc ? 1 : 2;
     !~i && (i = _scrollers.push(element) - 1);
     _scrollers[i + offset] || _addListener(element, "scroll", _onScroll);
-    var prev = _scrollers[i + offset], func = prev || (_scrollers[i + offset] = _scrollCacheFunc(_getProxyProp(element, s), true) || (_isViewport(element) ? sc : _scrollCacheFunc(function(value) {
+    var prev = _scrollers[i + offset], func = prev || (_scrollers[i + offset] = _scrollCacheFunc(_getProxyProp(element, s), true) || (_isViewport(element) ? sc : _scrollCacheFunc(function (value) {
       return arguments.length ? element[s] = value : element[s];
     })));
     func.target = element;
@@ -5289,12 +5289,12 @@
       _body = _doc3.body;
       _root = [_win3, _doc3, _docEl, _body];
       _clamp3 = gsap2.utils.clamp;
-      _context2 = gsap2.core.context || function() {
+      _context2 = gsap2.core.context || function () {
       };
       _pointerType = "onpointerenter" in _body ? "pointer" : "mouse";
       _isTouch = Observer.isTouch = _win3.matchMedia && _win3.matchMedia("(hover: none), (pointer: coarse)").matches ? 1 : "ontouchstart" in _win3 || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 ? 2 : 0;
       _eventTypes = Observer.eventTypes = ("ontouchstart" in _docEl ? "touchstart,touchmove,touchcancel,touchend" : !("onpointerdown" in _docEl) ? "mousedown,mousemove,mouseup,mouseup" : "pointerdown,pointermove,pointercancel,pointerup").split(",");
-      setTimeout(function() {
+      setTimeout(function () {
         return _startup = 0;
       }, 500);
       _setScrollTrigger();
@@ -5304,7 +5304,7 @@
   };
   _horizontal.op = _vertical;
   _scrollers.cache = 0;
-  var Observer = /* @__PURE__ */ function() {
+  var Observer = /* @__PURE__ */ function () {
     function Observer3(vars) {
       this.init(vars);
     }
@@ -5399,7 +5399,7 @@
           isDragging || (self.isDragging = true);
           onTouchOrPointerDelta(dx, dy);
         }
-      }, _onPress = self.onPress = function(e) {
+      }, _onPress = self.onPress = function (e) {
         if (_ignoreCheck(e, 1) || e && e.button) {
           return;
         }
@@ -5415,7 +5415,7 @@
         _addListener(isNormalizer ? target : ownerDoc, _eventTypes[1], _onDrag, passive, true);
         self.deltaX = self.deltaY = 0;
         onPress && onPress(self);
-      }, _onRelease = self.onRelease = function(e) {
+      }, _onRelease = self.onRelease = function (e) {
         if (_ignoreCheck(e, 1)) {
           return;
         }
@@ -5425,7 +5425,7 @@
           self._vx.reset();
           self._vy.reset();
           if (preventDefault && allowClicks) {
-            gsap2.delayedCall(0.08, function() {
+            gsap2.delayedCall(0.08, function () {
               if (_getTime() - onClickTime > 300 && !e.defaultPrevented) {
                 if (e.target.click) {
                   e.target.click();
@@ -5492,7 +5492,7 @@
       self.scrollY = scrollFuncY;
       self.isDragging = self.isGesturing = self.isPressed = false;
       _context2(this);
-      self.enable = function(e) {
+      self.enable = function (e) {
         if (!self.isEnabled) {
           _addListener(isViewport ? ownerDoc : target, "scroll", _onScroll);
           type.indexOf("scroll") >= 0 && _addListener(isViewport ? ownerDoc : target, "scroll", onScroll2, passive, capture);
@@ -5520,9 +5520,9 @@
         }
         return self;
       };
-      self.disable = function() {
+      self.disable = function () {
         if (self.isEnabled) {
-          _observers.filter(function(o) {
+          _observers.filter(function (o) {
             return o !== self && _isViewport(o.target);
           }).length || _removeListener(isViewport ? ownerDoc : target, "scroll", _onScroll);
           if (self.isPressed) {
@@ -5546,7 +5546,7 @@
           onDisable && onDisable(self);
         }
       };
-      self.kill = self.revert = function() {
+      self.kill = self.revert = function () {
         self.disable();
         var i = _observers.indexOf(self);
         i >= 0 && _observers.splice(i, 1);
@@ -5570,15 +5570,15 @@
     return Observer3;
   }();
   Observer.version = "3.13.0";
-  Observer.create = function(vars) {
+  Observer.create = function (vars) {
     return new Observer(vars);
   };
   Observer.register = _initCore3;
-  Observer.getAll = function() {
+  Observer.getAll = function () {
     return _observers.slice();
   };
-  Observer.getById = function(id) {
-    return _observers.filter(function(o) {
+  Observer.getById = function (id) {
+    return _observers.filter(function (o) {
       return o.vars.id === id;
     })[0];
   };
@@ -5660,24 +5660,24 @@
     return (dimensionProperty === "Height" ? _100vh : _win4["inner" + dimensionProperty]) || _docEl2["client" + dimensionProperty] || _body2["client" + dimensionProperty];
   };
   var _getBoundsFunc = function _getBoundsFunc2(element) {
-    return _getProxyProp(element, "getBoundingClientRect") || (_isViewport3(element) ? function() {
+    return _getProxyProp(element, "getBoundingClientRect") || (_isViewport3(element) ? function () {
       _winOffsets.width = _win4.innerWidth;
       _winOffsets.height = _100vh;
       return _winOffsets;
-    } : function() {
+    } : function () {
       return _getBounds(element);
     });
   };
   var _getSizeFunc = function _getSizeFunc2(scroller, isViewport, _ref) {
     var d = _ref.d, d2 = _ref.d2, a = _ref.a;
-    return (a = _getProxyProp(scroller, "getBoundingClientRect")) ? function() {
+    return (a = _getProxyProp(scroller, "getBoundingClientRect")) ? function () {
       return a()[d];
-    } : function() {
+    } : function () {
       return (isViewport ? _getViewportDimension(d2) : scroller["client" + d2]) || 0;
     };
   };
   var _getOffsetsFunc = function _getOffsetsFunc2(element, isViewport) {
-    return !isViewport || ~_proxies.indexOf(element) ? _getBoundsFunc(element) : function() {
+    return !isViewport || ~_proxies.indexOf(element) ? _getBoundsFunc(element) : function () {
       return _winOffsets;
     };
   };
@@ -5707,7 +5707,7 @@
   };
   var _callback3 = function _callback4(self, func) {
     if (self.enabled) {
-      var result = self._ctx ? self._ctx.add(function() {
+      var result = self._ctx ? self._ctx.add(function () {
         return func(self);
       }) : func(self);
       result && result.totalTime && (self.callbackAnimation = result);
@@ -5770,15 +5770,15 @@
     return a;
   };
   var _getClosestLabel = function _getClosestLabel2(animation) {
-    return function(value) {
+    return function (value) {
       return gsap3.utils.snap(_getLabelRatioArray(animation), value);
     };
   };
   var _snapDirectional = function _snapDirectional2(snapIncrementOrArray) {
-    var snap3 = gsap3.utils.snap(snapIncrementOrArray), a = Array.isArray(snapIncrementOrArray) && snapIncrementOrArray.slice(0).sort(function(a2, b) {
+    var snap3 = gsap3.utils.snap(snapIncrementOrArray), a = Array.isArray(snapIncrementOrArray) && snapIncrementOrArray.slice(0).sort(function (a2, b) {
       return a2 - b;
     });
-    return a ? function(value, direction, threshold) {
+    return a ? function (value, direction, threshold) {
       if (threshold === void 0) {
         threshold = 1e-3;
       }
@@ -5804,7 +5804,7 @@
         }
       }
       return a[0];
-    } : function(value, direction, threshold) {
+    } : function (value, direction, threshold) {
       if (threshold === void 0) {
         threshold = 1e-3;
       }
@@ -5813,12 +5813,12 @@
     };
   };
   var _getLabelAtDirection = function _getLabelAtDirection2(timeline2) {
-    return function(value, st) {
+    return function (value, st) {
       return _snapDirectional(_getLabelRatioArray(timeline2))(value, st.direction);
     };
   };
   var _multiListener = function _multiListener2(func, element, types, callback) {
-    return types.split(",").forEach(function(type) {
+    return types.split(",").forEach(function (type) {
       return func(element, type, callback);
     });
   };
@@ -5926,7 +5926,7 @@
     return _removeListener3(ScrollTrigger2, "scrollEnd", _softRefresh2) || _refreshAll(true);
   };
   var _dispatch3 = function _dispatch4(type) {
-    return _listeners2[type] && _listeners2[type].map(function(f) {
+    return _listeners2[type] && _listeners2[type].map(function (f) {
       return f();
     }) || _emptyArray2;
   };
@@ -5958,7 +5958,7 @@
   };
   var _clearScrollMemory = function _clearScrollMemory2(scrollRestoration, force) {
     _scrollers.cache++;
-    (force || !_refreshingAll) && _scrollers.forEach(function(obj) {
+    (force || !_refreshingAll) && _scrollers.forEach(function (obj) {
       return _isFunction3(obj) && obj.cacheID++ && (obj.rec = 0);
     });
     _isString3(scrollRestoration) && (_win4.history.scrollRestoration = _scrollRestoration = scrollRestoration);
@@ -5969,7 +5969,7 @@
   var _queueRefreshAll = function _queueRefreshAll2() {
     if (_queueRefreshID !== _refreshID) {
       var id = _queueRefreshID = _refreshID;
-      requestAnimationFrame(function() {
+      requestAnimationFrame(function () {
         return id === _refreshID && _refreshAll(true);
       });
     }
@@ -5980,7 +5980,7 @@
     _body2.removeChild(_div100vh);
   };
   var _hideAllMarkers = function _hideAllMarkers2(hide) {
-    return _toArray(".gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end").forEach(function(el) {
+    return _toArray(".gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end").forEach(function (el) {
       return el.style.display = hide ? "none" : "block";
     });
   };
@@ -5994,23 +5994,23 @@
     }
     _refresh100vh();
     _refreshingAll = ScrollTrigger2.isRefreshing = true;
-    _scrollers.forEach(function(obj) {
+    _scrollers.forEach(function (obj) {
       return _isFunction3(obj) && ++obj.cacheID && (obj.rec = obj());
     });
     var refreshInits = _dispatch3("refreshInit");
     _sort && ScrollTrigger2.sort();
     skipRevert || _revertAll();
-    _scrollers.forEach(function(obj) {
+    _scrollers.forEach(function (obj) {
       if (_isFunction3(obj)) {
         obj.smooth && (obj.target.style.scrollBehavior = "auto");
         obj(0);
       }
     });
-    _triggers.slice(0).forEach(function(t) {
+    _triggers.slice(0).forEach(function (t) {
       return t.refresh();
     });
     _isReverted = false;
-    _triggers.forEach(function(t) {
+    _triggers.forEach(function (t) {
       if (t._subPinOffset && t.pin) {
         var prop = t.vars.horizontal ? "offsetWidth" : "offsetHeight", original = t.pin[prop];
         t.revert(true, 1);
@@ -6020,18 +6020,18 @@
     });
     _clampingMax = 1;
     _hideAllMarkers(true);
-    _triggers.forEach(function(t) {
+    _triggers.forEach(function (t) {
       var max = _maxScroll(t.scroller, t._dir), endClamp = t.vars.end === "max" || t._endClamp && t.end > max, startClamp = t._startClamp && t.start >= max;
       (endClamp || startClamp) && t.setPositions(startClamp ? max - 1 : t.start, endClamp ? Math.max(startClamp ? max : t.start + 1, max) : t.end, true);
     });
     _hideAllMarkers(false);
     _clampingMax = 0;
-    refreshInits.forEach(function(result) {
+    refreshInits.forEach(function (result) {
       return result && result.render && result.render(-1);
     });
-    _scrollers.forEach(function(obj) {
+    _scrollers.forEach(function (obj) {
       if (_isFunction3(obj)) {
-        obj.smooth && requestAnimationFrame(function() {
+        obj.smooth && requestAnimationFrame(function () {
           return obj.target.style.scrollBehavior = "smooth";
         });
         obj.rec && obj(obj.rec);
@@ -6042,7 +6042,7 @@
     _refreshID++;
     _refreshingAll = 2;
     _updateAll(2);
-    _triggers.forEach(function(t) {
+    _triggers.forEach(function (t) {
       return _isFunction3(t.vars.onRefresh) && t.vars.onRefresh(t);
     });
     _refreshingAll = ScrollTrigger2.isRefreshing = false;
@@ -6235,7 +6235,7 @@
   };
   var _interruptionTracker = function _interruptionTracker2(getValueFunc, initialValue, onInterrupt) {
     var last1 = initialValue, last2 = last1;
-    return function(value) {
+    return function (value) {
       var current = Math.round(getValueFunc());
       if (current !== last1 && current !== last2 && Math.abs(current - last1) > 3 && Math.abs(current - last2) > 3) {
         value = current;
@@ -6255,7 +6255,7 @@
     var getScroll = _getScrollFunc(scroller, direction), prop = "_scroll" + direction.p2, getTween = function getTween2(scrollTo, vars, initialValue, change1, change2) {
       var tween = getTween2.tween, onComplete = vars.onComplete, modifiers = {};
       initialValue = initialValue || getScroll();
-      var checkForInterruption = _interruptionTracker(getScroll, initialValue, function() {
+      var checkForInterruption = _interruptionTracker(getScroll, initialValue, function () {
         tween.kill();
         getTween2.tween = 0;
       });
@@ -6265,14 +6265,14 @@
       vars[prop] = scrollTo;
       vars.inherit = false;
       vars.modifiers = modifiers;
-      modifiers[prop] = function() {
+      modifiers[prop] = function () {
         return checkForInterruption(initialValue + change1 * tween.ratio + change2 * tween.ratio * tween.ratio);
       };
-      vars.onUpdate = function() {
+      vars.onUpdate = function () {
         _scrollers.cache++;
         getTween2.tween && _updateAll();
       };
-      vars.onComplete = function() {
+      vars.onComplete = function () {
         getTween2.tween = 0;
         onComplete && onComplete.call(tween);
       };
@@ -6280,14 +6280,14 @@
       return tween;
     };
     scroller[prop] = getScroll;
-    getScroll.wheelHandler = function() {
+    getScroll.wheelHandler = function () {
       return getTween.tween && getTween.tween.kill() && (getTween.tween = 0);
     };
     _addListener3(scroller, "wheel", getScroll.wheelHandler);
     ScrollTrigger2.isTouch && _addListener3(scroller, "touchmove", getScroll.wheelHandler);
     return getTween;
   };
-  var ScrollTrigger2 = /* @__PURE__ */ function() {
+  var ScrollTrigger2 = /* @__PURE__ */ function () {
     function ScrollTrigger3(vars, animation) {
       _coreInitted3 || ScrollTrigger3.register(gsap3) || console.warn("Please gsap.registerPlugin(ScrollTrigger)");
       _context3(this);
@@ -6304,7 +6304,7 @@
       vars = _setDefaults3(_isString3(vars) || _isNumber3(vars) || vars.nodeType ? {
         trigger: vars
       } : vars, _defaults2);
-      var _vars = vars, onUpdate = _vars.onUpdate, toggleClass = _vars.toggleClass, id = _vars.id, onToggle = _vars.onToggle, onRefresh = _vars.onRefresh, scrub = _vars.scrub, trigger = _vars.trigger, pin = _vars.pin, pinSpacing = _vars.pinSpacing, invalidateOnRefresh = _vars.invalidateOnRefresh, anticipatePin = _vars.anticipatePin, onScrubComplete = _vars.onScrubComplete, onSnapComplete = _vars.onSnapComplete, once = _vars.once, snap3 = _vars.snap, pinReparent = _vars.pinReparent, pinSpacer = _vars.pinSpacer, containerAnimation = _vars.containerAnimation, fastScrollEnd = _vars.fastScrollEnd, preventOverlaps = _vars.preventOverlaps, direction = vars.horizontal || vars.containerAnimation && vars.horizontal !== false ? _horizontal : _vertical, isToggle = !scrub && scrub !== 0, scroller = _getTarget(vars.scroller || _win4), scrollerCache = gsap3.core.getCache(scroller), isViewport = _isViewport3(scroller), useFixedPosition = ("pinType" in vars ? vars.pinType : _getProxyProp(scroller, "pinType") || isViewport && "fixed") === "fixed", callbacks = [vars.onEnter, vars.onLeave, vars.onEnterBack, vars.onLeaveBack], toggleActions = isToggle && vars.toggleActions.split(" "), markers = "markers" in vars ? vars.markers : _defaults2.markers, borderWidth = isViewport ? 0 : parseFloat(_getComputedStyle(scroller)["border" + direction.p2 + _Width]) || 0, self = this, onRefreshInit = vars.onRefreshInit && function() {
+      var _vars = vars, onUpdate = _vars.onUpdate, toggleClass = _vars.toggleClass, id = _vars.id, onToggle = _vars.onToggle, onRefresh = _vars.onRefresh, scrub = _vars.scrub, trigger = _vars.trigger, pin = _vars.pin, pinSpacing = _vars.pinSpacing, invalidateOnRefresh = _vars.invalidateOnRefresh, anticipatePin = _vars.anticipatePin, onScrubComplete = _vars.onScrubComplete, onSnapComplete = _vars.onSnapComplete, once = _vars.once, snap3 = _vars.snap, pinReparent = _vars.pinReparent, pinSpacer = _vars.pinSpacer, containerAnimation = _vars.containerAnimation, fastScrollEnd = _vars.fastScrollEnd, preventOverlaps = _vars.preventOverlaps, direction = vars.horizontal || vars.containerAnimation && vars.horizontal !== false ? _horizontal : _vertical, isToggle = !scrub && scrub !== 0, scroller = _getTarget(vars.scroller || _win4), scrollerCache = gsap3.core.getCache(scroller), isViewport = _isViewport3(scroller), useFixedPosition = ("pinType" in vars ? vars.pinType : _getProxyProp(scroller, "pinType") || isViewport && "fixed") === "fixed", callbacks = [vars.onEnter, vars.onLeave, vars.onEnterBack, vars.onLeaveBack], toggleActions = isToggle && vars.toggleActions.split(" "), markers = "markers" in vars ? vars.markers : _defaults2.markers, borderWidth = isViewport ? 0 : parseFloat(_getComputedStyle(scroller)["border" + direction.p2 + _Width]) || 0, self = this, onRefreshInit = vars.onRefreshInit && function () {
         return vars.onRefreshInit(self);
       }, getScrollerSize = _getSizeFunc(scroller, isViewport, direction), getScrollerOffsets = _getOffsetsFunc(scroller, isViewport), lastSnap = 0, lastRefresh = 0, prevProgress = 0, scrollFunc = _getScrollFunc(scroller, direction), tweenTo, pinCache, snapFunc, scroll1, scroll2, start, end, markerStart, markerEnd, markerStartTrigger, markerEndTrigger, markerVars, executingOnRefresh, change, pinOriginalState, pinActiveState, pinState, spacer, offset, pinGetter, pinSetter, pinStart, pinChange, spacingStart, spacerState, markerStartSetter, pinMoves, markerEndSetter, cs, snap1, snap22, scrubTween, scrubSmooth, snapDurClamp, snapDelayedCall, prevScroll, prevAnimProgress, caMarkerSetter, customRevertReturn;
       self._startClamp = self._endClamp = false;
@@ -6324,7 +6324,7 @@
         left: _getTweenCreator(scroller, _horizontal)
       };
       self.tweenTo = tweenTo = scrollerCache.tweenScroll[direction.p];
-      self.scrubDuration = function(value) {
+      self.scrubDuration = function (value) {
         scrubSmooth = _isNumber3(value) && value;
         if (!scrubSmooth) {
           scrubTween && scrubTween.progress(1).kill();
@@ -6360,10 +6360,10 @@
         "scrollBehavior" in _body2.style && gsap3.set(isViewport ? [_body2, _docEl2] : scroller, {
           scrollBehavior: "auto"
         });
-        _scrollers.forEach(function(o) {
+        _scrollers.forEach(function (o) {
           return _isFunction3(o) && o.target === (isViewport ? _doc4.scrollingElement || _docEl2 : scroller) && (o.smooth = false);
         });
-        snapFunc = _isFunction3(snap3.snapTo) ? snap3.snapTo : snap3.snapTo === "labels" ? _getClosestLabel(animation) : snap3.snapTo === "labelsDirectional" ? _getLabelAtDirection(animation) : snap3.directional !== false ? function(value, st) {
+        snapFunc = _isFunction3(snap3.snapTo) ? snap3.snapTo : snap3.snapTo === "labels" ? _getClosestLabel(animation) : snap3.snapTo === "labelsDirectional" ? _getLabelAtDirection(animation) : snap3.directional !== false ? function (value, st) {
           return _snapDirectional(snap3.snapTo)(value, _getTime2() - lastRefresh < 500 ? 0 : st.direction);
         } : gsap3.utils.snap(snap3.snapTo);
         snapDurClamp = snap3.duration || {
@@ -6371,7 +6371,7 @@
           max: 2
         };
         snapDurClamp = _isObject3(snapDurClamp) ? _clamp4(snapDurClamp.min, snapDurClamp.max) : _clamp4(snapDurClamp, snapDurClamp);
-        snapDelayedCall = gsap3.delayedCall(snap3.delay || scrubSmooth / 2 || 0.1, function() {
+        snapDelayedCall = gsap3.delayedCall(snap3.delay || scrubSmooth / 2 || 0.1, function () {
           var scroll = scrollFunc(), refreshedRecently = _getTime2() - lastRefresh < 500, tween = tweenTo.tween;
           if ((refreshedRecently || Math.abs(self.getVelocity()) < 10) && !tween && !_pointerIsDown && lastSnap !== scroll) {
             var progress = (scroll - start) / change, totalProgress = animation && !isToggle ? animation.totalProgress() : progress, velocity = refreshedRecently ? 0 : (totalProgress - snap22) / (_getTime2() - _time2) * 1e3 || 0, change1 = gsap3.utils.clamp(-progress, 1 - progress, _abs(velocity / 2) * velocity / 0.185), naturalEnd = progress + (snap3.inertia === false ? 0 : change1), endValue, endScroll, _snap = snap3, onStart2 = _snap.onStart, _onInterrupt = _snap.onInterrupt, _onComplete = _snap.onComplete;
@@ -6468,18 +6468,18 @@
       }
       if (containerAnimation) {
         var oldOnUpdate = containerAnimation.vars.onUpdate, oldParams = containerAnimation.vars.onUpdateParams;
-        containerAnimation.eventCallback("onUpdate", function() {
+        containerAnimation.eventCallback("onUpdate", function () {
           self.update(0, 0, 1);
           oldOnUpdate && oldOnUpdate.apply(containerAnimation, oldParams || []);
         });
       }
-      self.previous = function() {
+      self.previous = function () {
         return _triggers[_triggers.indexOf(self) - 1];
       };
-      self.next = function() {
+      self.next = function () {
         return _triggers[_triggers.indexOf(self) + 1];
       };
-      self.revert = function(revert, temp) {
+      self.revert = function (revert, temp) {
         if (!temp) {
           return self.kill(true);
         }
@@ -6490,7 +6490,7 @@
             prevProgress = self.progress;
             prevAnimProgress = animation && animation.progress();
           }
-          markerStart && [markerStart, markerEnd, markerStartTrigger, markerEndTrigger].forEach(function(m) {
+          markerStart && [markerStart, markerEnd, markerStartTrigger, markerEndTrigger].forEach(function (m) {
             return m.style.display = r ? "none" : "block";
           });
           if (r) {
@@ -6509,7 +6509,7 @@
           self.isReverted = r;
         }
       };
-      self.refresh = function(soft, force, position, pinOffset) {
+      self.refresh = function (soft, force, position, pinOffset) {
         if ((_refreshing || !self.enabled) && !force) {
           return;
         }
@@ -6528,7 +6528,7 @@
           animation.revert({
             kill: false
           }).invalidate();
-          animation.getChildren && animation.getChildren(true, true, false).forEach(function(t) {
+          animation.getChildren && animation.getChildren(true, true, false).forEach(function (t) {
             return t.vars.immediateRender && t.render(0, true, true);
           });
         }
@@ -6628,7 +6628,7 @@
             }
             _setState(spacerState);
             if (pinnedContainer) {
-              _triggers.forEach(function(t) {
+              _triggers.forEach(function (t) {
                 if (t.pin === pinnedContainer && t.vars.pinSpacing !== false) {
                   t._subPinOffset = true;
                 }
@@ -6682,7 +6682,7 @@
             bounds = bounds.parentNode;
           }
         }
-        revertedPins && revertedPins.forEach(function(t) {
+        revertedPins && revertedPins.forEach(function (t) {
           return t.revert(false, true);
         });
         self.start = start;
@@ -6721,27 +6721,27 @@
           executingOnRefresh = false;
         }
       };
-      self.getVelocity = function() {
+      self.getVelocity = function () {
         return (scrollFunc() - scroll2) / (_getTime2() - _time2) * 1e3 || 0;
       };
-      self.endAnimation = function() {
+      self.endAnimation = function () {
         _endAnimation(self.callbackAnimation);
         if (animation) {
           scrubTween ? scrubTween.progress(1) : !animation.paused() ? _endAnimation(animation, animation.reversed()) : isToggle || _endAnimation(animation, self.direction < 0, 1);
         }
       };
-      self.labelToScroll = function(label) {
+      self.labelToScroll = function (label) {
         return animation && animation.labels && (start || self.refresh() || start) + animation.labels[label] / animation.duration() * change || 0;
       };
-      self.getTrailing = function(name) {
+      self.getTrailing = function (name) {
         var i = _triggers.indexOf(self), a = self.direction > 0 ? _triggers.slice(0, i).reverse() : _triggers.slice(i + 1);
-        return (_isString3(name) ? a.filter(function(t) {
+        return (_isString3(name) ? a.filter(function (t) {
           return t.vars.preventOverlaps === name;
-        }) : a).filter(function(t) {
+        }) : a).filter(function (t) {
           return self.direction > 0 ? t.end <= start : t.start >= end;
         });
       };
-      self.update = function(reset, recordVelocity, forceFake) {
+      self.update = function (reset, recordVelocity, forceFake) {
         if (containerAnimation && !forceFake && !reset) {
           return;
         }
@@ -6775,7 +6775,7 @@
               isTakingAction = animation && (action === "complete" || action === "reset" || action in animation);
             }
           }
-          preventOverlaps && (toggled || isTakingAction) && (isTakingAction || scrub || !animation) && (_isFunction3(preventOverlaps) ? preventOverlaps(self) : self.getTrailing(preventOverlaps).forEach(function(t) {
+          preventOverlaps && (toggled || isTakingAction) && (isTakingAction || scrub || !animation) && (_isFunction3(preventOverlaps) ? preventOverlaps(self) : self.getTrailing(preventOverlaps).forEach(function (t) {
             return t.endAnimation();
           }));
           if (!isToggle) {
@@ -6810,7 +6810,7 @@
             }
           }
           snap3 && !tweenTo.tween && !_refreshing && !_startup2 && snapDelayedCall.restart(true);
-          toggleClass && (toggled || once && clipped && (clipped < 1 || !_limitCallbacks)) && _toArray(toggleClass.targets).forEach(function(el) {
+          toggleClass && (toggled || once && clipped && (clipped < 1 || !_limitCallbacks)) && _toArray(toggleClass.targets).forEach(function (el) {
             return el.classList[isActive || once ? "add" : "remove"](toggleClass.className);
           });
           onUpdate && !isToggle && !reset && onUpdate(self);
@@ -6853,7 +6853,7 @@
         }
         caMarkerSetter && caMarkerSetter(-scroll / containerAnimation.duration() * (containerAnimation._caScrollDist || 0));
       };
-      self.enable = function(reset, refresh) {
+      self.enable = function (reset, refresh) {
         if (!self.enabled) {
           self.enabled = true;
           _addListener3(scroller, "resize", _onResize);
@@ -6866,10 +6866,10 @@
           refresh !== false && self.refresh();
         }
       };
-      self.getTween = function(snap4) {
+      self.getTween = function (snap4) {
         return snap4 && tweenTo ? tweenTo.tween : scrubTween;
       };
-      self.setPositions = function(newStart, newEnd, keepClamp, pinOffset) {
+      self.setPositions = function (newStart, newEnd, keepClamp, pinOffset) {
         if (containerAnimation) {
           var st = containerAnimation.scrollTrigger, duration = containerAnimation.duration(), _change = st.end - st.start;
           newStart = st.start + _change * newStart / duration;
@@ -6881,7 +6881,7 @@
         }, pinOffset);
         self.update();
       };
-      self.adjustPinSpacing = function(amount) {
+      self.adjustPinSpacing = function (amount) {
         if (spacerState && amount) {
           var i = spacerState.indexOf(direction.d) + 1;
           spacerState[i] = parseFloat(spacerState[i]) + amount + _px;
@@ -6889,7 +6889,7 @@
           _setState(spacerState);
         }
       };
-      self.disable = function(reset, allowAnimation) {
+      self.disable = function (reset, allowAnimation) {
         if (self.enabled) {
           reset !== false && self.revert(true, true);
           self.enabled = self.isActive = false;
@@ -6913,7 +6913,7 @@
           }
         }
       };
-      self.kill = function(revert, allowAnimation) {
+      self.kill = function (revert, allowAnimation) {
         self.disable(revert, allowAnimation);
         scrubTween && !allowAnimation && scrubTween.kill();
         id && delete _ids[id];
@@ -6921,7 +6921,7 @@
         i >= 0 && _triggers.splice(i, 1);
         i === _i && _direction > 0 && _i--;
         i = 0;
-        _triggers.forEach(function(t) {
+        _triggers.forEach(function (t) {
           return t.scroller === self.scroller && (i = 1);
         });
         i || _refreshingAll || (self.scroll.rec = 0);
@@ -6932,14 +6932,14 @@
           });
           allowAnimation || animation.kill();
         }
-        markerStart && [markerStart, markerEnd, markerStartTrigger, markerEndTrigger].forEach(function(m) {
+        markerStart && [markerStart, markerEnd, markerStartTrigger, markerEndTrigger].forEach(function (m) {
           return m.parentNode && m.parentNode.removeChild(m);
         });
         _primary === self && (_primary = 0);
         if (pin) {
           pinCache && (pinCache.uncache = 1);
           i = 0;
-          _triggers.forEach(function(t) {
+          _triggers.forEach(function (t) {
             return t.pin === pin && i++;
           });
           i || (pinCache.spacer = 0);
@@ -6951,7 +6951,7 @@
       customRevertReturn && customRevertReturn(self);
       if (animation && animation.add && !change) {
         var updateFunc = self.update;
-        self.update = function() {
+        self.update = function () {
           self.update = updateFunc;
           _scrollers.cache++;
           start || end || self.refresh();
@@ -6982,7 +6982,7 @@
     };
     ScrollTrigger3.disable = function disable(reset, kill2) {
       _enabled = 0;
-      _triggers.forEach(function(trigger) {
+      _triggers.forEach(function (trigger) {
         return trigger[kill2 ? "kill" : "disable"](reset);
       });
       _removeListener3(_win4, "wheel", _onScroll3);
@@ -7026,24 +7026,24 @@
           _addListener3(_win4, "wheel", _onScroll3);
           _root2 = [_win4, _doc4, _docEl2, _body2];
           if (gsap3.matchMedia) {
-            ScrollTrigger3.matchMedia = function(vars) {
+            ScrollTrigger3.matchMedia = function (vars) {
               var mm = gsap3.matchMedia(), p;
               for (p in vars) {
                 mm.add(p, vars[p]);
               }
               return mm;
             };
-            gsap3.addEventListener("matchMediaInit", function() {
+            gsap3.addEventListener("matchMediaInit", function () {
               return _revertAll();
             });
-            gsap3.addEventListener("matchMediaRevert", function() {
+            gsap3.addEventListener("matchMediaRevert", function () {
               return _revertRecorded();
             });
-            gsap3.addEventListener("matchMedia", function() {
+            gsap3.addEventListener("matchMedia", function () {
               _refreshAll(0, 1);
               _dispatch3("matchMedia");
             });
-            gsap3.matchMedia().add("(orientation: portrait)", function() {
+            gsap3.matchMedia().add("(orientation: portrait)", function () {
               _setBaseDimensions();
               return _setBaseDimensions;
             });
@@ -7068,7 +7068,7 @@
             _body2.removeAttribute("style");
           }
           _syncInterval = setInterval(_sync, 250);
-          gsap3.delayedCall(0.5, function() {
+          gsap3.delayedCall(0.5, function () {
             return _startup2 = 0;
           });
           _addListener3(_doc4, "touchcancel", _passThrough3);
@@ -7079,7 +7079,7 @@
           _stateProps.push(_transformProp2);
           _coreInitted3 = _getTime2();
           _resizeDelay = gsap3.delayedCall(0.2, _refreshAll).pause();
-          _autoRefresh = [_doc4, "visibilitychange", function() {
+          _autoRefresh = [_doc4, "visibilitychange", function () {
             var w = _win4.innerWidth, h = _win4.innerHeight;
             if (_doc4.hidden) {
               _prevWidth = w;
@@ -7089,7 +7089,7 @@
             }
           }, _doc4, "DOMContentLoaded", _refreshAll, _win4, "load", _refreshAll, _win4, "resize", _onResize];
           _iterateAutoRefresh(_addListener3);
-          _triggers.forEach(function(trigger) {
+          _triggers.forEach(function (trigger) {
             return trigger.enable(0, 1);
           });
           for (i = 0; i < _scrollers.length; i += 3) {
@@ -7119,7 +7119,7 @@
       }
     };
     ScrollTrigger3.clearMatchMedia = function clearMatchMedia(query) {
-      _triggers.forEach(function(t) {
+      _triggers.forEach(function (t) {
         return t._ctx && t._ctx.query === query && t._ctx.kill(true, true);
       });
     };
@@ -7133,13 +7133,13 @@
       return horizontal ? (bounds.left + offset) / _win4.innerWidth : (bounds.top + offset) / _win4.innerHeight;
     };
     ScrollTrigger3.killAll = function killAll(allowListeners) {
-      _triggers.slice(0).forEach(function(t) {
+      _triggers.slice(0).forEach(function (t) {
         return t.vars.id !== "ScrollSmoother" && t.kill();
       });
       if (allowListeners !== true) {
         var listeners2 = _listeners2.killAll || [];
         _listeners2 = {};
-        listeners2.forEach(function(f) {
+        listeners2.forEach(function (f) {
           return f();
         });
       }
@@ -7147,8 +7147,8 @@
     return ScrollTrigger3;
   }();
   ScrollTrigger2.version = "3.13.0";
-  ScrollTrigger2.saveStyles = function(targets) {
-    return targets ? _toArray(targets).forEach(function(target) {
+  ScrollTrigger2.saveStyles = function (targets) {
+    return targets ? _toArray(targets).forEach(function (target) {
       if (target && target.style) {
         var i = _savedStyles.indexOf(target);
         i >= 0 && _savedStyles.splice(i, 5);
@@ -7156,53 +7156,53 @@
       }
     }) : _savedStyles;
   };
-  ScrollTrigger2.revert = function(soft, media) {
+  ScrollTrigger2.revert = function (soft, media) {
     return _revertAll(!soft, media);
   };
-  ScrollTrigger2.create = function(vars, animation) {
+  ScrollTrigger2.create = function (vars, animation) {
     return new ScrollTrigger2(vars, animation);
   };
-  ScrollTrigger2.refresh = function(safe) {
+  ScrollTrigger2.refresh = function (safe) {
     return safe ? _onResize(true) : (_coreInitted3 || ScrollTrigger2.register()) && _refreshAll(true);
   };
-  ScrollTrigger2.update = function(force) {
+  ScrollTrigger2.update = function (force) {
     return ++_scrollers.cache && _updateAll(force === true ? 2 : 0);
   };
   ScrollTrigger2.clearScrollMemory = _clearScrollMemory;
-  ScrollTrigger2.maxScroll = function(element, horizontal) {
+  ScrollTrigger2.maxScroll = function (element, horizontal) {
     return _maxScroll(element, horizontal ? _horizontal : _vertical);
   };
-  ScrollTrigger2.getScrollFunc = function(element, horizontal) {
+  ScrollTrigger2.getScrollFunc = function (element, horizontal) {
     return _getScrollFunc(_getTarget(element), horizontal ? _horizontal : _vertical);
   };
-  ScrollTrigger2.getById = function(id) {
+  ScrollTrigger2.getById = function (id) {
     return _ids[id];
   };
-  ScrollTrigger2.getAll = function() {
-    return _triggers.filter(function(t) {
+  ScrollTrigger2.getAll = function () {
+    return _triggers.filter(function (t) {
       return t.vars.id !== "ScrollSmoother";
     });
   };
-  ScrollTrigger2.isScrolling = function() {
+  ScrollTrigger2.isScrolling = function () {
     return !!_lastScrollTime;
   };
   ScrollTrigger2.snapDirectional = _snapDirectional;
-  ScrollTrigger2.addEventListener = function(type, callback) {
+  ScrollTrigger2.addEventListener = function (type, callback) {
     var a = _listeners2[type] || (_listeners2[type] = []);
     ~a.indexOf(callback) || a.push(callback);
   };
-  ScrollTrigger2.removeEventListener = function(type, callback) {
+  ScrollTrigger2.removeEventListener = function (type, callback) {
     var a = _listeners2[type], i = a && a.indexOf(callback);
     i >= 0 && a.splice(i, 1);
   };
-  ScrollTrigger2.batch = function(targets, vars) {
+  ScrollTrigger2.batch = function (targets, vars) {
     var result = [], varsCopy = {}, interval = vars.interval || 0.016, batchMax = vars.batchMax || 1e9, proxyCallback = function proxyCallback2(type, callback) {
-      var elements = [], triggers2 = [], delay = gsap3.delayedCall(interval, function() {
+      var elements = [], triggers2 = [], delay = gsap3.delayedCall(interval, function () {
         callback(elements, triggers2);
         elements = [];
         triggers2 = [];
       }).pause();
-      return function(self) {
+      return function (self) {
         elements.length || delay.restart(true);
         elements.push(self.trigger);
         triggers2.push(self);
@@ -7214,11 +7214,11 @@
     }
     if (_isFunction3(batchMax)) {
       batchMax = batchMax();
-      _addListener3(ScrollTrigger2, "refresh", function() {
+      _addListener3(ScrollTrigger2, "refresh", function () {
         return batchMax = vars.batchMax();
       });
     }
-    _toArray(targets).forEach(function(target) {
+    _toArray(targets).forEach(function (target) {
       var config3 = {};
       for (p in varsCopy) {
         config3[p] = varsCopy[p];
@@ -7293,9 +7293,9 @@
     vars.type || (vars.type = "wheel,touch");
     vars.debounce = !!vars.debounce;
     vars.id = vars.id || "normalizer";
-    var _vars2 = vars, normalizeScrollX = _vars2.normalizeScrollX, momentum = _vars2.momentum, allowNestedScroll = _vars2.allowNestedScroll, onRelease = _vars2.onRelease, self, maxY, target = _getTarget(vars.target) || _docEl2, smoother = gsap3.core.globals().ScrollSmoother, smootherInstance = smoother && smoother.get(), content = _fixIOSBug && (vars.content && _getTarget(vars.content) || smootherInstance && vars.content !== false && !smootherInstance.smooth() && smootherInstance.content()), scrollFuncY = _getScrollFunc(target, _vertical), scrollFuncX = _getScrollFunc(target, _horizontal), scale = 1, initialScale = (Observer.isTouch && _win4.visualViewport ? _win4.visualViewport.scale * _win4.visualViewport.width : _win4.outerWidth) / _win4.innerWidth, wheelRefresh = 0, resolveMomentumDuration = _isFunction3(momentum) ? function() {
+    var _vars2 = vars, normalizeScrollX = _vars2.normalizeScrollX, momentum = _vars2.momentum, allowNestedScroll = _vars2.allowNestedScroll, onRelease = _vars2.onRelease, self, maxY, target = _getTarget(vars.target) || _docEl2, smoother = gsap3.core.globals().ScrollSmoother, smootherInstance = smoother && smoother.get(), content = _fixIOSBug && (vars.content && _getTarget(vars.content) || smootherInstance && vars.content !== false && !smootherInstance.smooth() && smootherInstance.content()), scrollFuncY = _getScrollFunc(target, _vertical), scrollFuncX = _getScrollFunc(target, _horizontal), scale = 1, initialScale = (Observer.isTouch && _win4.visualViewport ? _win4.visualViewport.scale * _win4.visualViewport.width : _win4.outerWidth) / _win4.innerWidth, wheelRefresh = 0, resolveMomentumDuration = _isFunction3(momentum) ? function () {
       return momentum(self);
-    } : function() {
+    } : function () {
       return momentum || 2.8;
     }, lastRefreshID, skipTouchMove, inputObserver = _inputObserver(target, vars.type, true, allowNestedScroll), resumeTouchMove = function resumeTouchMove2() {
       return skipTouchMove = false;
@@ -7333,10 +7333,10 @@
     content && gsap3.set(content, {
       y: "+=0"
     });
-    vars.ignoreCheck = function(e) {
+    vars.ignoreCheck = function (e) {
       return _fixIOSBug && e.type === "touchmove" && ignoreDrag(e) || scale > 1.05 && e.type !== "touchstart" || self.isGesturing || e.touches && e.touches.length > 1;
     };
-    vars.onPress = function() {
+    vars.onPress = function () {
       skipTouchMove = false;
       var prevScale = scale;
       scale = _round3((_win4.visualViewport && _win4.visualViewport.scale || 1) / initialScale);
@@ -7347,7 +7347,7 @@
       updateClamps();
       lastRefreshID = _refreshID;
     };
-    vars.onRelease = vars.onGestureStart = function(self2, wasDragging) {
+    vars.onRelease = vars.onGestureStart = function (self2, wasDragging) {
       scrollFuncY.offset && removeContentOffset();
       if (!wasDragging) {
         onStopDelayedCall.restart(true);
@@ -7374,14 +7374,14 @@
       }
       onRelease && onRelease(self2);
     };
-    vars.onWheel = function() {
+    vars.onWheel = function () {
       tween._ts && tween.pause();
       if (_getTime2() - wheelRefresh > 1e3) {
         lastRefreshID = 0;
         wheelRefresh = _getTime2();
       }
     };
-    vars.onChange = function(self2, dx, dy, xArray, yArray) {
+    vars.onChange = function (self2, dx, dy, xArray, yArray) {
       _refreshID !== lastRefreshID && updateClamps();
       dx && normalizeScrollX && scrollFuncX(scrollClampX(xArray[2] === dx ? startScrollX + (self2.startX - self2.x) : scrollFuncX() + dx - xArray[1]));
       if (dy) {
@@ -7392,7 +7392,7 @@
       }
       (dy || dx) && _updateAll();
     };
-    vars.onEnable = function() {
+    vars.onEnable = function () {
       _allowNativePanning(target, normalizeScrollX ? false : "x");
       ScrollTrigger2.addEventListener("refresh", onResize2);
       _addListener3(_win4, "resize", onResize2);
@@ -7402,7 +7402,7 @@
       }
       inputObserver.enable();
     };
-    vars.onDisable = function() {
+    vars.onDisable = function () {
       _allowNativePanning(target, true);
       _removeListener3(_win4, "resize", onResize2);
       ScrollTrigger2.removeEventListener("refresh", onResize2);
@@ -7421,7 +7421,7 @@
       scrollX: normalizeScrollX ? "+=0.1" : "+=0",
       scrollY: "+=0.1",
       modifiers: {
-        scrollY: _interruptionTracker(scrollFuncY, scrollFuncY(), function() {
+        scrollY: _interruptionTracker(scrollFuncY, scrollFuncY(), function () {
           return tween.pause();
         })
       },
@@ -7430,22 +7430,22 @@
     });
     return self;
   };
-  ScrollTrigger2.sort = function(func) {
+  ScrollTrigger2.sort = function (func) {
     if (_isFunction3(func)) {
       return _triggers.sort(func);
     }
     var scroll = _win4.pageYOffset || 0;
-    ScrollTrigger2.getAll().forEach(function(t) {
+    ScrollTrigger2.getAll().forEach(function (t) {
       return t._sortY = t.trigger ? scroll + t.trigger.getBoundingClientRect().top : t.start + _win4.innerHeight;
     });
-    return _triggers.sort(func || function(a, b) {
+    return _triggers.sort(func || function (a, b) {
       return (a.vars.refreshPriority || 0) * -1e6 + (a.vars.containerAnimation ? 1e6 : a._sortY) - ((b.vars.containerAnimation ? 1e6 : b._sortY) + (b.vars.refreshPriority || 0) * -1e6);
     });
   };
-  ScrollTrigger2.observe = function(vars) {
+  ScrollTrigger2.observe = function (vars) {
     return new Observer(vars);
   };
-  ScrollTrigger2.normalizeScroll = function(vars) {
+  ScrollTrigger2.normalizeScroll = function (vars) {
     if (typeof vars === "undefined") {
       return _normalizer2;
     }
@@ -7480,7 +7480,7 @@
   _getGSAP3() && gsap3.registerPlugin(ScrollTrigger2);
 
   // node_modules/.pnpm/split-type@0.3.4/node_modules/split-type/dist/index.js
-  (function() {
+  (function () {
     function append() {
       var length = arguments.length;
       for (var i = 0; i < length; i++) {
@@ -7577,7 +7577,7 @@
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
       if (enumerableOnly)
-        symbols = symbols.filter(function(sym) {
+        symbols = symbols.filter(function (sym) {
           return Object.getOwnPropertyDescriptor(object, sym).enumerable;
         });
       keys.push.apply(keys, symbols);
@@ -7588,13 +7588,13 @@
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
       if (i % 2) {
-        ownKeys(Object(source), true).forEach(function(key) {
+        ownKeys(Object(source), true).forEach(function (key) {
           _defineProperty(target, key, source[key]);
         });
       } else if (Object.getOwnPropertyDescriptors) {
         Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
       } else {
-        ownKeys(Object(source)).forEach(function(key) {
+        ownKeys(Object(source)).forEach(function (key) {
           Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
         });
       }
@@ -7673,7 +7673,7 @@
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
   function extend(target, object) {
-    return Object.getOwnPropertyNames(Object(target)).reduce(function(extended, key) {
+    return Object.getOwnPropertyNames(Object(target)).reduce(function (extended, key) {
       var currentValue = Object.getOwnPropertyDescriptor(Object(target), key);
       var newValue = Object.getOwnPropertyDescriptor(Object(object), key);
       return Object.defineProperty(extended, key, newValue || currentValue);
@@ -7695,9 +7695,9 @@
       types = object.split;
     }
     if (types !== void 0) {
-      object.types = (isString(types) || isArray(types) ? String(types) : "").split(",").map(function(type) {
+      object.types = (isString(types) || isArray(types) ? String(types) : "").split(",").map(function (type) {
         return String(type).trim();
-      }).filter(function(type) {
+      }).filter(function (type) {
         return /((line)|(word)|(char))/i.test(type);
       });
     }
@@ -7743,7 +7743,7 @@
         elements = document.querySelectorAll(target);
       }
     }
-    return toArray3(elements).reduce(function(result, element) {
+    return toArray3(elements).reduce(function (result, element) {
       return [].concat(_toConsumableArray(result), _toConsumableArray(toArray3(element).filter(isNode)));
     }, []);
   }
@@ -7783,12 +7783,12 @@
     }
   }
   function clear() {
-    Object.keys(cache).forEach(function(key) {
+    Object.keys(cache).forEach(function (key) {
       delete cache[key];
     });
   }
   function cleanup() {
-    entries(cache).forEach(function(_ref) {
+    entries(cache).forEach(function (_ref) {
       var _ref2 = _slicedToArray(_ref, 2), id = _ref2[0], _ref2$ = _ref2[1], isRoot = _ref2$.isRoot, isSplit = _ref2$.isSplit;
       if (!isRoot || !isSplit) {
         cache[id] = null;
@@ -7851,7 +7851,7 @@
     if (!attributes) {
       return element;
     }
-    Object.keys(attributes).forEach(function(attribute) {
+    Object.keys(attributes).forEach(function (attribute) {
       var rawValue = attributes[attribute];
       var value = isString(rawValue) ? rawValue.trim() : rawValue;
       if (value === null || value === "")
@@ -7884,11 +7884,11 @@
     if (/^\s/.test(VALUE)) {
       splitText.append(" ");
     }
-    words = toWords(VALUE).reduce(function(result, WORD, idx, arr) {
+    words = toWords(VALUE).reduce(function (result, WORD, idx, arr) {
       var wordElement;
       var characterElementsForCurrentWord;
       if (types.chars) {
-        characterElementsForCurrentWord = toChars(WORD).map(function(CHAR) {
+        characterElementsForCurrentWord = toChars(WORD).map(function (CHAR) {
           var characterElement = createElement(TAG_NAME, {
             "class": "".concat(settings.splitClass, " ").concat(settings.charClass),
             style: "display: inline-block;",
@@ -7912,7 +7912,7 @@
         });
         splitText.appendChild(wordElement);
       } else {
-        characterElementsForCurrentWord.forEach(function(characterElement) {
+        characterElementsForCurrentWord.forEach(function (characterElement) {
           splitText.appendChild(characterElement);
         });
       }
@@ -7959,7 +7959,7 @@
         });
       }
     }
-    return childNodes.reduce(function(result, child) {
+    return childNodes.reduce(function (result, child) {
       var _split = split(child, settings), words = _split.words, chars = _split.chars;
       return {
         words: [].concat(_toConsumableArray(result.words), _toConsumableArray(words)),
@@ -7994,7 +7994,7 @@
   }
   function unSplitWords(element) {
     if (!get(element).isWord) {
-      toArray3(element.children).forEach(function(child) {
+      toArray3(element.children).forEach(function (child) {
         return unSplitWords(child);
       });
     } else {
@@ -8036,7 +8036,7 @@
         cssHeight: element.style.height
       });
     }
-    toArray3(nodes).forEach(function(node) {
+    toArray3(nodes).forEach(function (node) {
       var isWordLike = node.parentElement === element;
       var _getPosition3 = getPosition(node, isWordLike, settings, scrollPos), width = _getPosition3.width, height = _getPosition3.height, top = _getPosition3.top, left = _getPosition3.left;
       if (/^br$/i.test(node.nodeName))
@@ -8061,7 +8061,7 @@
       parent.removeChild(element);
     }
     if (types.lines) {
-      lines = wordsInEachLine.map(function(wordsInThisLine) {
+      lines = wordsInEachLine.map(function (wordsInThisLine) {
         var lineElement = createElement(TAG_NAME, {
           "class": "".concat(settings.splitClass, " ").concat(settings.lineClass),
           style: "display: block; text-align: ".concat(align, "; width: 100%;")
@@ -8072,7 +8072,7 @@
           top: 1e4
         };
         splitText.appendChild(lineElement);
-        wordsInThisLine.forEach(function(wordOrElement, idx, arr) {
+        wordsInThisLine.forEach(function (wordOrElement, idx, arr) {
           var _data$get = get(wordOrElement), isWordEnd = _data$get.isWordEnd, top = _data$get.top, height = _data$get.height;
           var next = arr[idx + 1];
           lineDimensions.height = Math.max(lineDimensions.height, height);
@@ -8098,7 +8098,7 @@
     if (settings.absolute) {
       element.style.width = "".concat(element.style.width || elementWidth, "px");
       element.style.height = "".concat(elementHeight, "px");
-      toArray3(nodes).forEach(function(node) {
+      toArray3(nodes).forEach(function (node) {
         var _data$get2 = get(node), isLine = _data$get2.isLine, top = _data$get2.top, left = _data$get2.left, width = _data$get2.width, height = _data$get2.height;
         var parentData = get(node.parentElement);
         var isChildOfLineNode = !isLine && parentData.isLine;
@@ -8118,7 +8118,7 @@
     return lines;
   }
   var _defaults3 = extend(defaults2, {});
-  var SplitType = /* @__PURE__ */ function() {
+  var SplitType = /* @__PURE__ */ function () {
     _createClass2(SplitType2, null, [{
       key: "clearData",
       value: function clearData() {
@@ -8133,7 +8133,7 @@
     }, {
       key: "revert",
       value: function revert(elements) {
-        getTargetElements(elements).forEach(function(element) {
+        getTargetElements(elements).forEach(function (element) {
           var _data$get = get(element), isSplit = _data$get.isSplit, html = _data$get.html, cssWidth = _data$get.cssWidth, cssHeight = _data$get.cssHeight;
           if (isSplit) {
             element.innerHTML = html;
@@ -8174,7 +8174,7 @@
       value: function split$1(options) {
         var _this = this;
         this.revert();
-        this.elements.forEach(function(element) {
+        this.elements.forEach(function (element) {
           set(element, "html", element.innerHTML);
         });
         this.lines = [];
@@ -8188,13 +8188,13 @@
         if (types.none) {
           return;
         }
-        this.elements.forEach(function(element) {
+        this.elements.forEach(function (element) {
           set(element, "isRoot", true);
           var _split2 = split(element, _this.settings), words = _split2.words, chars = _split2.chars;
           _this.words = [].concat(_toConsumableArray(_this.words), _toConsumableArray(words));
           _this.chars = [].concat(_toConsumableArray(_this.chars), _toConsumableArray(chars));
         });
-        this.elements.forEach(function(element) {
+        this.elements.forEach(function (element) {
           if (types.lines || _this.settings.absolute) {
             var lines = repositionAfterSplit(element, _this.settings, scrollPos);
             _this.lines = [].concat(_toConsumableArray(_this.lines), _toConsumableArray(lines));
@@ -8598,7 +8598,7 @@
           duration: 0.3,
           stagger: 0.05,
           ease: "cubic-bezier(.755, .05, .855, .06)",
-          onComplete: function() {
+          onComplete: function () {
             hudMenuContent.setAttribute("pointer-auto", "");
             hudMenuOuter2.setAttribute("pointer-auto", "");
           }
@@ -8668,14 +8668,14 @@
         });
       }
       hudSocLinks.forEach((link) => {
-        link.addEventListener("click", function() {
+        link.addEventListener("click", function () {
           if (window.isTabletOrBelow && hudMenuToggle.getAttribute("aria-expanded") === "true") {
             toggleMenu();
           }
         });
       });
       hudMenuL2.forEach((item) => {
-        item.addEventListener("click", function() {
+        item.addEventListener("click", function () {
           if (window.isTabletOrBelow && hudMenuToggle.getAttribute("aria-expanded") === "true") {
             toggleMenu();
           }
@@ -8683,7 +8683,7 @@
       });
     }
     function onMouseOut() {
-      closeTimeout = setTimeout(function() {
+      closeTimeout = setTimeout(function () {
         var hudMenuToggle = document.querySelector(".hud-menu-w");
         var isExpanded = hudMenuToggle.getAttribute("aria-expanded") === "true";
         if (isExpanded) {
@@ -8984,7 +8984,7 @@
     return rawPath;
   }
   function stringToRawPath(d) {
-    var a = (d + "").replace(_scientific, function(m) {
+    var a = (d + "").replace(_scientific, function (m) {
       var n = +m;
       return n < 1e-4 && n > -1e-4 ? 0 : n;
     }).match(_svgPathExp) || [], path = [], relativeX = 0, relativeY = 0, twoThirds = 2 / 3, elements = a.length, points = 0, errorMessage = "ERROR: malformed path: " + d, i, j, x, y, command, isRelative, segment, startX, startY, difX, difY, beziers, prevCommand, flag1, flag2, line = function line2(sx, sy, ex, ey) {
@@ -9519,7 +9519,7 @@
     }
   };
   var _buildPointsFilter = function _buildPointsFilter2(shapeIndex) {
-    return !isNaN(shapeIndex) ? function(a) {
+    return !isNaN(shapeIndex) ? function (a) {
       _pointsFilter(a);
       a[1] = _offsetPoints(a[1], parseInt(shapeIndex, 10));
     } : _pointsFilter;
@@ -9855,7 +9855,7 @@
     getTotalSize: _getTotalSize,
     equalizeSegmentQuantity: _equalizeSegmentQuantity,
     convertToPath: function convertToPath2(targets, swap) {
-      return _toArray2(targets).map(function(target) {
+      return _toArray2(targets).map(function (target) {
         return convertToPath(target, swap !== false);
       });
     },
@@ -10039,7 +10039,7 @@
           duration: 2,
           ease: "power2.inOut",
           delay: 2,
-          onComplete: function() {
+          onComplete: function () {
             gsapWithCSS.to(orbOutline3, {
               autoAlpha: 1,
               scale: 1.2,
@@ -10053,7 +10053,7 @@
           duration: 2.5,
           ease: "power2.inOut",
           delay: 3,
-          onComplete: function() {
+          onComplete: function () {
             gsapWithCSS.to(orbOutline3, {
               autoAlpha: 1,
               scale: 1.2,
@@ -10078,7 +10078,7 @@
           duration: 2,
           ease: "power2.inOut",
           delay: 2,
-          onComplete: function() {
+          onComplete: function () {
             gsapWithCSS.to(orbOutline3, {
               autoAlpha: 1,
               scale: 0.9,
@@ -10092,7 +10092,7 @@
           duration: 2.5,
           ease: "power2.inOut",
           delay: 3,
-          onComplete: function() {
+          onComplete: function () {
             gsapWithCSS.to(orbOutline3, {
               autoAlpha: 1,
               scale: 0.9,
@@ -10128,7 +10128,7 @@
       x: "10em",
       duration: hhDuration,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         document.body.style.cursor = "auto";
         window.SScroll.start();
         if (!window.isTabletOrBelow) {
@@ -10677,7 +10677,7 @@
       x: "-10em",
       duration,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         workHeroScroll;
         document.body.style.cursor = "auto";
         window.SScroll.start();
@@ -10943,7 +10943,7 @@
       x: "10em",
       duration: 1,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         document.body.style.cursor = "auto";
         window.SScroll.start();
       }
@@ -11187,7 +11187,7 @@
     m.f = f;
     return m;
   };
-  var Matrix2D = /* @__PURE__ */ function() {
+  var Matrix2D = /* @__PURE__ */ function () {
     function Matrix2D2(a, b, c, d, e, f) {
       if (a === void 0) {
         a = 1;
@@ -11263,7 +11263,7 @@
   var _closestTenth;
   var _getStyleSaver3;
   var _forEachBatch = function _forEachBatch2(batch, name) {
-    return batch.actions.forEach(function(a) {
+    return batch.actions.forEach(function (a) {
       return a.vars[name] && a.vars[name](a);
     });
   };
@@ -11285,7 +11285,7 @@
     return Math.round(value * 1e4) / 1e4 || 0;
   };
   var _toggleClass = function _toggleClass2(targets, className, action) {
-    return targets.forEach(function(el) {
+    return targets.forEach(function (el) {
       return el.classList[action](className);
     });
   };
@@ -11363,10 +11363,10 @@
     return parent ? l + _getDOMDepth2(parent, invert, level + 1) : l;
   };
   var _orderByDOMDepth = function _orderByDOMDepth2(comps, invert, isElStates) {
-    comps.forEach(function(comp) {
+    comps.forEach(function (comp) {
       return comp.d = _getDOMDepth(isElStates ? comp.element : comp.t, invert);
     });
-    comps.sort(function(c1, c2) {
+    comps.sort(function (c1, c2) {
       return c1.d - c2.d;
     });
     return comps;
@@ -11393,7 +11393,7 @@
     }
   };
   var _setFinalStates = function _setFinalStates2(comps, onlyTransforms) {
-    comps.forEach(function(c) {
+    comps.forEach(function (c) {
       return c.a.cache.uncache = 1;
     });
     onlyTransforms || comps.finalStates.forEach(_applyInlineStyles);
@@ -11409,7 +11409,7 @@
         a: elState,
         sd: 0
       });
-      _batch._final.push(function() {
+      _batch._final.push(function () {
         return (elState.cache.uncache = 1) && _applyInlineStyles(elState);
       });
       return element;
@@ -11453,7 +11453,7 @@
   var _filterComps = function _filterComps2(comps, targets) {
     if (targets !== true) {
       targets = _toArray3(targets);
-      comps = comps.filter(function(c) {
+      comps = comps.filter(function (c) {
         if (targets.indexOf((c.sd < 0 ? c.b : c.a).element) !== -1) {
           return true;
         } else {
@@ -11468,7 +11468,7 @@
     return comps;
   };
   var _makeCompsAbsolute = function _makeCompsAbsolute2(comps) {
-    return _orderByDOMDepth(comps, true).forEach(function(c) {
+    return _orderByDOMDepth(comps, true).forEach(function (c) {
       return (c.a.isVisible || c.b.isVisible) && _makeAbsolute(c.sd < 0 ? c.b : c.a, c.b, 1);
     });
   };
@@ -11498,7 +11498,7 @@
     return id;
   };
   var _elementsFromElementStates = function _elementsFromElementStates2(elStates) {
-    return elStates.map(function(elState) {
+    return elStates.map(function (elState) {
       return elState.element;
     });
   };
@@ -11636,7 +11636,7 @@
       repeatDelay,
       yoyo,
       data: "isFlip"
-    }), remainingProps = tweenVars, entering = [], leaving = [], comps = [], swapOutTargets = [], spinNum = spin === true ? 1 : spin || 0, spinFunc = typeof spin === "function" ? spin : function() {
+    }), remainingProps = tweenVars, entering = [], leaving = [], comps = [], swapOutTargets = [], spinNum = spin === true ? 1 : spin || 0, spinFunc = typeof spin === "function" ? spin : function () {
       return spinNum;
     }, interrupted = fromState.interrupted || toState.interrupted, addFunc = animation[relative !== 1 ? "to" : "from"], v, p, endTime, i, el, comp, state, targets, finalStates, fromNode, toNode, run, a, b;
     for (p in toState.idLookup) {
@@ -11680,8 +11680,8 @@
         el._flip = _batch ? _batch.timeline : animation;
       }
     }
-    props && (_memoizedProps[props] || _memoizeProps(props)).forEach(function(p2) {
-      return tweenVars[p2] = function(i2) {
+    props && (_memoizedProps[props] || _memoizeProps(props)).forEach(function (p2) {
+      return tweenVars[p2] = function (i2) {
         return comps[i2].a.props[p2];
       };
     });
@@ -11734,43 +11734,43 @@
       }
       var classTargets;
       if (toggleClass) {
-        classTargets = finalStates.map(function(s) {
+        classTargets = finalStates.map(function (s) {
           return s.element;
         });
-        nested && classTargets.forEach(function(e) {
+        nested && classTargets.forEach(function (e) {
           return e.classList.remove(toggleClass);
         });
       }
       _lockBodyScroll(false);
       if (scale) {
-        tweenVars.scaleX = function(i2) {
+        tweenVars.scaleX = function (i2) {
           return comps[i2].a.scaleX;
         };
-        tweenVars.scaleY = function(i2) {
+        tweenVars.scaleY = function (i2) {
           return comps[i2].a.scaleY;
         };
       } else {
-        tweenVars.width = function(i2) {
+        tweenVars.width = function (i2) {
           return comps[i2].a.width + "px";
         };
-        tweenVars.height = function(i2) {
+        tweenVars.height = function (i2) {
           return comps[i2].a.height + "px";
         };
         tweenVars.autoRound = vars.autoRound || false;
       }
-      tweenVars.x = function(i2) {
+      tweenVars.x = function (i2) {
         return comps[i2].a.x + "px";
       };
-      tweenVars.y = function(i2) {
+      tweenVars.y = function (i2) {
         return comps[i2].a.y + "px";
       };
-      tweenVars.rotation = function(i2) {
+      tweenVars.rotation = function (i2) {
         return comps[i2].a.rotation + (spin ? spinFunc(i2, targets[i2], targets) * 360 : 0);
       };
-      tweenVars.skewX = function(i2) {
+      tweenVars.skewX = function (i2) {
         return comps[i2].a.skewX;
       };
-      targets = comps.map(function(c) {
+      targets = comps.map(function (c) {
         return c.t;
       });
       if (_zIndex || _zIndex === 0) {
@@ -11782,17 +11782,17 @@
         tweenVars.zIndex = _zIndex;
         tweenVars.immediateRender = vars.immediateRender !== false;
       }
-      fade && (tweenVars.opacity = function(i2) {
+      fade && (tweenVars.opacity = function (i2) {
         return comps[i2].sd < 0 ? 0 : comps[i2].sd > 0 ? comps[i2].a.opacity : "+=0";
       });
       if (swapOutTargets.length) {
         stagger = gsap5.utils.distribute(stagger);
         var dummyArray = targets.slice(swapOutTargets.length);
-        tweenVars.stagger = function(i2, el2) {
+        tweenVars.stagger = function (i2, el2) {
           return stagger(~swapOutTargets.indexOf(el2) ? targets.indexOf(comps[i2].swap.t) : i2, el2, dummyArray);
         };
       }
-      _callbacks.forEach(function(name) {
+      _callbacks.forEach(function (name) {
         return vars[name] && animation.eventCallback(name, vars[name], vars[name + "Params"]);
       });
       if (custom && targets.length) {
@@ -11811,7 +11811,7 @@
         }
       }
       if (targets.length || leaving.length || entering.length) {
-        toggleClass && animation.add(function() {
+        toggleClass && animation.add(function () {
           return _toggleClass(classTargets, toggleClass, animation._zTime < 0 ? "remove" : "add");
         }, 0) && !paused && _toggleClass(classTargets, toggleClass, "add");
         targets.length && addFunc.call(animation, targets, remainingProps, 0);
@@ -11821,20 +11821,20 @@
       var batchTl = _batch && _batch.timeline;
       if (batchTl) {
         batchTl.add(animation, 0);
-        _batch._final.push(function() {
+        _batch._final.push(function () {
           return _setFinalStates(comps, !clearProps2);
         });
       }
       endTime = animation.duration();
-      animation.call(function() {
+      animation.call(function () {
         var forward = animation.time() >= endTime;
         forward && !batchTl && _setFinalStates(comps, !clearProps2);
         toggleClass && _toggleClass(classTargets, toggleClass, forward ? "remove" : "add");
       });
     };
-    absoluteOnLeave && (absolute = comps.filter(function(comp2) {
+    absoluteOnLeave && (absolute = comps.filter(function (comp2) {
       return !comp2.sd && !comp2.a.isVisible && comp2.b.isVisible;
-    }).map(function(comp2) {
+    }).map(function (comp2) {
       return comp2.a.element;
     }));
     if (_batch) {
@@ -11846,7 +11846,7 @@
       run();
     }
     var anim = _batch ? _batch.timeline : animation;
-    anim.revert = function() {
+    anim.revert = function () {
       return _killFlip(anim, 1, 1);
     };
     return anim;
@@ -11872,7 +11872,7 @@
       lookup[elState.id] ? alt[elState.id] = elState : lookup[elState.id] = elState;
     }
   };
-  var FlipState = /* @__PURE__ */ function() {
+  var FlipState = /* @__PURE__ */ function () {
     function FlipState2(targets, vars, targetsAreElementStates) {
       this.props = vars && vars.props;
       this.simple = !!(vars && vars.simple);
@@ -11890,7 +11890,7 @@
     var _proto = FlipState2.prototype;
     _proto.update = function update2(soft) {
       var _this = this;
-      this.elementStates = this.targets.map(function(el) {
+      this.elementStates = this.targets.map(function (el) {
         return new ElementState(el, _this.props, _this.simple);
       });
       _createLookup(this);
@@ -11989,9 +11989,9 @@
     _proto.interrupt = function interrupt(soft) {
       var _this2 = this;
       var timelines = [];
-      this.targets.forEach(function(t) {
+      this.targets.forEach(function (t) {
         var tl3 = t._flip, foundInProgress = _killFlip(tl3, soft ? 0 : 1);
-        soft && foundInProgress && timelines.indexOf(tl3) < 0 && tl3.add(function() {
+        soft && foundInProgress && timelines.indexOf(tl3) < 0 && tl3.add(function () {
           return _this2.updateVisibility();
         });
         foundInProgress && timelines.push(tl3);
@@ -12000,7 +12000,7 @@
       this.interrupted || (this.interrupted = !!timelines.length);
     };
     _proto.updateVisibility = function updateVisibility() {
-      this.elementStates.forEach(function(es) {
+      this.elementStates.forEach(function (es) {
         var b = es.element.getBoundingClientRect();
         es.isVisible = !!(b.width || b.height || b.top || b.left);
         es.uncache = 1;
@@ -12014,7 +12014,7 @@
     };
     return FlipState2;
   }();
-  var ElementState = /* @__PURE__ */ function() {
+  var ElementState = /* @__PURE__ */ function () {
     function ElementState2(element, props, simple) {
       this.element = element;
       this.update(props, simple);
@@ -12053,7 +12053,7 @@
     };
     return ElementState2;
   }();
-  var FlipAction = /* @__PURE__ */ function() {
+  var FlipAction = /* @__PURE__ */ function () {
     function FlipAction2(vars, batch) {
       this.vars = vars;
       this.batch = batch;
@@ -12074,7 +12074,7 @@
     };
     return FlipAction2;
   }();
-  var FlipBatch = /* @__PURE__ */ function() {
+  var FlipBatch = /* @__PURE__ */ function () {
     function FlipBatch2(id) {
       this.id = id;
       this.actions = [];
@@ -12088,7 +12088,7 @@
     }
     var _proto4 = FlipBatch2.prototype;
     _proto4.add = function add(config3) {
-      var result = this.actions.filter(function(action) {
+      var result = this.actions.filter(function (action) {
         return action.vars === config3;
       });
       if (result.length) {
@@ -12111,13 +12111,13 @@
       _batch = this;
       this.state.clear();
       this._kill.length = 0;
-      this.actions.forEach(function(action) {
+      this.actions.forEach(function (action) {
         if (action.vars.getState) {
           action.states.length = 0;
           _batchAction = action;
           action.state = action.vars.getState(action);
         }
-        merge && action.states.forEach(function(s) {
+        merge && action.states.forEach(function (s) {
           return _this3.state.add(s);
         });
       });
@@ -12132,12 +12132,12 @@
       _batch = this;
       tl3.clear();
       this._abs.length = this._final.length = this._run.length = 0;
-      this.actions.forEach(function(a) {
+      this.actions.forEach(function (a) {
         a.vars.animate && a.vars.animate(a);
         var onEnter = a.vars.onEnter, onLeave = a.vars.onLeave, targets = a.targets, s, result;
         if (targets && targets.length && (onEnter || onLeave)) {
           s = new FlipState();
-          a.states.forEach(function(state) {
+          a.states.forEach(function (state) {
             return s.add(state);
           });
           result = s.compare(Flip.getState(targets));
@@ -12146,14 +12146,14 @@
         }
       });
       _makeCompsAbsolute(this._abs);
-      this._run.forEach(function(f) {
+      this._run.forEach(function (f) {
         return f();
       });
       endTime = tl3.duration();
       finalStates = this._final.slice(0);
-      tl3.add(function() {
+      tl3.add(function () {
         if (endTime <= tl3.time()) {
-          finalStates.forEach(function(f) {
+          finalStates.forEach(function (f) {
             return f();
           });
           _forEachBatch(_this4, "onComplete");
@@ -12172,7 +12172,7 @@
         return 0;
       });
       var queue = [];
-      this.actions.forEach(function(c) {
+      this.actions.forEach(function (c) {
         if (c.vars.loadState) {
           var i, f = function f2(targets) {
             targets && (c.targets = targets);
@@ -12190,14 +12190,14 @@
       return this;
     };
     _proto4.setState = function setState() {
-      this.actions.forEach(function(c) {
+      this.actions.forEach(function (c) {
         return c.targets = c.vars.setState && c.vars.setState(c);
       });
       return this;
     };
     _proto4.killConflicts = function killConflicts(soft) {
       this.state.interrupt(soft);
-      this._kill.forEach(function(state) {
+      this._kill.forEach(function (state) {
         return state.interrupt(soft);
       });
       return this;
@@ -12206,7 +12206,7 @@
       var _this5 = this;
       if (this !== _batch) {
         skipGetState || this.getState(merge);
-        this.loadState(function() {
+        this.loadState(function () {
           if (!_this5._killed) {
             _this5.setState();
             _this5.animate();
@@ -12236,7 +12236,7 @@
     };
     return FlipBatch2;
   }();
-  var Flip = /* @__PURE__ */ function() {
+  var Flip = /* @__PURE__ */ function () {
     function Flip2() {
     }
     Flip2.getState = function getState(targets, vars) {
@@ -12270,7 +12270,7 @@
       _recordInlineStyles(after, inlineProps);
       if (runBackwards) {
         "immediateRender" in v || (v.immediateRender = true);
-        v.onComplete = function() {
+        v.onComplete = function () {
           _applyInlineStyles(after);
           onComplete && onComplete.apply(this, arguments);
         };
@@ -12278,8 +12278,8 @@
       absolute && _makeAbsolute(after, before);
       v = _fit(after, before, scale || fitChild, !v.duration && props, fitChild, v.duration || getVars ? v : 0);
       typeof vars === "object" && "zIndex" in vars && (v.zIndex = vars.zIndex);
-      ctx && !getVars && ctx.add(function() {
-        return function() {
+      ctx && !getVars && ctx.add(function () {
+        return function () {
           return _applyInlineStyles(after);
         };
       });
@@ -12293,7 +12293,7 @@
       return _batchLookup[id] || (_batchLookup[id] = new FlipBatch(id));
     };
     Flip2.killFlipsOf = function killFlipsOf(targets, complete) {
-      (targets instanceof FlipState ? targets.targets : _toArray3(targets)).forEach(function(t) {
+      (targets instanceof FlipState ? targets.targets : _toArray3(targets)).forEach(function (t) {
         return t && _killFlip(t._flip, complete !== false ? 1 : 2);
       });
     };
@@ -12436,7 +12436,7 @@
       x: "-10em",
       duration,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         document.body.style.cursor = "auto";
         window.SScroll.start();
       }
@@ -12448,7 +12448,7 @@
       duration,
       stagger: 0.2,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         SScroll.resize();
       }
     });
@@ -12496,7 +12496,7 @@
       const checkboxesInGroup = group.querySelectorAll(
         'input[type="checkbox"][required]'
       );
-      const checkboxChangeHandler = function() {
+      const checkboxChangeHandler = function () {
         if (Array.from(checkboxesInGroup).some((cb) => cb.checked)) {
           checkboxesInGroup.forEach((cb) => cb.removeAttribute("required"));
         } else {
@@ -12516,7 +12516,7 @@
       const checkboxesInGroup = group.querySelectorAll(
         'input[type="checkbox"][required]'
       );
-      const checkboxChangeHandler = function() {
+      const checkboxChangeHandler = function () {
       };
       checkboxesInGroup.forEach((checkbox) => {
         checkbox.removeEventListener("change", checkboxChangeHandler);
@@ -12550,7 +12550,7 @@
   }
   function resetFormAfterSubmission(form) {
     const successDiv = form.nextSibling;
-    const observer = new MutationObserver(function(mutations) {
+    const observer = new MutationObserver(function (mutations) {
       if (form.style.display === "none") {
         setTimeout(() => {
           form.reset();
@@ -12578,7 +12578,7 @@
   function setupContactTrigger() {
     const contactTrigger = document.querySelector("[contact-trigger]");
     const contactTarget = document.querySelector("[contact-target]");
-    contactTriggerClickListener = function() {
+    contactTriggerClickListener = function () {
       contactTarget.click();
     };
     contactTrigger.addEventListener("click", contactTriggerClickListener);
@@ -12600,16 +12600,16 @@
     }
     const rangeBoxes = document.querySelectorAll(".checkbox-box.is-range");
     const rangeActive = document.querySelector(".range-active");
-    rangeBoxes.forEach(function(box) {
-      const clickListener = function() {
-        rangeBoxes.forEach(function(innerBox) {
+    rangeBoxes.forEach(function (box) {
+      const clickListener = function () {
+        rangeBoxes.forEach(function (innerBox) {
           innerBox.classList.remove("is--active");
         });
         this.classList.add("is--active");
       };
       box.addEventListener("click", clickListener);
       rangeClickListener.push(clickListener);
-      const mouseEnterListener = function() {
+      const mouseEnterListener = function () {
         const state = Flip.getState(rangeActive);
         this.querySelector(".range-icon-w").appendChild(rangeActive);
         Flip.from(state, {
@@ -12619,7 +12619,7 @@
       };
       box.addEventListener("mouseenter", mouseEnterListener);
       rangeMouseEnter.push(mouseEnterListener);
-      const mouseLeaveListener = function() {
+      const mouseLeaveListener = function () {
         const state = Flip.getState(rangeActive);
         const activeBox = document.querySelector(
           ".checkbox-box.is--active .range-icon-w"
@@ -12641,7 +12641,7 @@
   }
   function destroyRangeSlider() {
     const rangeBoxes = document.querySelectorAll(".checkbox-box.is-range");
-    rangeBoxes.forEach(function(box, index) {
+    rangeBoxes.forEach(function (box, index) {
       box.removeEventListener("click", rangeClickListener[index]);
       box.removeEventListener("mouseenter", rangeMouseEnter[index]);
       box.removeEventListener("mouseleave", rangeMouseLeave[index]);
@@ -12726,7 +12726,7 @@
       '[data-form-services] input[type="checkbox"]'
     );
     serviceCheckboxes.forEach((checkbox) => {
-      const listener = function() {
+      const listener = function () {
         updateBudgetRestriction();
       };
       checkbox.addEventListener("change", listener);
@@ -12768,7 +12768,7 @@
       'input[name="deadlineGroup"]'
     );
     deadlineRadios.forEach((radio) => {
-      const listener = function() {
+      const listener = function () {
         updateDeadlineFieldVisibility();
       };
       radio.addEventListener("change", listener);
@@ -12909,7 +12909,7 @@
       x: "-10em",
       duration,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         document.body.style.cursor = "auto";
         window.SScroll.start();
       }
@@ -12931,7 +12931,7 @@
           height: "8rem",
           duration: 1,
           ease: "power1.out",
-          onComplete: function() {
+          onComplete: function () {
             SScroll.resize();
           }
         });
@@ -12940,7 +12940,7 @@
           transformOrigin: "center right",
           duration: 0.6,
           ease: "power1.in",
-          onComplete: function() {
+          onComplete: function () {
             gsapWithCSS.set(clickedItem.querySelector(".ser-vid-ul"), {
               top: "0%",
               bottom: "auto"
@@ -12969,7 +12969,7 @@
           height: "auto",
           duration: 1,
           ease: "power1.in",
-          onComplete: function() {
+          onComplete: function () {
             SScroll.resize();
           }
         });
@@ -12978,7 +12978,7 @@
           transformOrigin: "center left",
           duration: 0.6,
           ease: "power1.out",
-          onComplete: function() {
+          onComplete: function () {
             gsapWithCSS.set(clickedItem.querySelector(".ser-vid-ul"), {
               top: "auto",
               bottom: "0%"
@@ -13039,7 +13039,7 @@
           transformOrigin: "center right",
           duration: 0.6,
           ease: "power1.in",
-          onComplete: function() {
+          onComplete: function () {
             gsapWithCSS.set(item.querySelector(".ser-vid-ul"), {
               top: "0%",
               bottom: "auto"
@@ -13068,7 +13068,7 @@
       transformOrigin: "center left",
       duration: 0.6,
       ease: "power1.out",
-      onComplete: function() {
+      onComplete: function () {
         gsapWithCSS.set(clickedItem.querySelector(".ser-vid-ul"), {
           top: "auto",
           bottom: "0%"
@@ -13116,7 +13116,7 @@
     });
     const gridItems = document.querySelectorAll(".ser-grid-item");
     gridItems.forEach((item) => {
-      const clickListener = function() {
+      const clickListener = function () {
         repositionItems(item);
       };
       item.addEventListener("click", clickListener);
@@ -13277,7 +13277,7 @@
       _coreInitted5 = gsap6 = _getGSAP7();
       _toArray4 = gsap6.utils.toArray;
       _getStyleSaver4 = gsap6.core.getStyleSaver;
-      _reverting3 = gsap6.core.reverting || function() {
+      _reverting3 = gsap6.core.reverting || function () {
       };
       _isEdge = ((_win6.navigator || {}).userAgent || "").indexOf("Edge") !== -1;
     }
@@ -13531,7 +13531,7 @@
       x: "-5em",
       duration,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         document.body.style.cursor = "auto";
         window.SScroll.start();
         if (!window.isTabletOrBelow) {
@@ -13634,14 +13634,14 @@
   function initAboutStickyMenu() {
     updateCurrentRowOpacity();
     document.querySelectorAll(".abt-sticky-menu-row").forEach((row) => {
-      const enterHandler = function() {
+      const enterHandler = function () {
         gsapWithCSS.to(row, { opacity: 1, duration: 0.3 });
         gsapWithCSS.to(".abt-sticky-menu-row:not(:hover)", {
           opacity: 0.6,
           duration: 0.3
         });
       };
-      const leaveHandler = function() {
+      const leaveHandler = function () {
         updateCurrentRowOpacity();
       };
       row.addEventListener("mouseenter", enterHandler);
@@ -13936,7 +13936,7 @@
       x: "5em",
       duration,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         document.body.style.cursor = "auto";
         window.SScroll.start();
       }
@@ -14066,7 +14066,7 @@
       x: "10em",
       duration: 1,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         document.body.style.cursor = "auto";
         window.SScroll.start();
       }
@@ -14718,7 +14718,7 @@
     } = _ref;
     const observers2 = [];
     const window2 = getWindow();
-    const attach = function(target, options) {
+    const attach = function (target, options) {
       if (options === void 0) {
         options = {};
       }
@@ -17594,24 +17594,24 @@
     const suffixes = prepareClasses(["initialized", params2.direction, {
       "free-mode": swiper.params.freeMode && params2.freeMode.enabled
     }, {
-      "autoheight": params2.autoHeight
-    }, {
-      "rtl": rtl
-    }, {
-      "grid": params2.grid && params2.grid.rows > 1
-    }, {
-      "grid-column": params2.grid && params2.grid.rows > 1 && params2.grid.fill === "column"
-    }, {
-      "android": device.android
-    }, {
-      "ios": device.ios
-    }, {
-      "css-mode": params2.cssMode
-    }, {
-      "centered": params2.cssMode && params2.centeredSlides
-    }, {
-      "watch-progress": params2.watchSlidesProgress
-    }], params2.containerModifierClass);
+        "autoheight": params2.autoHeight
+      }, {
+        "rtl": rtl
+      }, {
+        "grid": params2.grid && params2.grid.rows > 1
+      }, {
+        "grid-column": params2.grid && params2.grid.rows > 1 && params2.grid.fill === "column"
+      }, {
+        "android": device.android
+      }, {
+        "ios": device.ios
+      }, {
+        "css-mode": params2.cssMode
+      }, {
+        "centered": params2.cssMode && params2.centeredSlides
+      }, {
+        "watch-progress": params2.watchSlidesProgress
+      }], params2.containerModifierClass);
     classNames.push(...suffixes);
     el.classList.add(...classNames);
     swiper.emitContainerClasses();
@@ -19167,7 +19167,7 @@
   };
   function debounce(callback, delay) {
     let timer;
-    return function(...args) {
+    return function (...args) {
       let context3 = this;
       clearTimeout(timer);
       timer = setTimeout(() => {
@@ -20263,7 +20263,7 @@
       x: "-10em",
       duration,
       ease: "power2.inOut",
-      onComplete: function() {
+      onComplete: function () {
         document.body.style.cursor = "auto";
         window.SScroll.start();
       }
@@ -20815,7 +20815,7 @@
       attributes: true,
       attributeFilter: ["class"]
     });
-    window.addEventListener("beforeunload", function() {
+    window.addEventListener("beforeunload", function () {
       const orbElement = document.querySelector("[data-orb]");
       if (orbElement) {
         orbElement.style.display = "none";
@@ -20910,7 +20910,7 @@
     }
     return points;
   };
-  var CustomEase = /* @__PURE__ */ function() {
+  var CustomEase = /* @__PURE__ */ function () {
     function CustomEase2(id, data, config3) {
       _coreInitted6 || _initCore9();
       this.id = id;
@@ -21014,7 +21014,7 @@
           lookup[i - 1] = points[points.length - 2];
         }
       }
-      this.ease = function(p2) {
+      this.ease = function (p2) {
         var point2 = lookup[p2 * l | 0] || lookup[l - 1];
         if (point2.nx < p2) {
           point2 = point2.n;
@@ -21260,7 +21260,7 @@
         duration: loaderDuration,
         ease: CustomEase.create("custom", loadEase),
         delay: 1.5,
-        onComplete: function() {
+        onComplete: function () {
           gsapWithCSS.to(preText, {
             delay: 0.5,
             yPercent: -101,
@@ -21324,7 +21324,7 @@
                 duration: 2,
                 ease: "power2.inOut",
                 delay: 2,
-                onComplete: function() {
+                onComplete: function () {
                   gsapWithCSS.to(orbOutline3, {
                     autoAlpha: 1,
                     scale: 1.2,
@@ -21338,7 +21338,7 @@
                 duration: 2.5,
                 ease: "power2.inOut",
                 delay: 3,
-                onComplete: function() {
+                onComplete: function () {
                   gsapWithCSS.to(orbOutline3, {
                     autoAlpha: 1,
                     scale: 1.2,
@@ -21356,7 +21356,7 @@
                 duration: 1,
                 ease: "power2.inOut",
                 delay: 1,
-                onComplete: function() {
+                onComplete: function () {
                   gsapWithCSS.to(preloader, {
                     autoAlpha: 0,
                     duration: 0.2
@@ -21372,7 +21372,7 @@
                 duration: 2,
                 ease: "power2.inOut",
                 delay: 2,
-                onComplete: function() {
+                onComplete: function () {
                   gsapWithCSS.to(orbOutline3, {
                     autoAlpha: 1,
                     scale: 0.9,
@@ -21386,7 +21386,7 @@
                 duration: 2.5,
                 ease: "power2.inOut",
                 delay: 3,
-                onComplete: function() {
+                onComplete: function () {
                   gsapWithCSS.to(orbOutline3, {
                     autoAlpha: 1,
                     scale: 0.9,
@@ -21402,7 +21402,7 @@
                 duration: 1,
                 ease: "power2.inOut",
                 delay: 1,
-                onComplete: function() {
+                onComplete: function () {
                   gsapWithCSS.to(preloader, {
                     autoAlpha: 0,
                     duration: 0.2
@@ -21463,7 +21463,7 @@
               x: "10em",
               duration: hhDuration,
               ease: "power2.inOut",
-              onComplete: function() {
+              onComplete: function () {
                 document.body.style.cursor = "auto";
                 window.SScroll.start();
                 if (!window.isTabletOrBelow) {
@@ -21515,7 +21515,7 @@
               duration: 1,
               ease: "power2.inOut",
               delay: 1,
-              onComplete: function() {
+              onComplete: function () {
                 if (callback)
                   callback();
                 hudUiAnimations();
@@ -21550,7 +21550,7 @@
               x: "-10em",
               duration: hhDuration,
               ease: "power2.inOut",
-              onComplete: function() {
+              onComplete: function () {
                 document.body.style.cursor = "auto";
                 window.SScroll.start();
                 workHeroScroll();
@@ -21600,7 +21600,7 @@
               duration: 1,
               ease: "power2.inOut",
               delay: 1,
-              onComplete: function() {
+              onComplete: function () {
                 if (callback)
                   callback();
                 document.body.style.cursor = "auto";
@@ -21681,7 +21681,7 @@
               duration: 1,
               ease: "power2.inOut",
               delay: 1,
-              onComplete: function() {
+              onComplete: function () {
                 document.body.style.cursor = "auto";
                 window.SScroll.start();
                 if (callback)
@@ -21756,7 +21756,7 @@
               duration: 1,
               ease: "power2.inOut",
               delay: 1,
-              onComplete: function() {
+              onComplete: function () {
                 document.body.style.cursor = "auto";
                 window.SScroll.start();
                 if (callback)
@@ -21852,7 +21852,7 @@
               duration: 1,
               ease: "power2.inOut",
               delay: 1,
-              onComplete: function() {
+              onComplete: function () {
                 document.body.style.cursor = "auto";
                 window.SScroll.start();
                 if (callback)
@@ -21934,7 +21934,7 @@
                 duration: 1,
                 ease: "power2.inOut",
                 delay: 1,
-                onComplete: function() {
+                onComplete: function () {
                   document.body.style.cursor = "auto";
                   window.SScroll.start();
                   if (callback)
@@ -21971,7 +21971,7 @@
                 duration: 1,
                 ease: "power2.inOut",
                 delay: 1,
-                onComplete: function() {
+                onComplete: function () {
                   document.body.style.cursor = "auto";
                   window.SScroll.start();
                   if (callback)
@@ -22063,7 +22063,7 @@
               duration: 1,
               ease: "power2.inOut",
               delay: 1,
-              onComplete: function() {
+              onComplete: function () {
                 document.body.style.cursor = "auto";
                 window.SScroll.start();
                 if (callback)
@@ -22137,7 +22137,7 @@
               duration: 1,
               ease: "power2.inOut",
               delay: 1,
-              onComplete: function() {
+              onComplete: function () {
                 document.body.style.cursor = "auto";
                 window.SScroll.start();
                 if (callback)
@@ -22180,7 +22180,7 @@
         }
       }
     );
-    gsapWithCSS.ticker.add(function() {
+    gsapWithCSS.ticker.add(function () {
       const percentage = Math.round(fillAnimation.progress() * 100);
       prePercent.textContent = `${percentage}`;
     });
@@ -22519,13 +22519,14 @@
     document.querySelector("[mode-toggle]").setAttribute("mode-toggle", mode);
     document.querySelector("[mode-toggle]").setAttribute("aria-pressed", mode === "dark");
   }
-  document.querySelector("[mode-toggle]").addEventListener("click", function() {
-    var currentMode = localStorage.getItem("mode") || "light";
-    var newMode = currentMode === "light" ? "dark" : "light";
-    localStorage.setItem("mode", newMode);
-    setMode(newMode);
+  document.querySelector("[mode-toggle]").addEventListener("click", function () {
+    // var currentMode = localStorage.getItem("mode") || "light";
+    // var newMode = currentMode === "light" ? "dark" : "light";
+    // localStorage.setItem("mode", newMode);
+    // setMode(newMode);
   });
-  var initialMode = localStorage.getItem("mode") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  // var initialMode = localStorage.getItem("mode") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  var initialMode = "dark";
   setMode(initialMode);
 
   // index.js
@@ -22549,7 +22550,7 @@
         scale: 1,
         duration: 0.5,
         ease: "power1.in",
-        onComplete: function() {
+        onComplete: function () {
           lenisToTop(0);
         }
       });
@@ -22571,7 +22572,7 @@
         scale: 0.9,
         duration: 0.5,
         ease: "power1.in",
-        onComplete: function() {
+        onComplete: function () {
           gsapWithCSS.set(pageWipe, {
             y: "101%"
           });
@@ -22582,7 +22583,7 @@
         duration: 0.5,
         scale: 1.11111111111,
         ease: "power1.in",
-        onComplete: function() {
+        onComplete: function () {
           gsapWithCSS.set(pageWipeObject, {
             y: "-101%"
           });
