@@ -146,6 +146,51 @@
       background: var(--main-light);
     }
 
+    /* New Logo Fill Animation */
+    .logo-fill-container {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .logo-fill-base,
+    .logo-fill-animated {
+      position: absolute;
+      width: 1200px;
+      height: 1200px;
+      background-image: url('./logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    html.dark .logo-fill-base {
+      opacity: 0.3;
+      filter: brightness(1.5);
+    }
+
+    html.light .logo-fill-base {
+      opacity: 0.3;
+      filter: brightness(0.5);
+    }
+
+    .logo-fill-animated {
+      clip-path: inset(100% 0 0 0);
+    }
+
+    html.dark .logo-fill-animated {
+      filter: brightness(1.5);
+      opacity: 1;
+    }
+
+    html.light .logo-fill-animated {
+      filter: brightness(0.3) contrast(1.2);
+      opacity: 1;
+    }
+
     html.dark [data-nav-tl] [split-text] {
       text-shadow: 0px 1em 0px var(--main-light) !important;
     }
@@ -155,18 +200,15 @@
     }
 
     html.dark [data-nav-tl] .btn-icon-w .btn-txt {
-      text-shadow: -1em 0px 0px #ffffff;
-      !important;
+      text-shadow: -1em 0px 0px #ffffff !important;
     }
 
     html.light [data-nav-tl] .link-track-fill {
-      background-color: var(--main-dark);
-      !important;
+      background-color: var(--main-dark) !important;
     }
 
     html.dark [data-nav-tl] .link-track-fill {
-      background-color: var(--main-light);
-      !important;
+      background-color: var(--main-light) !important;
     }
 
     html.dark .checkbox-toggle:focus {
@@ -179,6 +221,181 @@
 
     html.dark .h-eyebrow.is--outline {
       border: 1px solid var(--white);
+    }
+
+    /* Code Bracket SVG Styling */
+    .code-bracket-orb {
+      width: 100%;
+      height: 100%;
+      filter: blur(40px);
+    }
+
+    .bracket-rotate {
+      transform-origin: center;
+      animation: rotateOrb 20s linear infinite;
+    }
+
+    @keyframes rotateOrb {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .bracket-path {
+      stroke-dasharray: 200 200;
+      animation: gradientColorShift 8s ease-in-out infinite;
+    }
+
+    @keyframes gradientColorShift {
+      0% {
+        stroke: #facb0e;
+        stroke-dashoffset: 400;
+      }
+
+      25% {
+        stroke: #f06ba8;
+      }
+
+      50% {
+        stroke: #78bae6;
+        stroke-dashoffset: 0;
+      }
+
+      75% {
+        stroke: #a78bfa;
+      }
+
+      100% {
+        stroke: #facb0e;
+        stroke-dashoffset: -400;
+      }
+    }
+
+    /* Project Image Overrides (Unsplash) */
+    .hcs-img-w.is-lando {
+      background-image: url('https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&q=80&w=1200') !important;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hcs-img-w.is--aether {
+      background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=1200') !important;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hcs-img-w.is--bella {
+      background-image: url('https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auto=format&fit=crop&q=80&w=1200') !important;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hcs-img-w.is--jasp {
+      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200') !important;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hcs-img-w.is--slack {
+      background-image: url('https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&q=80&w=1200') !important;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hcs-img-w.is--ul {
+      background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200') !important;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Grid Abstract Images */
+    .hg-img-w {
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hg-img-w.ai1 {
+      background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.ai2 {
+      background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.ai3 {
+      background-image: url('https://images.unsplash.com/photo-1591453088416-817b180d2854?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.ai4 {
+      background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.rob1 {
+      background-image: url('https://images.unsplash.com/photo-1546776230-bb86256870ce?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.rob2 {
+      background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.rob3 {
+      background-image: url('https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.rob4 {
+      background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.art1 {
+      background-image: url('https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.art2 {
+      background-image: url('https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.art3 {
+      background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.art4 {
+      background-image: url('https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.tech1 {
+      background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.tech2 {
+      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.tech3 {
+      background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.tech4 {
+      background-image: url('https://images.unsplash.com/photo-1518432031352-d6fc5c1025b7?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.sci1 {
+      background-image: url('https://images.unsplash.com/photo-1532094349884-543bb1198343?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.sci2 {
+      background-image: url('https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.sci3 {
+      background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=1200') !important;
+    }
+
+    .hg-img-w.sci4 {
+      background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1200') !important;
     }
 
 
@@ -339,6 +556,7 @@
     html.dark .btn-w {
       background: var(--main-dark);
       border-color: var(--dark-grey);
+      overflow: hidden;
     }
 
     html.dark [data-brand] {
@@ -434,6 +652,7 @@
     html.light .btn-w {
       background: var(--main-light);
       border-color: var(--light-grey);
+      overflow: hidden;
     }
 
     html.light [data-brand] {
@@ -666,11 +885,13 @@
           text-overflow: ellipsis;
           display: -webkit-box;
           -webkit-line-clamp: 1;
+          line-clamp: 1;
           -webkit-box-orient: vertical;
         }
 
         [line-clamp="2"] {
           -webkit-line-clamp: 2;
+          line-clamp: 2;
         }
 
         /* ---- Pointer Events ---- */
@@ -977,6 +1198,7 @@
           border-radius: var(--small-radius);
           border: 1px solid var(--light-grey);
           -webkit-mask-image: -webkit-radial-gradient(white, black);
+          mask-image: -webkit-radial-gradient(white, black);
         }
 
         .is-ser-title {
@@ -1038,102 +1260,129 @@
         html.dark .ser-grid-item.is--active .is-ser-title {
           color: var(--main-light);
         }
-  
-    
-    
-    @media screen and (max-width: 991px) {
-      
-    }
-    @media screen and (max-width: 767px) {
-      
-    }
-    
 
-    /* PNG Logo Masking & Tinting */
-    .logo-mask-w {
-      width: 100%;
-      height: 100%;
-      background-color: var(--light-grey60);
-      -webkit-mask-image: url('./logo.png');
-      mask-image: url('./logo.png');
-      -webkit-mask-size: contain;
-      mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-      mask-position: center;
-      position: absolute;
-      inset: 0;
-    }
-    html.dark .logo-mask-w {
-      background-color: #e5e4e0 !important; /* Cream tint for dark mode */
-    }
 
-    /* Force Parents to Center Content (Flexbox) */
-    .page-wipe-object-w, .ob-mask-wrap, .ob-mask-outline, .wipe-outline-w {
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-    }
-    
-    .page-wipe-object-w, .ob-mask-wrap {
-      width: 100% !important;
-      height: 100% !important;
-    }
 
-    /* Fixed Logo Size (0.5x reduction -> 37.5em) & Reset Positioning */
-    .wipe-outline-w, .ob-mask-outline {
-      width: 37.5em !important;
-      height: 37.5em !important;
-      position: relative !important; /* Reset absolute */
-      top: auto !important;
-      left: auto !important;
-      right: auto !important;
-      bottom: auto !important;
-      transform: none !important; /* Reset transform overrides */
-      margin: auto !important; /* Extra safety for Flex centering */
-    }
-    
-    @media screen and (max-width: 991px) {
-      .wipe-outline-w, .ob-mask-outline {
-        width: 75vw !important;
-        height: 75vw !important;
-      }
-    }
-    @media screen and (max-width: 767px) {
-      .wipe-outline-w, .ob-mask-outline {
-        width: 100vw !important;
-        height: 100vw !important;
-      }
-    }
+        @media screen and (max-width: 991px) {}
 
-    /* Animation Plus Replacement (Logo Mask) */
-    .x-logo-mask {
-      width: 100%;
-      height: 100%;
-      -webkit-mask-image: url('./logo.png');
-      mask-image: url('./logo.png');
-      -webkit-mask-size: contain;
-      mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-      mask-position: center;
-      background-color: var(--main-light); /* Default fill */
-      transition: background-color 0.3s ease;
-    }
+        @media screen and (max-width: 767px) {}
 
-    /* Service Grid - Active State Colors */
-    html.light .ser-grid-item.is--active .x-logo-mask {
-      background-color: var(--main-dark);
-    }
-    html.dark .ser-grid-item.is--active .x-logo-mask {
-      background-color: var(--main-light);
-    }
-    
-    /* Ensure Hover Scale works (inherited from parent .ser-cross-w transform) */
-    
-    </style>
+
+        /* PNG Logo Masking & Tinting */
+        .logo-mask-w {
+          width: 100%;
+          height: 100%;
+          background-color: var(--light-grey60);
+          -webkit-mask-image: url('./logo.png');
+          mask-image: url('./logo.png');
+          -webkit-mask-size: contain;
+          mask-size: contain;
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+          -webkit-mask-position: center;
+          mask-position: center;
+          position: absolute;
+          inset: 0;
+        }
+
+        html.dark .logo-mask-w {
+          background-color: #e5e4e0 !important;
+          /* Cream tint for dark mode */
+          background-image: none !important;
+        }
+
+        html.dark .logo-mask-w::before {
+          display: none !important;
+        }
+
+        html.light .logo-mask-w {
+          background-color: #000000 !important;
+          background-image: none !important;
+        }
+
+        html.light .logo-mask-w::before {
+          display: none !important;
+        }
+
+        /* Force Parents to Center Content (Flexbox) */
+        .page-wipe-object-w,
+        .ob-mask-wrap,
+        .ob-mask-outline,
+        .wipe-outline-w {
+          display: flex !important;
+          justify-content: center !important;
+          align-items: center !important;
+        }
+
+        .page-wipe-object-w,
+        .ob-mask-wrap {
+          width: 100% !important;
+          height: 100% !important;
+        }
+
+        /* Fixed Logo Size (0.5x reduction -> 37.5em) & Reset Positioning */
+        .wipe-outline-w,
+        .ob-mask-outline {
+          width: 37.5em !important;
+          height: 37.5em !important;
+          position: relative !important;
+          /* Reset absolute */
+          top: auto !important;
+          left: auto !important;
+          right: auto !important;
+          bottom: auto !important;
+          transform: none !important;
+          /* Reset transform overrides */
+          margin: auto !important;
+          /* Extra safety for Flex centering */
+        }
+
+        @media screen and (max-width: 991px) {
+
+          .wipe-outline-w,
+          .ob-mask-outline {
+            width: 75vw !important;
+            height: 75vw !important;
+          }
+        }
+
+        @media screen and (max-width: 767px) {
+
+          .wipe-outline-w,
+          .ob-mask-outline {
+            width: 100vw !important;
+            height: 100vw !important;
+          }
+        }
+
+        /* Animation Plus Replacement (Logo Mask) */
+        .x-logo-mask {
+          width: 100%;
+          height: 100%;
+          -webkit-mask-image: url('./logo.png');
+          mask-image: url('./logo.png');
+          -webkit-mask-size: contain;
+          mask-size: contain;
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+          -webkit-mask-position: center;
+          mask-position: center;
+          background-color: var(--main-light);
+          /* Default fill */
+          transition: background-color 0.3s ease;
+        }
+
+        /* Service Grid - Active State Colors */
+        html.light .ser-grid-item.is--active .x-logo-mask {
+          background-color: var(--main-dark);
+        }
+
+        html.dark .ser-grid-item.is--active .x-logo-mask {
+          background-color: var(--main-light);
+        }
+
+        /* Ensure Hover Scale works (inherited from parent .ser-cross-w transform) */
+      </style>
     </div>
     <div class="css-global w-embed">
       <style>
@@ -1741,177 +1990,175 @@
       <div class="hud-content">
         <div pointer-auto="" class="hud-brand-w"><a href="./home.html" aria-current="page"
             class="hud-brand-link w-inline-block w--current">
-            <div display-none="" class="hud-brand-img w-embed"><svg width="100%" height="100%" viewBox="0 0 612 129"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g data-brand clip-path="url(#a)" fill="var(--main-dark)">
-                  <path
-                    d="M228.162 64.642c-4.51-2.834-9.691-4.246-15.521-4.246-4.866 0-9.376 1.168-13.53 3.514-4.155 2.347-7.436 5.638-9.823 9.884h-.528v-39.94c0-.356-.091-.62-.264-.793a.92.92 0 0 0-.66-.264h-9.02a.906.906 0 0 0-.661.264c-.172.173-.264.447-.264.793v93.41c0 .264.092.508.264.731a.807.807 0 0 0 .661.335h8.492c.355 0 .619-.112.792-.335.173-.223.264-.467.264-.731v-11.407h.396c2.296 4.073 5.597 7.272 9.883 9.619 4.287 2.346 8.96 3.514 13.998 3.514 5.84 0 11.011-1.411 15.521-4.245 4.51-2.834 7.984-6.837 10.411-12.007 2.428-5.17 3.647-11.163 3.647-17.979 0-6.816-1.219-12.83-3.647-18.05-2.438-5.221-5.901-9.244-10.411-12.078v.01Zm.335 43.586c-1.727 3.759-4.205 6.653-7.425 8.695-3.23 2.032-7.009 3.047-11.346 3.047-4.338 0-8.116-1.015-11.347-3.047-3.23-2.031-5.708-4.957-7.425-8.756-1.727-3.799-2.59-8.268-2.59-13.398 0-5.13.884-9.487 2.651-13.337 1.768-3.85 4.266-6.816 7.496-8.888 3.231-2.082 6.969-3.118 11.215-3.118 4.245 0 8.095 1.016 11.275 3.047 3.179 2.032 5.657 4.977 7.425 8.827 1.767 3.85 2.651 8.34 2.651 13.47 0 5.129-.863 9.71-2.59 13.468l.01-.01Zm282.556-75.43h-8.888c-.264 0-.508.09-.731.263-.224.183-.336.447-.336.793v39.94h-.396c-2.478-4.246-5.769-7.537-9.883-9.884-4.114-2.346-8.604-3.514-13.469-3.514-5.932 0-11.143 1.412-15.653 4.246-4.51 2.834-7.964 6.856-10.351 12.077-2.387 5.221-3.586 11.234-3.586 18.05 0 6.816 1.199 12.809 3.586 17.979 2.387 5.171 5.841 9.183 10.351 12.007 4.51 2.834 9.731 4.246 15.653 4.246 5.038 0 9.69-1.169 13.936-3.515s7.517-5.546 9.823-9.619h.396v11.407c0 .264.112.508.335.731.223.224.467.335.731.335h8.492c.356 0 .62-.111.792-.335.173-.223.265-.467.265-.731v-93.41c0-.356-.092-.62-.265-.792-.182-.173-.446-.265-.792-.265l-.01-.01Zm-12.138 75.369c-1.727 3.809-4.206 6.725-7.426 8.756-3.23 2.032-7.009 3.047-11.346 3.047s-8.096-1.015-11.275-3.047c-3.179-2.031-5.637-4.926-7.364-8.695-1.727-3.758-2.59-8.248-2.59-13.469s.863-9.62 2.59-13.469c1.727-3.85 4.205-6.785 7.425-8.827 3.23-2.031 6.968-3.047 11.214-3.047s7.984 1.036 11.214 3.118c3.23 2.082 5.729 5.038 7.497 8.888 1.767 3.85 2.651 8.289 2.651 13.337 0 5.049-.864 9.599-2.59 13.398v.01ZM50.098 64.774C45.1 61.858 39.37 60.396 32.91 60.396c-6.46 0-12.19 1.442-17.187 4.317-4.998 2.874-8.868 6.917-11.61 12.138C1.37 82.072 0 88.045 0 94.76s1.371 12.667 4.114 17.847c2.742 5.17 6.612 9.203 11.61 12.078 4.998 2.874 10.727 4.317 17.187 4.317 6.46 0 12.19-1.433 17.187-4.317 4.997-2.875 8.888-6.897 11.681-12.078 2.783-5.17 4.175-11.123 4.175-17.847 0-6.724-1.392-12.677-4.175-17.847-2.783-5.17-6.684-9.223-11.681-12.138Zm1.99 43.383c-1.818 3.809-4.357 6.724-7.628 8.756-3.27 2.032-7.12 3.047-11.539 3.047s-8.268-1.015-11.54-3.047c-3.27-2.032-5.789-4.926-7.567-8.695-1.767-3.758-2.65-8.248-2.65-13.47 0-5.22.883-9.618 2.65-13.468 1.768-3.85 4.287-6.785 7.568-8.827 3.27-2.032 7.12-3.047 11.539-3.047s8.289 1.015 11.61 3.047c3.322 2.031 5.861 4.977 7.629 8.827 1.767 3.85 2.65 8.34 2.65 13.469 0 5.13-.903 9.599-2.721 13.398v.01Zm100.176-75.37h-13.937c-4.693 0-8.319 1.26-10.879 3.779-2.57 2.519-3.849 6.165-3.849 10.95v13.53H95.807V41.543h17.644c.356 0 .62-.091.792-.264a.902.902 0 0 0 .264-.66v-6.765c0-.711-.355-1.057-1.056-1.057H99.515c-4.693 0-8.32 1.26-10.88 3.779-2.569 2.519-3.849 6.166-3.849 10.95v13.53H72.18c-.62 0-.924.355-.924 1.056v6.765c0 .264.091.508.264.732a.804.804 0 0 0 .66.335h12.606v57.32c0 .711.356 1.056 1.067 1.056h8.888c.71 0 1.056-.355 1.056-1.056v-57.32h27.791v57.32c0 .711.356 1.056 1.067 1.056h8.888c.711 0 1.056-.355 1.056-1.056v-57.32h17.644c.711 0 1.057-.356 1.057-1.056v-6.766c0-.355-.092-.62-.264-.792-.183-.172-.447-.264-.793-.264h-17.644V41.563h17.644c.356 0 .62-.091.793-.264a.906.906 0 0 0 .264-.66v-6.765c0-.711-.356-1.056-1.057-1.056l.021-.03Zm259.01 27.599c-4.865 0-9.182 1.036-12.941 3.118-3.758 2.082-6.785 5.15-9.091 9.223h-.396V62.112c0-.355-.091-.62-.264-.792-.183-.173-.447-.264-.792-.264h-8.492a.902.902 0 0 0-.66.264c-.183.183-.265.447-.265.792v65.152c0 .264.092.508.265.731a.804.804 0 0 0 .66.335h9.02a.805.805 0 0 0 .66-.335c.173-.223.264-.467.264-.731v-37.29c0-6.632 1.524-11.65 4.581-15.063 3.048-3.403 7.497-5.11 13.337-5.11 5.841 0 10.148 1.636 12.941 4.907 2.783 3.27 4.175 8.36 4.175 15.257v37.288c0 .265.112.508.335.732.224.223.467.335.732.335h8.887c.356 0 .62-.112.793-.335.172-.224.264-.467.264-.732V89.965c0-9.64-2.052-16.984-6.166-22.022-4.114-5.038-10.066-7.568-17.847-7.568v.01Zm-120.49.66h-20.702c-4.692 0-8.319 1.26-10.878 3.778-2.57 2.52-3.85 6.166-3.85 10.95v51.479c0 .265.112.508.335.732.223.223.467.335.731.335h8.888c.356 0 .62-.112.793-.335.172-.224.264-.467.264-.732V70.462h24.419c.355 0 .619-.112.792-.335.173-.224.264-.468.264-.732v-7.293c0-.355-.091-.62-.264-.792-.183-.173-.447-.264-.792-.264Zm70.9 0h-8.888c-.711 0-1.066.355-1.066 1.056v11.682h-.396c-2.479-4.246-5.77-7.538-9.884-9.884-4.114-2.346-8.603-3.514-13.469-3.514-5.932 0-11.143 1.411-15.653 4.245s-7.963 6.857-10.35 12.078c-2.387 5.22-3.586 11.234-3.586 18.05 0 6.816 1.199 12.809 3.586 17.979 2.387 5.17 5.84 9.183 10.35 12.007 4.51 2.834 9.731 4.245 15.653 4.245 5.038 0 9.691-1.168 13.937-3.514 4.245-2.347 7.516-5.546 9.822-9.619h.396v11.407c0 .264.112.508.335.731.224.223.468.335.732.335h8.492c.711 0 1.056-.355 1.056-1.056V62.123c0-.356-.091-.62-.264-.793-.183-.172-.447-.264-.792-.264l-.011-.02Zm-12.138 47.101c-1.727 3.809-4.205 6.724-7.425 8.756-3.23 2.031-7.009 3.047-11.346 3.047-4.338 0-8.096-1.016-11.275-3.047-3.18-2.032-5.638-4.927-7.365-8.695-1.727-3.758-2.59-8.248-2.59-13.47 0-5.22.863-9.618 2.59-13.468 1.727-3.85 4.206-6.786 7.425-8.827 3.231-2.032 6.969-3.048 11.215-3.048 4.245 0 7.984 1.036 11.214 3.119 3.23 2.082 5.729 5.038 7.496 8.888 1.767 3.85 2.651 8.288 2.651 13.337 0 5.048-.863 9.599-2.59 13.398v.01Z" />
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M589.1 39.24c-4.95 0-9 4.05-9 9l-.01-.01v21.73c0 .86-.7 1.56-1.56 1.56h-3.95c-.86 0-1.56-.7-1.56-1.56V48.23c0-4.95-4.05-9-9-9.01h-21.46c-.86 0-1.56-.7-1.56-1.56v-3.68c0-.86.7-1.56 1.56-1.56h21.48c4.95 0 9-4.05 8.99-9V1.56c0-.86.7-1.56 1.56-1.56h3.95c.86 0 1.56.7 1.56 1.56v21.87c0 4.95 4.05 9 9 9l21.32.01h.01c.86 0 1.56.7 1.56 1.56v3.68c0 .86-.7 1.56-1.56 1.56H589.1Zm17.429 20.92h-.32c-2.99 0-5.43 2.42-5.43 5.43v.31c0 3.09 2.5 5.59 5.59 5.59s5.59-2.5 5.59-5.59v-.31c0-2.99-2.42-5.43-5.43-5.43Z" />
-                </g>
-              </svg></div>
-            <div class="visually-hidden">Ayansh Singh</div>
-            <div split-text="" class="text-brand">Ayansh Singh</div>
+            <div class="hud-brand-img w-embed"></div>
+            <g data-brand clip-path="url(#a)" fill="var(--main-dark)">
+              <path
+                d="M228.162 64.642c-4.51-2.834-9.691-4.246-15.521-4.246-4.866 0-9.376 1.168-13.53 3.514-4.155 2.347-7.436 5.638-9.823 9.884h-.528v-39.94c0-.356-.091-.62-.264-.793a.92.92 0 0 0-.66-.264h-9.02a.906.906 0 0 0-.661.264c-.172.173-.264.447-.264.793v93.41c0 .264.092.508.264.731a.807.807 0 0 0 .661.335h8.492c.355 0 .619-.112.792-.335.173-.223.264-.467.264-.731v-11.407h.396c2.296 4.073 5.597 7.272 9.883 9.619 4.287 2.346 8.96 3.514 13.998 3.514 5.84 0 11.011-1.411 15.521-4.245 4.51-2.834 7.984-6.837 10.411-12.007 2.428-5.17 3.647-11.163 3.647-17.979 0-6.816-1.219-12.83-3.647-18.05-2.438-5.221-5.901-9.244-10.411-12.078v.01Zm.335 43.586c-1.727 3.759-4.205 6.653-7.425 8.695-3.23 2.032-7.009 3.047-11.346 3.047-4.338 0-8.116-1.015-11.347-3.047-3.23-2.031-5.708-4.957-7.425-8.756-1.727-3.799-2.59-8.268-2.59-13.398 0-5.13.884-9.487 2.651-13.337 1.768-3.85 4.266-6.816 7.496-8.888 3.231-2.082 6.969-3.118 11.215-3.118 4.245 0 8.095 1.016 11.275 3.047 3.179 2.032 5.657 4.977 7.425 8.827 1.767 3.85 2.651 8.34 2.651 13.47 0 5.129-.863 9.71-2.59 13.468l.01-.01Zm282.556-75.43h-8.888c-.264 0-.508.09-.731.263-.224.183-.336.447-.336.793v39.94h-.396c-2.478-4.246-5.769-7.537-9.883-9.884-4.114-2.346-8.604-3.514-13.469-3.514-5.932 0-11.143 1.412-15.653 4.246-4.51 2.834-7.964 6.856-10.351 12.077-2.387 5.221-3.586 11.234-3.586 18.05 0 6.816 1.199 12.809 3.586 17.979 2.387 5.171 5.841 9.183 10.351 12.007 4.51 2.834 9.731 4.246 15.653 4.246 5.038 0 9.69-1.169 13.936-3.515s7.517-5.546 9.823-9.619h.396v11.407c0 .264.112.508.335.731.223.224.467.335.731.335h8.492c.356 0 .62-.111.792-.335.173-.223.265-.467.265-.731v-93.41c0-.356-.092-.62-.265-.792-.182-.173-.446-.265-.792-.265l-.01-.01Zm-12.138 75.369c-1.727 3.809-4.206 6.725-7.426 8.756-3.23 2.032-7.009 3.047-11.346 3.047s-8.096-1.015-11.275-3.047c-3.179-2.031-5.637-4.926-7.364-8.695-1.727-3.758-2.59-8.248-2.59-13.469s.863-9.62 2.59-13.469c1.727-3.85 4.205-6.785 7.425-8.827 3.23-2.031 6.968-3.047 11.214-3.047s7.984 1.036 11.214 3.118c3.23 2.082 5.729 5.038 7.497 8.888 1.767 3.85 2.651 8.289 2.651 13.337 0 5.049-.864 9.599-2.59 13.398v.01ZM50.098 64.774C45.1 61.858 39.37 60.396 32.91 60.396c-6.46 0-12.19 1.442-17.187 4.317-4.998 2.874-8.868 6.917-11.61 12.138C1.37 82.072 0 88.045 0 94.76s1.371 12.667 4.114 17.847c2.742 5.17 6.612 9.203 11.61 12.078 4.998 2.874 10.727 4.317 17.187 4.317 6.46 0 12.19-1.433 17.187-4.317 4.997-2.875 8.888-6.897 11.681-12.078 2.783-5.17 4.175-11.123 4.175-17.847 0-6.724-1.392-12.677-4.175-17.847-2.783-5.17-6.684-9.223-11.681-12.138Zm1.99 43.383c-1.818 3.809-4.357 6.724-7.628 8.756-3.27 2.032-7.12 3.047-11.539 3.047s-8.268-1.015-11.54-3.047c-3.27-2.032-5.789-4.926-7.567-8.695-1.767-3.758-2.65-8.248-2.65-13.47 0-5.22.883-9.618 2.65-13.468 1.768-3.85 4.287-6.785 7.568-8.827 3.27-2.032 7.12-3.047 11.539-3.047s8.289 1.015 11.61 3.047c3.322 2.031 5.861 4.977 7.629 8.827 1.767 3.85 2.65 8.34 2.65 13.469 0 5.13-.903 9.599-2.721 13.398v.01Zm100.176-75.37h-13.937c-4.693 0-8.319 1.26-10.879 3.779-2.57 2.519-3.849 6.165-3.849 10.95v13.53H95.807V41.543h17.644c.356 0 .62-.091.792-.264a.902.902 0 0 0 .264-.66v-6.765c0-.711-.355-1.057-1.056-1.057H99.515c-4.693 0-8.32 1.26-10.88 3.779-2.569 2.519-3.849 6.166-3.849 10.95v13.53H72.18c-.62 0-.924.355-.924 1.056v6.765c0 .264.091.508.264.732a.804.804 0 0 0 .66.335h12.606v57.32c0 .711.356 1.056 1.067 1.056h8.888c.71 0 1.056-.355 1.056-1.056v-57.32h27.791v57.32c0 .711.356 1.056 1.067 1.056h8.888c.711 0 1.056-.355 1.056-1.056v-57.32h17.644c.711 0 1.057-.356 1.057-1.056v-6.766c0-.355-.092-.62-.264-.792-.183-.172-.447-.264-.793-.264h-17.644V41.563h17.644c.356 0 .62-.091.793-.264a.906.906 0 0 0 .264-.66v-6.765c0-.711-.356-1.056-1.057-1.056l.021-.03Zm259.01 27.599c-4.865 0-9.182 1.036-12.941 3.118-3.758 2.082-6.785 5.15-9.091 9.223h-.396V62.112c0-.355-.091-.62-.264-.792-.183-.173-.447-.264-.792-.264h-8.492a.902.902 0 0 0-.66.264c-.183.183-.265.447-.265.792v65.152c0 .264.092.508.265.731a.804.804 0 0 0 .66.335h9.02a.805.805 0 0 0 .66-.335c.173-.223.264-.467.264-.731v-37.29c0-6.632 1.524-11.65 4.581-15.063 3.048-3.403 7.497-5.11 13.337-5.11 5.841 0 10.148 1.636 12.941 4.907 2.783 3.27 4.175 8.36 4.175 15.257v37.288c0 .265.112.508.335.732.224.223.467.335.732.335h8.887c.356 0 .62-.112.793-.335.172-.224.264-.467.264-.732V89.965c0-9.64-2.052-16.984-6.166-22.022-4.114-5.038-10.066-7.568-17.847-7.568v.01Zm-120.49.66h-20.702c-4.692 0-8.319 1.26-10.878 3.778-2.57 2.52-3.85 6.166-3.85 10.95v51.479c0 .265.112.508.335.732.223.223.467.335.731.335h8.888c.356 0 .62-.112.793-.335.172-.224.264-.467.264-.732V70.462h24.419c.355 0 .619-.112.792-.335.173-.224.264-.468.264-.732v-7.293c0-.355-.091-.62-.264-.792-.183-.173-.447-.264-.792-.264Zm70.9 0h-8.888c-.711 0-1.066.355-1.066 1.056v11.682h-.396c-2.479-4.246-5.77-7.538-9.884-9.884-4.114-2.346-8.603-3.514-13.469-3.514-5.932 0-11.143 1.411-15.653 4.245s-7.963 6.857-10.35 12.078c-2.387 5.22-3.586 11.234-3.586 18.05 0 6.816 1.199 12.809 3.586 17.979 2.387 5.17 5.84 9.183 10.35 12.007 4.51 2.834 9.731 4.245 15.653 4.245 5.038 0 9.691-1.168 13.937-3.514 4.245-2.347 7.516-5.546 9.822-9.619h.396v11.407c0 .264.112.508.335.731.224.223.468.335.732.335h8.492c.711 0 1.056-.355 1.056-1.056V62.123c0-.356-.091-.62-.264-.793-.183-.172-.447-.264-.792-.264l-.011-.02Zm-12.138 47.101c-1.727 3.809-4.205 6.724-7.425 8.756-3.23 2.031-7.009 3.047-11.346 3.047-4.338 0-8.096-1.016-11.275-3.047-3.18-2.032-5.638-4.927-7.365-8.695-1.727-3.758-2.59-8.248-2.59-13.47 0-5.22.863-9.618 2.59-13.468 1.727-3.85 4.206-6.786 7.425-8.827 3.231-2.032 6.969-3.048 11.215-3.048 4.245 0 7.984 1.036 11.214 3.119 3.23 2.082 5.729 5.038 7.496 8.888 1.767 3.85 2.651 8.288 2.651 13.337 0 5.048-.863 9.599-2.59 13.398v.01Z" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M589.1 39.24c-4.95 0-9 4.05-9 9l-.01-.01v21.73c0 .86-.7 1.56-1.56 1.56h-3.95c-.86 0-1.56-.7-1.56-1.56V48.23c0-4.95-4.05-9-9-9.01h-21.46c-.86 0-1.56-.7-1.56-1.56v-3.68c0-.86.7-1.56 1.56-1.56h21.48c4.95 0 9-4.05 8.99-9V1.56c0-.86.7-1.56 1.56-1.56h3.95c.86 0 1.56.7 1.56 1.56v21.87c0 4.95 4.05 9 9 9l21.32.01h.01c.86 0 1.56.7 1.56 1.56v3.68c0 .86-.7 1.56-1.56 1.56H589.1Zm17.429 20.92h-.32c-2.99 0-5.43 2.42-5.43 5.43v.31c0 3.09 2.5 5.59 5.59 5.59s5.59-2.5 5.59-5.59v-.31c0-2.99-2.42-5.43-5.43-5.43Z" />
+            </g>
+            </svg></div>
+        <div class="visually-hidden">Ayansh Singh</div>
+        <div split-text="" class="text-brand">Ayansh Singh</div>
+        </a>
+      </div>
+      <div pointer-auto="" class="hud-nav-w">
+        <div class="hud-nav-flex"><a data-contact="" stagger-el="" href="./contact.html" class="btn-w w-inline-block">
+            <div class="btn-inner">
+              <div class="o-hidden">
+                <div split-text="" stagger-text="" class="btn-txt">Contact</div>
+              </div>
+              <div class="btn-icon-w">
+                <div class="btn-txt">-&gt;</div>
+              </div>
+            </div>
+            <div class="btn-bg-w">
+              <div class="btn-bg-fill"></div>
+            </div>
           </a></div>
-        <div pointer-auto="" class="hud-nav-w">
-          <div class="hud-nav-flex"><a data-contact="" stagger-el="" href="./contact.html" class="btn-w w-inline-block">
-              <div class="btn-inner">
-                <div class="o-hidden">
-                  <div split-text="" stagger-text="" class="btn-txt">Contact</div>
-                </div>
-                <div class="btn-icon-w">
-                  <div class="btn-txt">-&gt;</div>
-                </div>
-              </div>
-              <div class="btn-bg-w">
-                <div class="btn-bg-fill"></div>
-              </div>
-            </a></div>
+      </div>
+      <div pointer-auto="" class="hud-scroll-w">
+        <div class="hud-scroll-inner">
+          <div class="hud-scroll-line-top"></div>
+          <div class="hud-scroll-dot"></div>
+          <div class="hud-scroll-line-btm"></div>
         </div>
-        <div pointer-auto="" class="hud-scroll-w">
-          <div class="hud-scroll-inner">
-            <div class="hud-scroll-line-top"></div>
-            <div class="hud-scroll-dot"></div>
-            <div class="hud-scroll-line-btm"></div>
-          </div>
-        </div>
-        <div class="hud-menu-o">
-          <div class="hud-menu-content">
-            <div class="hud-menu-link-w">
-              <div class="o-hidden">
-                <div class="o-hidden menu-l2"><a stagger-el="" href="./home.html" aria-current="page"
-                    class="hud-menu-link w-inline-block w--current">
-                    <div class="o-hidden page-link-inner">
-                      <div split-text="" stagger-text="" class="text-small btn-txt">Home</div>
-                      <div class="btn-icon-w">
-                        <div class="text-small btn-txt">-&gt;</div>
-                      </div>
+      </div>
+      <div class="hud-menu-o">
+        <div class="hud-menu-content">
+          <div class="hud-menu-link-w">
+            <div class="o-hidden">
+              <div class="o-hidden menu-l2"><a stagger-el="" href="./home.html" aria-current="page"
+                  class="hud-menu-link w-inline-block w--current">
+                  <div class="o-hidden page-link-inner">
+                    <div split-text="" stagger-text="" class="text-small btn-txt">Home</div>
+                    <div class="btn-icon-w">
+                      <div class="text-small btn-txt">-&gt;</div>
                     </div>
-                    <div class="link-track">
-                      <div class="link-track-fill"></div>
-                    </div>
-                  </a></div>
-              </div>
-              <div class="o-hidden">
-                <div class="o-hidden menu-l2"><a stagger-el="" href="./work.html" class="hud-menu-link w-inline-block">
-                    <div class="o-hidden page-link-inner">
-                      <div split-text="" stagger-text="" class="text-small btn-txt">Work</div>
-                      <div class="btn-icon-w">
-                        <div class="text-small btn-txt">-&gt;</div>
-                      </div>
-                    </div>
-                    <div class="link-track">
-                      <div class="link-track-fill"></div>
-                    </div>
-                  </a></div>
-              </div>
-              <div class="o-hidden">
-                <div class="o-hidden menu-l2"><a stagger-el="" href="./services.html"
-                    class="hud-menu-link w-inline-block">
-                    <div class="o-hidden page-link-inner">
-                      <div split-text="" stagger-text="" class="text-small btn-txt">About Me</div>
-                      <div class="btn-icon-w">
-                        <div class="text-small btn-txt">-&gt;</div>
-                      </div>
-                    </div>
-                    <div class="link-track">
-                      <div class="link-track-fill"></div>
-                    </div>
-                  </a></div>
-              </div>
-              <div class="o-hidden">
-                <div class="o-hidden menu-l2"><a stagger-el="" href="./contact.html"
-                    class="hud-menu-link w-inline-block">
-                    <div class="o-hidden page-link-inner">
-                      <div split-text="" stagger-text="" class="text-small btn-txt">Contact</div>
-                      <div class="btn-icon-w">
-                        <div class="text-small btn-txt">-&gt;</div>
-                      </div>
-                    </div>
-                    <div class="link-track">
-                      <div class="link-track-fill"></div>
-                    </div>
-                  </a></div>
-              </div>
-            </div>
-            <div class="hud-menu-socials">
-              <div id="w-node-_5bb3200b-af7e-0300-8e68-c2cfb94a16fd-b94a16a3" class="hud-social-w">
-                <div class="o-hidden"><a href="https://github.com/MaverickTopG/" target="_blank"
-                    class="hud-social-link w-inline-block">
-                    <div class="hud-social-img is--awww w-embed"><svg width="100%" height="100%" viewBox="0 0 24 24"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M12 0.5C5.37 0.5 0 5.87 0 12.5C0 17.8 3.44 22.27 8.2 23.86C8.8 23.97 9 23.62 9 23.31C9 23.03 9 22.36 8.99 21.47C5.67 22.16 4.97 19.86 4.97 19.86C4.43 18.53 3.66 18.19 3.66 18.19C2.55 17.44 3.75 17.45 3.75 17.45C4.97 17.53 5.61 18.72 5.61 18.72C6.7 20.6 8.47 20.07 9.16 19.76C9.27 19 9.59 18.49 9.95 18.2C7.3 17.9 4.5 16.84 4.5 11.86C4.5 10.43 5 9.26 5.82 8.35C5.69 8.06 5.25 6.87 5.94 5.22C5.94 5.22 7.02 4.87 8.99 6.18C10.02 5.9 11.12 5.76 12.22 5.76C13.32 5.76 14.42 5.9 15.45 6.18C17.42 4.87 18.5 5.22 18.5 5.22C19.19 6.87 18.75 8.06 18.62 8.35C19.44 9.26 19.94 10.43 19.94 11.86C19.94 16.85 17.13 17.9 14.47 18.2C14.91 18.57 15.31 19.3 15.31 20.41C15.31 22.0 15.29 23.01 15.29 23.31C15.29 23.62 15.49 23.98 16.1 23.86C20.86 22.27 24.3 17.8 24.3 12.5C24.3 5.87 18.93 0.5 12.3 0.5H12Z"
-                          fill="var(--main-dark)" />
-                      </svg></div>
-                  </a></div>
-              </div>
-              <div id="w-node-_5bb3200b-af7e-0300-8e68-c2cfb94a1705-b94a16a3" class="hud-social-w">
-                <div class="o-hidden"><a href="https://linkedin.com/in/ayanshsingh" target="_blank"
-                    class="hud-social-link w-inline-block">
-                    <div class="hud-social-img w-embed"><svg width="100%" height="100%" viewBox="0 0 22 22" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M5.19349 7.02281H0.790305C0.591489 7.02281 0.439453 7.1807 0.439453 7.37366V21.5071C0.439453 21.7059 0.597336 21.858 0.790305 21.858H5.18764C5.38646 21.858 5.5385 21.7001 5.5385 21.5071V7.37951C5.54434 7.18654 5.38646 7.02281 5.19349 7.02281Z"
-                          fill="var(--main-dark)" />
-                        <path
-                          d="M2.99509 0C1.39287 0 0.0888672 1.29815 0.0888672 2.90622C0.0888672 4.50259 1.38702 5.80659 2.99509 5.80659C4.59146 5.80659 5.89546 4.50844 5.89546 2.90622C5.89546 1.29815 4.59146 0 2.99509 0Z"
-                          fill="var(--main-dark)" />
-                        <path
-                          d="M16.3855 6.67795C14.6196 6.67795 13.3097 7.43228 12.5203 8.30356V7.3855C12.5203 7.18668 12.3624 7.03465 12.1694 7.03465H7.94753C7.74872 7.03465 7.59668 7.19253 7.59668 7.3855V21.519C7.59668 21.7178 7.75456 21.8698 7.94753 21.8698H12.339C12.5378 21.8698 12.6899 21.7119 12.6899 21.519V14.5253C12.6899 12.1688 13.3331 11.2507 14.9763 11.2507C16.7656 11.2507 16.9059 12.7184 16.9059 14.6423V21.519C16.9059 21.7178 17.0638 21.8698 17.2568 21.8698H21.6483C21.8471 21.8698 21.9991 21.7119 21.9991 21.519V13.7651C22.005 10.2566 21.3325 6.67795 16.3855 6.67795Z"
-                          fill="var(--main-dark)" />
-                      </svg></div>
-                  </a></div>
-              </div>
-            </div>
-            <div class="hud-mode-o-hidden">
-              <div role="button" aria-label="Toggle colour theme" aria-pressed="false" mode-toggle="light" hover-anim=""
-                class="hud-mode-toggle-w">
-                <div class="mode-toggle-track">
-                  <div class="mode-toggle-inner">
-                    <div class="mode-toggle-btn"></div>
                   </div>
+                  <div class="link-track">
+                    <div class="link-track-fill"></div>
+                  </div>
+                </a></div>
+            </div>
+            <div class="o-hidden">
+              <div class="o-hidden menu-l2"><a stagger-el="" href="./work.html" class="hud-menu-link w-inline-block">
+                  <div class="o-hidden page-link-inner">
+                    <div split-text="" stagger-text="" class="text-small btn-txt">Work</div>
+                    <div class="btn-icon-w">
+                      <div class="text-small btn-txt">-&gt;</div>
+                    </div>
+                  </div>
+                  <div class="link-track">
+                    <div class="link-track-fill"></div>
+                  </div>
+                </a></div>
+            </div>
+            <div class="o-hidden">
+              <div class="o-hidden menu-l2"><a stagger-el="" href="./services.html"
+                  class="hud-menu-link w-inline-block">
+                  <div class="o-hidden page-link-inner">
+                    <div split-text="" stagger-text="" class="text-small btn-txt">About Me</div>
+                    <div class="btn-icon-w">
+                      <div class="text-small btn-txt">-&gt;</div>
+                    </div>
+                  </div>
+                  <div class="link-track">
+                    <div class="link-track-fill"></div>
+                  </div>
+                </a></div>
+            </div>
+            <div class="o-hidden">
+              <div class="o-hidden menu-l2"><a stagger-el="" href="./contact.html" class="hud-menu-link w-inline-block">
+                  <div class="o-hidden page-link-inner">
+                    <div split-text="" stagger-text="" class="text-small btn-txt">Contact</div>
+                    <div class="btn-icon-w">
+                      <div class="text-small btn-txt">-&gt;</div>
+                    </div>
+                  </div>
+                  <div class="link-track">
+                    <div class="link-track-fill"></div>
+                  </div>
+                </a></div>
+            </div>
+          </div>
+          <div class="hud-menu-socials">
+            <div id="w-node-_5bb3200b-af7e-0300-8e68-c2cfb94a16fd-b94a16a3" class="hud-social-w">
+              <div class="o-hidden"><a href="https://github.com/MaverickTopG/" target="_blank"
+                  class="hud-social-link w-inline-block">
+                  <div class="hud-social-img is--awww w-embed"><svg width="100%" height="100%" viewBox="0 0 24 24"
+                      fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M12 0.5C5.37 0.5 0 5.87 0 12.5C0 17.8 3.44 22.27 8.2 23.86C8.8 23.97 9 23.62 9 23.31C9 23.03 9 22.36 8.99 21.47C5.67 22.16 4.97 19.86 4.97 19.86C4.43 18.53 3.66 18.19 3.66 18.19C2.55 17.44 3.75 17.45 3.75 17.45C4.97 17.53 5.61 18.72 5.61 18.72C6.7 20.6 8.47 20.07 9.16 19.76C9.27 19 9.59 18.49 9.95 18.2C7.3 17.9 4.5 16.84 4.5 11.86C4.5 10.43 5 9.26 5.82 8.35C5.69 8.06 5.25 6.87 5.94 5.22C5.94 5.22 7.02 4.87 8.99 6.18C10.02 5.9 11.12 5.76 12.22 5.76C13.32 5.76 14.42 5.9 15.45 6.18C17.42 4.87 18.5 5.22 18.5 5.22C19.19 6.87 18.75 8.06 18.62 8.35C19.44 9.26 19.94 10.43 19.94 11.86C19.94 16.85 17.13 17.9 14.47 18.2C14.91 18.57 15.31 19.3 15.31 20.41C15.31 22.0 15.29 23.01 15.29 23.31C15.29 23.62 15.49 23.98 16.1 23.86C20.86 22.27 24.3 17.8 24.3 12.5C24.3 5.87 18.93 0.5 12.3 0.5H12Z"
+                        fill="var(--main-dark)" />
+                    </svg></div>
+                </a></div>
+            </div>
+            <div id="w-node-_5bb3200b-af7e-0300-8e68-c2cfb94a1705-b94a16a3" class="hud-social-w">
+              <div class="o-hidden"><a href="https://linkedin.com/in/ayanshsingh" target="_blank"
+                  class="hud-social-link w-inline-block">
+                  <div class="hud-social-img w-embed"><svg width="100%" height="100%" viewBox="0 0 22 22" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M5.19349 7.02281H0.790305C0.591489 7.02281 0.439453 7.1807 0.439453 7.37366V21.5071C0.439453 21.7059 0.597336 21.858 0.790305 21.858H5.18764C5.38646 21.858 5.5385 21.7001 5.5385 21.5071V7.37951C5.54434 7.18654 5.38646 7.02281 5.19349 7.02281Z"
+                        fill="var(--main-dark)" />
+                      <path
+                        d="M2.99509 0C1.39287 0 0.0888672 1.29815 0.0888672 2.90622C0.0888672 4.50259 1.38702 5.80659 2.99509 5.80659C4.59146 5.80659 5.89546 4.50844 5.89546 2.90622C5.89546 1.29815 4.59146 0 2.99509 0Z"
+                        fill="var(--main-dark)" />
+                      <path
+                        d="M16.3855 6.67795C14.6196 6.67795 13.3097 7.43228 12.5203 8.30356V7.3855C12.5203 7.18668 12.3624 7.03465 12.1694 7.03465H7.94753C7.74872 7.03465 7.59668 7.19253 7.59668 7.3855V21.519C7.59668 21.7178 7.75456 21.8698 7.94753 21.8698H12.339C12.5378 21.8698 12.6899 21.7119 12.6899 21.519V14.5253C12.6899 12.1688 13.3331 11.2507 14.9763 11.2507C16.7656 11.2507 16.9059 12.7184 16.9059 14.6423V21.519C16.9059 21.7178 17.0638 21.8698 17.2568 21.8698H21.6483C21.8471 21.8698 21.9991 21.7119 21.9991 21.519V13.7651C22.005 10.2566 21.3325 6.67795 16.3855 6.67795Z"
+                        fill="var(--main-dark)" />
+                    </svg></div>
+                </a></div>
+            </div>
+          </div>
+          <div class="hud-mode-o-hidden">
+            <div role="button" aria-label="Toggle colour theme" aria-pressed="false" mode-toggle="light" hover-anim=""
+              class="hud-mode-toggle-w">
+              <div class="mode-toggle-track">
+                <div class="mode-toggle-inner">
+                  <div class="mode-toggle-btn"></div>
                 </div>
               </div>
             </div>
           </div>
-          <div hover-anim="" pointer-auto="" role="button" tabindex="0" aria-label="menu" aria-expanded="false"
-            class="hud-menu-w">
-            <div class="hud-menu-c">
-              <div class="hud-menu-line is-1"></div>
-              <div class="hud-menu-line is-2"></div>
-              <div class="hud-menu-line is-3"></div>
-            </div>
+        </div>
+        <div hover-anim="" pointer-auto="" role="button" tabindex="0" aria-label="menu" aria-expanded="false"
+          class="hud-menu-w">
+          <div class="hud-menu-c">
+            <div class="hud-menu-line is-1"></div>
+            <div class="hud-menu-line is-2"></div>
+            <div class="hud-menu-line is-3"></div>
           </div>
-          <div class="hud-menu-bg"></div>
+        </div>
+        <div class="hud-menu-bg"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pagew-grid">
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5376-b94a16a3" class="pagew-block is--1"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5377-b94a16a3" class="pagew-block is--2"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5378-b94a16a3" class="pagew-block is--1"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5379-b94a16a3" class="pagew-block is--2"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537a-b94a16a3" class="pagew-block is--1"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537b-b94a16a3" class="pagew-block is--2"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537c-b94a16a3" class="pagew-block is--1"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537d-b94a16a3" class="pagew-block is--2"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537e-b94a16a3" class="pagew-block is--1"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537f-b94a16a3" class="pagew-block is--2"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5380-b94a16a3" class="pagew-block is--1"></div>
+    <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5381-b94a16a3" class="pagew-block is--2"></div>
+  </div>
+  <div pointer-none="" class="page-wipe-w">
+    <div pointer-auto="" page-wipe-block="" class="page-wipe-inner">
+      <div page-wipe-object="" class="page-wipe-object-w">
+        <div class="wipe-outline-w w-embed">
+          <div gradient-evolve="" class="logo-mask-w"></div>
         </div>
       </div>
     </div>
-    <div class="pagew-grid">
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5376-b94a16a3" class="pagew-block is--1"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5377-b94a16a3" class="pagew-block is--2"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5378-b94a16a3" class="pagew-block is--1"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5379-b94a16a3" class="pagew-block is--2"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537a-b94a16a3" class="pagew-block is--1"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537b-b94a16a3" class="pagew-block is--2"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537c-b94a16a3" class="pagew-block is--1"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537d-b94a16a3" class="pagew-block is--2"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537e-b94a16a3" class="pagew-block is--1"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc537f-b94a16a3" class="pagew-block is--2"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5380-b94a16a3" class="pagew-block is--1"></div>
-      <div id="w-node-cf08bba0-c5fd-23a0-82a8-15142edc5381-b94a16a3" class="pagew-block is--2"></div>
-    </div>
-    <div pointer-none="" class="page-wipe-w">
-      <div pointer-auto="" page-wipe-block="" class="page-wipe-inner">
-        <div page-wipe-object="" class="page-wipe-object-w">
-          <div class="wipe-outline-w w-embed">
-            <div class="logo-mask-w"></div>
-            <svg width="0" height="0" style="position:absolute;visibility:hidden;">
-              <path class="st-x page-wipe-path" d="M0 0 L1 1"></path>
-            </svg></div></div>
-        </div>
-      </div>
-    </div>
+  </div>
+  </div>
   </div>
   <div pointer-none="" class="percentage-guides">
     <div class="percentage-row">
@@ -2078,7 +2325,7 @@
                 </div>
               </div>
               <div id="w-node-_71aee89d-b255-0b88-3920-e4d3ba643f42-cb3c54b7" class="grid-main hcs-grid-w"><a
-                  hover-anim="" id="w-node-_67b4108a-10fa-bd83-03d1-1401dde7c33e-cb3c54b7" href="./projectshowcase.html"
+                  hover-anim="" id="w-node-_67b4108a-10fa-bd83-03d1-1401dde7c33e-cb3c54b7" href="changing-look-agn.html"
                   class="hcs-item-w w-inline-block">
                   <div class="hcs-content-w mbm-diff">
                     <div class="hcs-titles-w">
@@ -2095,13 +2342,15 @@
                         </div>
                       </div>
                       <div class="hcs-cross-w">
-                        <div class="hsc-cross w-embed"><div class="x-logo-mask"></div></div>
+                        <div class="hsc-cross w-embed">
+                          <div class="x-logo-mask"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="hcs-img-w is-lando"></div>
-                </a><a hover-anim="" id="w-node-f1154dc3-a520-de56-f8df-765def2fbc8d-cb3c54b7"
-                  href="./projectshowcase.html" class="hcs-item-w w-inline-block">
+                </a><a hover-anim="" id="w-node-f1154dc3-a520-de56-f8df-765def2fbc8d-cb3c54b7" href="nexolink.html"
+                  class="hcs-item-w w-inline-block">
                   <div class="hcs-content-w mbm-diff">
                     <div class="hcs-titles-w">
                       <div class="hcs-titles">
@@ -2114,13 +2363,15 @@
                         </div>
                       </div>
                       <div class="hcs-cross-w">
-                        <div class="hsc-cross w-embed"><div class="x-logo-mask"></div></div>
+                        <div class="hsc-cross w-embed">
+                          <div class="x-logo-mask"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="hcs-img-w is--aether"></div>
                 </a><a hover-anim="" id="w-node-_01fba6c9-0e79-65a5-3a11-ba34c6756fc8-cb3c54b7"
-                  href="./projectshowcase.html" class="hcs-item-w w-inline-block">
+                  href="glioma-detection-ai.html" class="hcs-item-w w-inline-block">
                   <div class="hcs-content-w mbm-diff">
                     <div class="hcs-titles-w">
                       <div class="hcs-titles">
@@ -2133,13 +2384,15 @@
                         </div>
                       </div>
                       <div class="hcs-cross-w">
-                        <div class="hsc-cross w-embed"><div class="x-logo-mask"></div></div>
+                        <div class="hsc-cross w-embed">
+                          <div class="x-logo-mask"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="hcs-img-w is--bella"></div>
-                </a><a hover-anim="" id="w-node-f6ed34ff-838c-72dc-9169-3c4cc14510ed-cb3c54b7"
-                  href="./projectshowcase.html" class="hcs-item-w w-inline-block">
+                </a><a hover-anim="" id="w-node-f6ed34ff-838c-72dc-9169-3c4cc14510ed-cb3c54b7" href="project-sonar.html"
+                  class="hcs-item-w w-inline-block">
                   <div class="hcs-content-w">
                     <div class="hcs-titles-w">
                       <div class="hcs-titles">
@@ -2152,12 +2405,14 @@
                         </div>
                       </div>
                       <div class="hcs-cross-w">
-                        <div class="hsc-cross w-embed"><div class="x-logo-mask"></div></div>
+                        <div class="hsc-cross w-embed">
+                          <div class="x-logo-mask"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="hcs-img-w is--jasp"></div>
-                </a><a id="w-node-c73e8bc0-696d-fdb6-3df5-80aa2bc0bd93-cb3c54b7" href="./projectshowcase.html"
+                </a><a id="w-node-c73e8bc0-696d-fdb6-3df5-80aa2bc0bd93-cb3c54b7" href="autonomous-rc-robotics.html"
                   class="hcs-item-w w-inline-block">
                   <div class="hcs-content-w mbm-diff">
                     <div class="hcs-titles-w">
@@ -2171,13 +2426,15 @@
                         </div>
                       </div>
                       <div class="hcs-cross-w">
-                        <div class="hsc-cross w-embed"><div class="x-logo-mask"></div></div>
+                        <div class="hsc-cross w-embed">
+                          <div class="x-logo-mask"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="hcs-img-w is--slack"></div>
                 </a><a hover-anim="" id="w-node-c58fb995-1f44-ccb1-f4ee-fd36f7709573-cb3c54b7"
-                  href="./projectshowcase.html" class="hcs-item-w w-inline-block">
+                  href="ai-workshops-outreach.html" class="hcs-item-w w-inline-block">
                   <div class="hcs-content-w">
                     <div class="hcs-titles-w">
                       <div class="hcs-titles">
@@ -2190,7 +2447,9 @@
                         </div>
                       </div>
                       <div class="hcs-cross-w">
-                        <div class="hsc-cross w-embed"><div class="x-logo-mask"></div></div>
+                        <div class="hsc-cross w-embed">
+                          <div class="x-logo-mask"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2221,7 +2480,7 @@
                 <div grid-anim="" class="grid-main hg-grid">
                   <div id="w-node-fdd3646f-835d-47d8-7c1d-f92c4d460cdb-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-3">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w ai1">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
@@ -2231,14 +2490,14 @@
                   </div>
                   <div id="w-node-_88e8eb14-0a15-7761-4389-9d7d5abfea45-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-2">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w rob1">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_7b5e2d0a-0312-8bbe-8681-47cc1b84385f-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-3">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w art1">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2257,14 +2516,14 @@
                   </div>
                   <div id="w-node-_33738488-2904-068e-0d11-e91ce520a933-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-4">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w tech1">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-c73f8858-c03a-b926-5318-74643b5bb986-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-5">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w sci1">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2286,7 +2545,7 @@
                   </div>
                   <div id="w-node-_85c3a8f4-d54f-0b94-511b-981b51390e47-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-6">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w ai2">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2305,14 +2564,14 @@
                   </div>
                   <div id="w-node-cb97767f-d507-b9c3-a390-50693e55f115-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-7">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w rob2">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_38cc6ada-d731-7b16-a86a-e11768b4cfcf-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-8">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w art2">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2331,7 +2590,7 @@
                   </div>
                   <div id="w-node-_2c6f87bc-b627-5691-a926-bad3804ca63e-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-9">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w tech2">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2353,7 +2612,7 @@
                   </div>
                   <div id="w-node-_689e430f-21e0-4ab7-4be0-5afc747c4386-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-10">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w sci2">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2372,7 +2631,7 @@
                   </div>
                   <div id="w-node-b9a97f33-a543-4e73-f0e5-cf08b93a389a-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-11">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w ai3">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2391,14 +2650,14 @@
                   </div>
                   <div id="w-node-d4fb2df6-d530-b6f8-f571-052db0cf78dc-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-13">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w rob3">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_9909306b-45d4-8b7f-4f9a-8bbd067ef7b4-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-13">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w art3">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2417,14 +2676,14 @@
                   </div>
                   <div id="w-node-_66a62c57-3c5b-0516-8f50-c90b0b9b1695-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-14">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w tech3">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_4ec6a459-3961-59cc-1c55-b2b2013d01d1-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-15">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w sci3">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
@@ -2434,7 +2693,7 @@
                   </div>
                   <div id="w-node-_9f12be6f-6c7c-ae16-9b21-8a89be1906b5-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-16">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w ai4">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2453,7 +2712,7 @@
                   </div>
                   <div id="w-node-_9d529271-9dc5-937e-648a-7c9b7c3905eb-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-17">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w rob4">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2472,7 +2731,7 @@
                   </div>
                   <div id="w-node-_5c648710-4ab8-43ff-6d8d-97cb3833c379-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-18">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w art4">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
@@ -2482,21 +2741,21 @@
                   </div>
                   <div id="w-node-_82a3433d-14b8-2bc2-cccf-857489a7ac17-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-19">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w tech4">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_6e57eeb5-7f26-b65c-b21e-08eeadcc02e5-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-20">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w sci4">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_4a75a278-27af-7568-75a1-d2f0b9d58344-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-21">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w tech1">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2515,7 +2774,7 @@
                   </div>
                   <div id="w-node-d266086b-3ac7-f7c3-03a2-20c74b8ef783-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-22">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w ai1">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
@@ -2525,14 +2784,14 @@
                   </div>
                   <div id="w-node-_97da6f2b-99fe-5434-332d-0f8c3a9a7b6d-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-23">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w rob2">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_573338f5-b58a-2988-ee90-b9e288ecc185-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-24">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w art3">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-vid-w w-embed">
@@ -2551,11 +2810,11 @@
                   </div>
                   <div id="w-node-_491e14a5-aad5-105f-04ec-7c545c8657e2-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-25">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w sci1">
                         <div class="hg-img-overlay"></div>
                       </div>
                       <div class="hg-grid-inner is-12">
-                        <div class="hg-img-w">
+                        <div class="hg-img-w ai1">
                           <div class="hg-img-overlay"></div>
                         </div>
                         <div class="hg-vid-w w-embed">
@@ -2587,14 +2846,14 @@
                   </div>
                   <div id="w-node-_60b50726-e435-0daa-d100-4a68b026bc24-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-26">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w tech4">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_359e6371-98de-fe4a-37b2-7b5fdd70615a-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-5">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w sci1">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
@@ -2604,63 +2863,63 @@
                   </div>
                   <div id="w-node-_170bdfba-d55a-705d-62aa-cdc86f1ec994-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-6">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w ai2">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-d6ea5341-0e4b-cf87-35f9-ce326f378ade-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-29">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w rob3">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_60281a50-54c2-d943-24df-7fceb659567d-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-30">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w art4">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_083f31e5-3690-eee3-26e8-17ce059c0acd-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-10">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w tech1">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_5298ded5-1b30-f5e5-71ce-0655a3c8af4c-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-32">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w sci2">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-fb4c7126-4af1-a52c-7e36-ee96feac4131-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-11">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w ai3">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-b34e0542-628b-8375-6709-22af5f58a192-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-12">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w rob4">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_3f9898d4-24ae-a4d7-8031-837866d5f60a-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-25">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w art1">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_8f5c47d2-e8d5-2e72-71cf-7e1ffc35ba0a-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-16">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w tech2">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
@@ -2670,21 +2929,21 @@
                   </div>
                   <div id="w-node-fd45d3bb-79f9-e507-f3b1-0da853243eea-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-24">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w sci3">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_63bcb364-75b1-05c9-cf19-c7244065179e-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-37">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w ai4">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
                   </div>
                   <div id="w-node-_4f150f8c-7cd1-a4b8-e640-628ba44cdf34-cb3c54b7" class="hg-grid-item">
                     <div class="hg-grid-inner is-1-copy">
-                      <div class="hg-img-w">
+                      <div class="hg-img-w rob1">
                         <div class="hg-img-overlay"></div>
                       </div>
                     </div>
@@ -2712,7 +2971,9 @@
               <div hsc-scale="" class="c is-hsc">
                 <div hsc-rotate="" class="hsc-rotate">
                   <div hsc-img="" class="hsc-img-w">
-                    <div class="hsc-img w-embed"><div class="x-logo-mask"></div></div>
+                    <div class="hsc-img w-embed">
+                      <div class="x-logo-mask"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2829,15 +3090,7 @@
                   </a></div>
               </div>
               <div id="w-node-b2deac9f-48fc-2cd0-3331-af319f49eed7-9f49edfa" class="o-hidden">
-                <div display-none="" class="hud-brand-img w-embed"><svg width="100%" height="100%" viewBox="0 0 612 129"
-                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#a)" fill="var(--main-light)">
-                      <path
-                        d="M228.162 64.642c-4.51-2.834-9.691-4.246-15.521-4.246-4.866 0-9.376 1.168-13.53 3.514-4.155 2.347-7.436 5.638-9.823 9.884h-.528v-39.94c0-.356-.091-.62-.264-.793a.92.92 0 0 0-.66-.264h-9.02a.906.906 0 0 0-.661.264c-.172.173-.264.447-.264.793v93.41c0 .264.092.508.264.731a.807.807 0 0 0 .661.335h8.492c.355 0 .619-.112.792-.335.173-.223.264-.467.264-.731v-11.407h.396c2.296 4.073 5.597 7.272 9.883 9.619 4.287 2.346 8.96 3.514 13.998 3.514 5.84 0 11.011-1.411 15.521-4.245 4.51-2.834 7.984-6.837 10.411-12.007 2.428-5.17 3.647-11.163 3.647-17.979 0-6.816-1.219-12.83-3.647-18.05-2.438-5.221-5.901-9.244-10.411-12.078v.01Zm.335 43.586c-1.727 3.759-4.205 6.653-7.425 8.695-3.23 2.032-7.009 3.047-11.346 3.047-4.338 0-8.116-1.015-11.347-3.047-3.23-2.031-5.708-4.957-7.425-8.756-1.727-3.799-2.59-8.268-2.59-13.398 0-5.13.884-9.487 2.651-13.337 1.768-3.85 4.266-6.816 7.496-8.888 3.231-2.082 6.969-3.118 11.215-3.118 4.245 0 8.095 1.016 11.275 3.047 3.179 2.032 5.657 4.977 7.425 8.827 1.767 3.85 2.651 8.34 2.651 13.47 0 5.129-.863 9.71-2.59 13.468l.01-.01Zm282.556-75.43h-8.888c-.264 0-.508.09-.731.263-.224.183-.336.447-.336.793v39.94h-.396c-2.478-4.246-5.769-7.537-9.883-9.884-4.114-2.346-8.604-3.514-13.469-3.514-5.932 0-11.143 1.412-15.653 4.246-4.51 2.834-7.964 6.856-10.351 12.077-2.387 5.221-3.586 11.234-3.586 18.05 0 6.816 1.199 12.809 3.586 17.979 2.387 5.171 5.841 9.183 10.351 12.007 4.51 2.834 9.731 4.246 15.653 4.246 5.038 0 9.69-1.169 13.936-3.515s7.517-5.546 9.823-9.619h.396v11.407c0 .264.112.508.335.731.223.224.467.335.731.335h8.492c.356 0 .62-.111.792-.335.173-.223.265-.467.265-.731v-93.41c0-.356-.092-.62-.265-.792-.182-.173-.446-.265-.792-.265l-.01-.01Zm-12.138 75.369c-1.727 3.809-4.206 6.725-7.426 8.756-3.23 2.032-7.009 3.047-11.346 3.047s-8.096-1.015-11.275-3.047c-3.179-2.031-5.637-4.926-7.364-8.695-1.727-3.758-2.59-8.248-2.59-13.469s.863-9.62 2.59-13.469c1.727-3.85 4.205-6.785 7.425-8.827 3.23-2.031 6.968-3.047 11.214-3.047s7.984 1.036 11.214 3.118c3.23 2.082 5.729 5.038 7.497 8.888 1.767 3.85 2.651 8.289 2.651 13.337 0 5.049-.864 9.599-2.59 13.398v.01ZM50.098 64.774C45.1 61.858 39.37 60.396 32.91 60.396c-6.46 0-12.19 1.442-17.187 4.317-4.998 2.874-8.868 6.917-11.61 12.138C1.37 82.072 0 88.045 0 94.76s1.371 12.667 4.114 17.847c2.742 5.17 6.612 9.203 11.61 12.078 4.998 2.874 10.727 4.317 17.187 4.317 6.46 0 12.19-1.433 17.187-4.317 4.997-2.875 8.888-6.897 11.681-12.078 2.783-5.17 4.175-11.123 4.175-17.847 0-6.724-1.392-12.677-4.175-17.847-2.783-5.17-6.684-9.223-11.681-12.138Zm1.99 43.383c-1.818 3.809-4.357 6.724-7.628 8.756-3.27 2.032-7.12 3.047-11.539 3.047s-8.268-1.015-11.54-3.047c-3.27-2.032-5.789-4.926-7.567-8.695-1.767-3.758-2.65-8.248-2.65-13.47 0-5.22.883-9.618 2.65-13.468 1.768-3.85 4.287-6.785 7.568-8.827 3.27-2.032 7.12-3.047 11.539-3.047s8.289 1.015 11.61 3.047c3.322 2.031 5.861 4.977 7.629 8.827 1.767 3.85 2.65 8.34 2.65 13.469 0 5.13-.903 9.599-2.721 13.398v.01Zm100.176-75.37h-13.937c-4.693 0-8.319 1.26-10.879 3.779-2.57 2.519-3.849 6.165-3.849 10.95v13.53H95.807V41.543h17.644c.356 0 .62-.091.792-.264a.902.902 0 0 0 .264-.66v-6.765c0-.711-.355-1.057-1.056-1.057H99.515c-4.693 0-8.32 1.26-10.88 3.779-2.569 2.519-3.849 6.166-3.849 10.95v13.53H72.18c-.62 0-.924.355-.924 1.056v6.765c0 .264.091.508.264.732a.804.804 0 0 0 .66.335h12.606v57.32c0 .711.356 1.056 1.067 1.056h8.888c.71 0 1.056-.355 1.056-1.056v-57.32h27.791v57.32c0 .711.356 1.056 1.067 1.056h8.888c.711 0 1.056-.355 1.056-1.056v-57.32h17.644c.711 0 1.057-.356 1.057-1.056v-6.766c0-.355-.092-.62-.264-.792-.183-.172-.447-.264-.793-.264h-17.644V41.563h17.644c.356 0 .62-.091.793-.264a.906.906 0 0 0 .264-.66v-6.765c0-.711-.356-1.056-1.057-1.056l.021-.03Zm259.01 27.599c-4.865 0-9.182 1.036-12.941 3.118-3.758 2.082-6.785 5.15-9.091 9.223h-.396V62.112c0-.355-.091-.62-.264-.792-.183-.173-.447-.264-.792-.264h-8.492a.902.902 0 0 0-.66.264c-.183.183-.265.447-.265.792v65.152c0 .264.092.508.265.731a.804.804 0 0 0 .66.335h9.02a.805.805 0 0 0 .66-.335c.173-.223.264-.467.264-.731v-37.29c0-6.632 1.524-11.65 4.581-15.063 3.048-3.403 7.497-5.11 13.337-5.11 5.841 0 10.148 1.636 12.941 4.907 2.783 3.27 4.175 8.36 4.175 15.257v37.288c0 .265.112.508.335.732.224.223.467.335.732.335h8.887c.356 0 .62-.112.793-.335.172-.224.264-.467.264-.732V89.965c0-9.64-2.052-16.984-6.166-22.022-4.114-5.038-10.066-7.568-17.847-7.568v.01Zm-120.49.66h-20.702c-4.692 0-8.319 1.26-10.878 3.778-2.57 2.52-3.85 6.166-3.85 10.95v51.479c0 .265.112.508.335.732.223.223.467.335.731.335h8.888c.356 0 .62-.112.793-.335.172-.224.264-.467.264-.732V70.462h24.419c.355 0 .619-.112.792-.335.173-.224.264-.468.264-.732v-7.293c0-.355-.091-.62-.264-.792-.183-.173-.447-.264-.792-.264Zm70.9 0h-8.888c-.711 0-1.066.355-1.066 1.056v11.682h-.396c-2.479-4.246-5.77-7.538-9.884-9.884-4.114-2.346-8.603-3.514-13.469-3.514-5.932 0-11.143 1.411-15.653 4.245s-7.963 6.857-10.35 12.078c-2.387 5.22-3.586 11.234-3.586 18.05 0 6.816 1.199 12.809 3.586 17.979 2.387 5.17 5.84 9.183 10.35 12.007 4.51 2.834 9.731 4.245 15.653 4.245 5.038 0 9.691-1.168 13.937-3.514 4.245-2.347 7.516-5.546 9.822-9.619h.396v11.407c0 .264.112.508.335.731.224.223.468.335.732.335h8.492c.711 0 1.056-.355 1.056-1.056V62.123c0-.356-.091-.62-.264-.793-.183-.172-.447-.264-.792-.264l-.011-.02Zm-12.138 47.101c-1.727 3.809-4.205 6.724-7.425 8.756-3.23 2.031-7.009 3.047-11.346 3.047-4.338 0-8.096-1.016-11.275-3.047-3.18-2.032-5.638-4.927-7.365-8.695-1.727-3.758-2.59-8.248-2.59-13.47 0-5.22.863-9.618 2.59-13.468 1.727-3.85 4.206-6.786 7.425-8.827 3.231-2.032 6.969-3.048 11.215-3.048 4.245 0 7.984 1.036 11.214 3.119 3.23 2.082 5.729 5.038 7.496 8.888 1.767 3.85 2.651 8.288 2.651 13.337 0 5.048-.863 9.599-2.59 13.398v.01Z" />
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M589.1 39.24c-4.95 0-9 4.05-9 9l-.01-.01v21.73c0 .86-.7 1.56-1.56 1.56h-3.95c-.86 0-1.56-.7-1.56-1.56V48.23c0-4.95-4.05-9-9-9.01h-21.46c-.86 0-1.56-.7-1.56-1.56v-3.68c0-.86.7-1.56 1.56-1.56h21.48c4.95 0 9-4.05 8.99-9V1.56c0-.86.7-1.56 1.56-1.56h3.95c.86 0 1.56.7 1.56 1.56v21.87c0 4.95 4.05 9 9 9l21.32.01h.01c.86 0 1.56.7 1.56 1.56v3.68c0 .86-.7 1.56-1.56 1.56H589.1Zm17.429 20.92h-.32c-2.99 0-5.43 2.42-5.43 5.43v.31c0 3.09 2.5 5.59 5.59 5.59s5.59-2.5 5.59-5.59v-.31c0-2.99-2.42-5.43-5.43-5.43Z" />
-                    </g>
-                  </svg></div>
+                <div class="hud-brand-img w-embed"></div>
                 <div stagger-scroll="1" split-text="" class="text-brand-footer">AYANSH SINGH</div>
               </div>
             </div>
@@ -2848,7 +3101,19 @@
   </main>
   </div>
   <div data-orb-wrap="" pointer-none="" class="orb-w">
-    <div data-orb="" class="orb"></div>
+    <svg data-orb="" class="orb code-bracket-orb" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <g class="bracket-rotate">
+        <!-- Left bracket < -->
+        <path d="M 80 50 L 40 100 L 80 150" stroke="currentColor" stroke-width="12" stroke-linecap="round"
+          stroke-linejoin="round" fill="none" class="bracket-path" />
+        <!-- Forward slash / -->
+        <path d="M 110 140 L 90 60" stroke="currentColor" stroke-width="12" stroke-linecap="round" fill="none"
+          class="bracket-path" />
+        <!-- Right bracket > -->
+        <path d="M 120 50 L 160 100 L 120 150" stroke="currentColor" stroke-width="12" stroke-linecap="round"
+          stroke-linejoin="round" fill="none" class="bracket-path" />
+      </g>
+    </svg>
     <div orb-out-w="1" class="orb-outline-w">
       <div orb-out-r="1" class="orb-outline-r">
         <div orb-outline="1" class="orb-outline"></div>
@@ -2861,26 +3126,11 @@
     </div>
   </div>
   <div preloader="" class="pre-w">
-    <div class="ob-mask-wrap">
-      <div class="ob-mask-outline w-embed">
-            <div class="logo-mask-w"></div>
-            <svg width="0" height="0" style="position:absolute;visibility:hidden;">
-              <path class="st-x page-wipe-path" d="M0 0 L1 1"></path>
-            </svg></div></div>
-      <div class="ob-fill-mask">
-        <div class="ob-fill-fill"></div>
-      </div>
-      <div class="pre-info-w is-1">
-        <div class="pre-info-inner is-2">
-          <div class="o-hidden">
-            <div split-text="" pre-text="" class="text-mini">build</div>
-          </div>
-          <div class="o-hidden is-ppercent">
-            <div pre-percent="" class="text-mini"> </div>
-          </div>
-        </div>
-      </div>
+    <div class="logo-fill-container">
+      <div class="logo-fill-base"></div>
+      <div class="logo-fill-animated"></div>
     </div>
+  </div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=64cf4cc8c9b14fe4cb3c54b4"
     type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -2900,6 +3150,35 @@
       }
     }
     removeEditMode();
+
+    // Logo Fill Animation
+    (function () {
+      const logoFill = document.querySelector('.logo-fill-animated');
+      if (logoFill) {
+        let progress = 0;
+        const duration = 2000; // 2 seconds
+        const startTime = Date.now();
+
+        function animate() {
+          const elapsed = Date.now() - startTime;
+          progress = Math.min(elapsed / duration, 1);
+
+          // Animate from bottom (100%) to top (0%)
+          const insetValue = 100 - (progress * 100);
+          logoFill.style.clipPath = `inset(${insetValue}% 0 0 0)`;
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        }
+
+        // Start animation after a brief delay
+        setTimeout(() => {
+          requestAnimationFrame(animate);
+        }, 300);
+      }
+    })();
+
     // Text Resize
     /*document.addEventListener("DOMContentLoaded", (event) => {
     function setFontSize() {
